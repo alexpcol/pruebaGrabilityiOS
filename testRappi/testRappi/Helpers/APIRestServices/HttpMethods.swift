@@ -123,6 +123,39 @@ class HttpMethods: NSObject {
         }
     }
     
+    //MARK:- GET Method with Auth
+    func RequestGETWithAutorization(URLString : String)
+    {
+        print("\n")
+        print("Request(GET) " + URLString);
+        
+        var Request = URLRequest(url: URL(string: URLString)!)
+        Request.httpMethod = "GET"
+        
+        let token : String? = APIKeys.apiTokenV4.rawValue
+        if token == nil
+        {
+            return
+        }
+        
+        Request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        Request.setValue("Bearer " + token!, forHTTPHeaderField: "Authorization")
+        
+        let postString : String? = "";
+        
+        Request.httpBody = postString?.data(using: .utf8)
+        
+        if hasInternet()
+        {
+            requestTimer()
+            ExecuteTask(Request: Request)
+        }
+        else {
+            notInternetAlert()
+        }
+        
+    }
+    
 }
 
 
