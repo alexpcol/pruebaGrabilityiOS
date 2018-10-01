@@ -13,6 +13,12 @@
 		5749258221626BE100E84F79 /* testRappi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5749258021626BE100E84F79 /* testRappi.xcdatamodeld */; };
 		5749258421626BE400E84F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5749258321626BE400E84F79 /* Assets.xcassets */; };
 		5749258721626BE400E84F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5749258521626BE400E84F79 /* LaunchScreen.storyboard */; };
+		574925932162B57900E84F79 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925922162B57900E84F79 /* ImageService.swift */; };
+		574925972162B5D100E84F79 /* AlertsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925962162B5D100E84F79 /* AlertsPresenter.swift */; };
+		5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925992162B61A00E84F79 /* ServicesNames.swift */; };
+		5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259D2162B6A200E84F79 /* HttpMethods.swift */; };
+		574925A02162B6E400E84F79 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259F2162B6E400E84F79 /* APIServices.swift */; };
+		574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A12162B75F00E84F79 /* ActivityPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		5749258321626BE400E84F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5749258621626BE400E84F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5749258821626BE400E84F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		574925922162B57900E84F79 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		574925962162B5D100E84F79 /* AlertsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsPresenter.swift; sourceTree = "<group>"; };
+		574925992162B61A00E84F79 /* ServicesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesNames.swift; sourceTree = "<group>"; };
+		5749259D2162B6A200E84F79 /* HttpMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethods.swift; sourceTree = "<group>"; };
+		5749259F2162B6E400E84F79 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		574925A12162B75F00E84F79 /* ActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,85 @@
 		5749257821626BE100E84F79 /* testRappi */ = {
 			isa = PBXGroup;
 			children = (
-				5749257921626BE100E84F79 /* AppDelegate.swift */,
-				5749257B21626BE100E84F79 /* ViewController.swift */,
-				5749257D21626BE100E84F79 /* Main.storyboard */,
+				574925942162B58700E84F79 /* Helpers */,
+				5749258E21626DBB00E84F79 /* Controllers */,
+				5749258F21626DCF00E84F79 /* Views */,
 				5749258321626BE400E84F79 /* Assets.xcassets */,
-				5749258521626BE400E84F79 /* LaunchScreen.storyboard */,
 				5749258821626BE400E84F79 /* Info.plist */,
 				5749258021626BE100E84F79 /* testRappi.xcdatamodeld */,
 			);
 			path = testRappi;
+			sourceTree = "<group>";
+		};
+		5749258E21626DBB00E84F79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5749257921626BE100E84F79 /* AppDelegate.swift */,
+				5749257B21626BE100E84F79 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5749258F21626DCF00E84F79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5749257D21626BE100E84F79 /* Main.storyboard */,
+				5749258521626BE400E84F79 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		574925942162B58700E84F79 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				574925952162B5BC00E84F79 /* Images */,
+				574925982162B5F200E84F79 /* Alerts */,
+				5749259C2162B67800E84F79 /* APIRestServices */,
+				574925A32162B77900E84F79 /* ActivityPresenter */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		574925952162B5BC00E84F79 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				574925922162B57900E84F79 /* ImageService.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		574925982162B5F200E84F79 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				574925962162B5D100E84F79 /* AlertsPresenter.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		5749259B2162B65600E84F79 /* ServicesNames */ = {
+			isa = PBXGroup;
+			children = (
+				574925992162B61A00E84F79 /* ServicesNames.swift */,
+			);
+			path = ServicesNames;
+			sourceTree = "<group>";
+		};
+		5749259C2162B67800E84F79 /* APIRestServices */ = {
+			isa = PBXGroup;
+			children = (
+				5749259D2162B6A200E84F79 /* HttpMethods.swift */,
+				5749259B2162B65600E84F79 /* ServicesNames */,
+				5749259F2162B6E400E84F79 /* APIServices.swift */,
+			);
+			path = APIRestServices;
+			sourceTree = "<group>";
+		};
+		574925A32162B77900E84F79 /* ActivityPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				574925A12162B75F00E84F79 /* ActivityPresenter.swift */,
+			);
+			path = ActivityPresenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +220,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				574925972162B5D100E84F79 /* AlertsPresenter.swift in Sources */,
 				5749257C21626BE100E84F79 /* ViewController.swift in Sources */,
+				574925A02162B6E400E84F79 /* APIServices.swift in Sources */,
+				5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */,
+				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
+				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
+				574925932162B57900E84F79 /* ImageService.swift in Sources */,
 				5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */,
 				5749258221626BE100E84F79 /* testRappi.xcdatamodeld in Sources */,
 			);
