@@ -19,6 +19,7 @@
 		5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259D2162B6A200E84F79 /* HttpMethods.swift */; };
 		574925A02162B6E400E84F79 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259F2162B6E400E84F79 /* APIServices.swift */; };
 		574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A12162B75F00E84F79 /* ActivityPresenter.swift */; };
+		574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A42162B93300E84F79 /* DataTypeChanger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5749259D2162B6A200E84F79 /* HttpMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethods.swift; sourceTree = "<group>"; };
 		5749259F2162B6E400E84F79 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		574925A12162B75F00E84F79 /* ActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPresenter.swift; sourceTree = "<group>"; };
+		574925A42162B93300E84F79 /* DataTypeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeChanger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				574925982162B5F200E84F79 /* Alerts */,
 				5749259C2162B67800E84F79 /* APIRestServices */,
 				574925A32162B77900E84F79 /* ActivityPresenter */,
+				574925A42162B93300E84F79 /* DataTypeChanger.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				5749257C21626BE100E84F79 /* ViewController.swift in Sources */,
 				574925A02162B6E400E84F79 /* APIServices.swift in Sources */,
 				5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */,
+				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
 				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
 				574925932162B57900E84F79 /* ImageService.swift in Sources */,
