@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewDidAppear(_ animated: Bool) {
-        //APIServices.getPopularMovies(<#T##APIServices#>)
+        let service = APIServices.init(delegate: self)
+        service.getUpcomingMovies(language: nil, page: 1, region: nil)
     }
 
 }

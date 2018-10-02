@@ -35,6 +35,7 @@ enum URLPaths: String {
 }
 
 enum QueryString: String {
+    case apiKey = "?api_key="
     //MARK:- Movies & TV Serie Query
     case language = "&language="
     case page = "&page="

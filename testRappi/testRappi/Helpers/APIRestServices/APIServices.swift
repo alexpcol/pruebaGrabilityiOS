@@ -35,12 +35,12 @@ class APIServices: NSObject {
     }
     
     //MARK: - APIMethods
-    
-    func getPopularMovies(by language:String?, page: NSInteger, region: String?)
+    func getPopularMovies(language:String?, page: NSInteger, region: String?)
     {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.popularMovies.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
         var languageKey = ""
         var regionKey = ""
 
@@ -53,13 +53,112 @@ class APIServices: NSObject {
             regionKey = QueryString.region.rawValue + regionString
         }
         
-        let url = urlRequest + languageKey + pageKey + regionKey
+        let url = urlRequest + apiKey + languageKey + pageKey + regionKey
         
         let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
         
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
+    func getPopularTVSeries(language:String?, page: NSInteger, region: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.popularTVSeries.rawValue
+        
+        let pageKey = QueryString.page.rawValue + String(page)
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        var languageKey = ""
+        var regionKey = ""
+        
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        if let regionString = region
+        {
+            regionKey = QueryString.region.rawValue + regionString
+        }
+        
+        let url = urlRequest + apiKey + languageKey + pageKey + regionKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
+    
+    func getTopRatedMovies(language:String?, page: NSInteger, region: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.topRatedMovies.rawValue
+        
+        let pageKey = QueryString.page.rawValue + String(page)
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        var languageKey = ""
+        var regionKey = ""
+        
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        if let regionString = region
+        {
+            regionKey = QueryString.region.rawValue + regionString
+        }
+        
+        let url = urlRequest + apiKey + languageKey + pageKey + regionKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
+    
+    func getTopRatedTVSeries(language:String?, page: NSInteger, region: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.topRatedTVSeries.rawValue
+        
+        let pageKey = QueryString.page.rawValue + String(page)
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        var languageKey = ""
+        var regionKey = ""
+        
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        if let regionString = region
+        {
+            regionKey = QueryString.region.rawValue + regionString
+        }
+        
+        let url = urlRequest + apiKey + languageKey + pageKey + regionKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
+    
+    func getUpcomingMovies(language:String?, page: NSInteger, region: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.upcomingMovies.rawValue
+        
+        let pageKey = QueryString.page.rawValue + String(page)
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        var languageKey = ""
+        var regionKey = ""
+        
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        if let regionString = region
+        {
+            regionKey = QueryString.region.rawValue + regionString
+        }
+        
+        let url = urlRequest + apiKey + languageKey + pageKey + regionKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
     
 
 }
