@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749257921626BE100E84F79 /* AppDelegate.swift */; };
-		5749257C21626BE100E84F79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749257B21626BE100E84F79 /* ViewController.swift */; };
+		5749257C21626BE100E84F79 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749257B21626BE100E84F79 /* PopularViewController.swift */; };
 		5749257F21626BE100E84F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5749257D21626BE100E84F79 /* Main.storyboard */; };
 		5749258221626BE100E84F79 /* testRappi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5749258021626BE100E84F79 /* testRappi.xcdatamodeld */; };
 		5749258421626BE400E84F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5749258321626BE400E84F79 /* Assets.xcassets */; };
@@ -23,12 +23,18 @@
 		AC99047D2162BCD500676C76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99047C2162BCD500676C76 /* Constants.swift */; };
 		AC9904802162CE2F00676C76 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99047F2162CE2F00676C76 /* MovieData.swift */; };
 		AC9904832162CFDF00676C76 /* TVSerieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9904822162CFDF00676C76 /* TVSerieData.swift */; };
+		ACC693842163CD8000B0F623 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC693822163CD8000B0F623 /* MovieCollectionViewCell.swift */; };
+		ACC693852163CD8000B0F623 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACC693832163CD8000B0F623 /* MovieCollectionViewCell.xib */; };
+		ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC693872163DEAA00B0F623 /* UIHelper.swift */; };
+		ACC6938E21641A5800B0F623 /* TopRatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC6938D21641A5800B0F623 /* TopRatedViewController.swift */; };
+		ACC6939421641B6000B0F623 /* TopRatedMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC6939321641B6000B0F623 /* TopRatedMoviesViewController.swift */; };
+		ACC6939621641B7800B0F623 /* TopRatedTVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC6939521641B7800B0F623 /* TopRatedTVSeriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5749257621626BE100E84F79 /* testRappi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testRappi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5749257921626BE100E84F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5749257B21626BE100E84F79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5749257B21626BE100E84F79 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		5749257E21626BE100E84F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5749258121626BE100E84F79 /* testRappi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testRappi.xcdatamodel; sourceTree = "<group>"; };
 		5749258321626BE400E84F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +50,12 @@
 		AC99047C2162BCD500676C76 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC99047F2162CE2F00676C76 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
 		AC9904822162CFDF00676C76 /* TVSerieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSerieData.swift; sourceTree = "<group>"; };
+		ACC693822163CD8000B0F623 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACC693832163CD8000B0F623 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACC693872163DEAA00B0F623 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		ACC6938D21641A5800B0F623 /* TopRatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedViewController.swift; sourceTree = "<group>"; };
+		ACC6939321641B6000B0F623 /* TopRatedMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedMoviesViewController.swift; sourceTree = "<group>"; };
+		ACC6939521641B7800B0F623 /* TopRatedTVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedTVSeriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				5749257921626BE100E84F79 /* AppDelegate.swift */,
-				5749257B21626BE100E84F79 /* ViewController.swift */,
+				ACC6938921641A0400B0F623 /* TabBarControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -100,6 +112,7 @@
 		5749258F21626DCF00E84F79 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ACC693812163CD2600B0F623 /* SubViews */,
 				5749257D21626BE100E84F79 /* Main.storyboard */,
 				5749258521626BE400E84F79 /* LaunchScreen.storyboard */,
 			);
@@ -109,6 +122,7 @@
 		574925942162B58700E84F79 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ACC693862163DE7800B0F623 /* UIHelper */,
 				574925952162B5BC00E84F79 /* Images */,
 				574925982162B5F200E84F79 /* Alerts */,
 				5749259C2162B67800E84F79 /* APIRestServices */,
@@ -185,6 +199,82 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		ACC693812163CD2600B0F623 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				ACC6939221641B2400B0F623 /* ContainerViews */,
+				ACC6939121641B1200B0F623 /* CellViews */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		ACC693862163DE7800B0F623 /* UIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				ACC693872163DEAA00B0F623 /* UIHelper.swift */,
+			);
+			path = UIHelper;
+			sourceTree = "<group>";
+		};
+		ACC6938921641A0400B0F623 /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACC6938A21641A1600B0F623 /* Popular */,
+				ACC6938B21641A1D00B0F623 /* TopRated */,
+				ACC6938C21641A2B00B0F623 /* Upcoming */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		ACC6938A21641A1600B0F623 /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				5749257B21626BE100E84F79 /* PopularViewController.swift */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
+		ACC6938B21641A1D00B0F623 /* TopRated */ = {
+			isa = PBXGroup;
+			children = (
+				ACC6938D21641A5800B0F623 /* TopRatedViewController.swift */,
+			);
+			path = TopRated;
+			sourceTree = "<group>";
+		};
+		ACC6938C21641A2B00B0F623 /* Upcoming */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Upcoming;
+			sourceTree = "<group>";
+		};
+		ACC6939121641B1200B0F623 /* CellViews */ = {
+			isa = PBXGroup;
+			children = (
+				ACC693822163CD8000B0F623 /* MovieCollectionViewCell.swift */,
+				ACC693832163CD8000B0F623 /* MovieCollectionViewCell.xib */,
+			);
+			path = CellViews;
+			sourceTree = "<group>";
+		};
+		ACC6939221641B2400B0F623 /* ContainerViews */ = {
+			isa = PBXGroup;
+			children = (
+				ACC6939721641B7F00B0F623 /* TopRated */,
+			);
+			path = ContainerViews;
+			sourceTree = "<group>";
+		};
+		ACC6939721641B7F00B0F623 /* TopRated */ = {
+			isa = PBXGroup;
+			children = (
+				ACC6939321641B6000B0F623 /* TopRatedMoviesViewController.swift */,
+				ACC6939521641B7800B0F623 /* TopRatedTVSeriesViewController.swift */,
+			);
+			path = TopRated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,6 +336,7 @@
 				5749258721626BE400E84F79 /* LaunchScreen.storyboard in Resources */,
 				5749258421626BE400E84F79 /* Assets.xcassets in Resources */,
 				5749257F21626BE100E84F79 /* Main.storyboard in Resources */,
+				ACC693852163CD8000B0F623 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,15 +349,20 @@
 			files = (
 				AC9904802162CE2F00676C76 /* MovieData.swift in Sources */,
 				574925972162B5D100E84F79 /* AlertsPresenter.swift in Sources */,
+				ACC6939421641B6000B0F623 /* TopRatedMoviesViewController.swift in Sources */,
 				AC99047D2162BCD500676C76 /* Constants.swift in Sources */,
-				5749257C21626BE100E84F79 /* ViewController.swift in Sources */,
+				5749257C21626BE100E84F79 /* PopularViewController.swift in Sources */,
 				574925A02162B6E400E84F79 /* APIServices.swift in Sources */,
 				5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */,
 				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
+				ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */,
+				ACC6938E21641A5800B0F623 /* TopRatedViewController.swift in Sources */,
 				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
 				574925932162B57900E84F79 /* ImageService.swift in Sources */,
 				5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */,
+				ACC6939621641B7800B0F623 /* TopRatedTVSeriesViewController.swift in Sources */,
+				ACC693842163CD8000B0F623 /* MovieCollectionViewCell.swift in Sources */,
 				5749258221626BE100E84F79 /* testRappi.xcdatamodeld in Sources */,
 				AC9904832162CFDF00676C76 /* TVSerieData.swift in Sources */,
 			);

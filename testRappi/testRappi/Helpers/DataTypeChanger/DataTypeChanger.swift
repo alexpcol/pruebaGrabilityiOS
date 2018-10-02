@@ -32,4 +32,38 @@ class DataTypeChanger: NSObject {
         
         return jsonStr
     }
+    
+    
+    static func CreateArrayOfMovies(results: [[String : Any]]) -> [MovieData]
+    {
+        var arrayMovies: [MovieData] = []
+        for result in results
+        {
+            var title = ""
+            var posterPath = ""
+            var releaseDate = ""
+            var overview = ""
+            
+            if let titleString = result["title"] as? String
+            {
+                title = titleString
+            }
+            if let posterPathString = result["poster_path"] as? String
+            {
+                posterPath = posterPathString
+            }
+            
+            if let releaseDateString = result["release_date"] as? String
+            {
+                releaseDate = releaseDateString
+            }
+            if let overviewString = result["overview"] as? String
+            {
+                overview = overviewString
+            }
+            arrayMovies.append(MovieData.init(title: title, posterPath: posterPath, releaseDate: releaseDate, overview: overview))
+        }
+        
+        return arrayMovies
+    }
 }

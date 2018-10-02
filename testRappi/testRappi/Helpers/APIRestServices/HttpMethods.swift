@@ -200,10 +200,14 @@ extension HttpMethods
             {
                 self.requestDone = true
                 print("Something went terribly wrong")
-                let responseString = String(data: data, encoding: .utf8)
-                print("Result:\n \(String(describing: responseString!))")
+                var responseJSON = ""
+                if let responseString = String(data: data, encoding: .utf8)
+                {
+                    responseJSON = responseString
+                }
+                print("Result:\n \(String(describing: responseJSON))")
                 
-                self.delegate?.onError(Error: "Error: Something went terribly wrong", name : self.currentService!)
+                self.delegate?.onError(Error: responseJSON, name : self.currentService!)
                 return
             }
             else

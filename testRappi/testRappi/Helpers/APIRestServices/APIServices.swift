@@ -103,7 +103,7 @@ class APIServices: NSObject {
             regionKey = QueryString.region.rawValue + regionString
         }
         
-        let url = urlRequest + apiKey + languageKey + pageKey + regionKey
+        let url = urlRequest + apiKey + languageKey + pageKey + regionKey + "&append_to_response=videos"
         
         let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
         

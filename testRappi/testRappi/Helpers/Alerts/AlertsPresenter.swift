@@ -10,6 +10,14 @@ import UIKit
 
 class AlertsPresenter: NSObject {
     
+    static func showOKAlert(title:String?, andMessage message:String?, inView view:UIViewController)
+    {
+        let okAction = UIAlertAction(title: "OK", style: .default) { (alert) in }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(okAction)
+        view.present(alertController, animated: true, completion: nil)
+    }
+    
     static func showAlert(withActions actions:[UIAlertAction], title:String?, andMessage message:String?, inView view:UIViewController)
     {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

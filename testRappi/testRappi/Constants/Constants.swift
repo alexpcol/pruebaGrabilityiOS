@@ -13,11 +13,11 @@ enum APIKeys: String {
     case apiTokenV4 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5ODljMDk5Mjk2ZDA2Y2YzNTVkM2IyMzZlNzZjMmFiMCIsInN1YiI6IjViYjI4MzhkYzNhMzY4MTQwYjAyM2YyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.c69VpZcYj4IJZuIpPi60QGCrJ_O_EFkRbKYwyEC9cws"
 }
 
-
+// Im using v3 of the API because of this: https://www.themoviedb.org/talk/5af3e03f0e0a26397100627f?language=es
 enum URLS: String {
     case apiURL = "https://api.themoviedb.org/3"
-    case imageBaseURL = "http://image.tmdb.org/t/p"
-    case secureImageBaseURL = "https://image.tmdb.org/t/p/"
+    case imageBaseURL = "http://image.tmdb.org/t/p/original"
+    case secureImageBaseURL = "https://image.tmdb.org/t/p/original"
 }
 
 
@@ -40,5 +40,12 @@ enum QueryString: String {
     case language = "&language="
     case page = "&page="
     case region = "&region="
-    
+}
+
+enum CellsIdentifiers: String{
+    case movieCollectionViewCell = "MovieCollectionViewCell"
+}
+
+enum NibNames: String{
+    case movieNib = "MovieCollectionViewCell"
 }
