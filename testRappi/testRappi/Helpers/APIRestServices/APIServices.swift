@@ -10,9 +10,6 @@ import UIKit
 
 class APIServices: NSObject {
     
-    //URL Prod
-    static let URLService : String = ""
-    
     weak var delegate : ResponseServicesProtocol?
     
     override init()
@@ -36,5 +33,33 @@ class APIServices: NSObject {
     {
         delegate?.onError(Error: Error, name: name);
     }
+    
+    //MARK: - APIMethods
+    
+    func getPopularMovies(by language:String?, page: NSInteger, region: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.popularMovies.rawValue
+        
+        let pageKey = QueryString.page.rawValue + String(page)
+        var languageKey = ""
+        var regionKey = ""
+
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        if let regionString = region
+        {
+            regionKey = QueryString.region.rawValue + regionString
+        }
+        
+        let url = urlRequest + languageKey + pageKey + regionKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
+    
+    
 
 }

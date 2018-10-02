@@ -138,7 +138,7 @@ class HttpMethods: NSObject {
             return
         }
         
-        Request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        Request.setValue("application/json;charset=utf-8", forHTTPHeaderField: "Content-Type")
         Request.setValue("Bearer " + token!, forHTTPHeaderField: "Authorization")
         
         let postString : String? = "";

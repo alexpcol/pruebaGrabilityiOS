@@ -27,5 +27,17 @@ enum URLPaths: String {
     case popularTVSeries = "/tv/popular"
     
     //MARK:- Top Rated Category
+    case topRatedMovies = "/movie/top_rated"
+    case topRatedTVSeries = "/tv/top_rated"
+    
+    //MARK:- Upcoming Category
+    case upcomingMovies = "/movie/upcoming"
+}
+
+enum QueryString: String {
+    //MARK:- Movies & TV Serie Query
+    case language = "&language="
+    case page = "&page="
+    case region = "&region="
     
 }

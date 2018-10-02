@@ -12,5 +12,5 @@ import Foundation
 enum ServicesNames
 {
     case NO_INTERNET
-    case GET_IMAGE
+    case GET_POPULAR_MOVIES
 }
