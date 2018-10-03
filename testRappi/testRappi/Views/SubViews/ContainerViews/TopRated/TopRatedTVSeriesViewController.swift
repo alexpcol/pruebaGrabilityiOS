@@ -130,7 +130,14 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         }
         else
         {
-            messagage = resultDic?["status_message"] as! String
+            if let statusMessagage: String = resultDic?["status_message"] as? String
+            {
+                messagage = statusMessagage
+            }
+            else
+            {
+                messagage = Error
+            }
         }
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)
