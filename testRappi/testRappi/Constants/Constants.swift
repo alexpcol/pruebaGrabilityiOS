@@ -51,3 +51,12 @@ enum NibNames: String{
     case movieNib = "MovieCollectionViewCell"
     case loaderFooterNib = "LoaderFooterView"
 }
+
+enum CacheKeys: String{
+    case popularMovies = "popularMoviesKey"
+    case topRatedMovies = "topRatedMoviesKey"
+    case upcomingMovies = "upcomingMoviesKey"
+    
+    case popularTVSeries = "popularTVSeriesKey"
+    case topRatedTVSeries = "topRatedTVSeriesKey"
+}

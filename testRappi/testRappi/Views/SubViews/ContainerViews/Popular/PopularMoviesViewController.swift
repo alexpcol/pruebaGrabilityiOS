@@ -182,6 +182,8 @@ extension PopularMoviesViewController: ResponseServicesProtocol
             {
                 self.arrayOfMovies.append(auxItem)
             }
+            
+            CacheSaver.savePopularMovies(movies: self.arrayOfMovies)
     
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadData()
