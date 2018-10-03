@@ -13,9 +13,10 @@ class ImageService: NSObject {
     static let cache = NSCache<NSString, UIImage>()
     
     static func downloadImage(withURL url:URL, completion: @escaping (_ image:UIImage?)->()) {
+         var downloadedImage:UIImage?
         let dataTask = URLSession.shared.dataTask(with: url) { data, responseURL, error in
-            var downloadedImage:UIImage?
-            
+           
+            downloadedImage = nil
             if let data = data {
                 downloadedImage = UIImage(data: data)
             }

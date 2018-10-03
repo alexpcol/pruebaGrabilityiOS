@@ -12,6 +12,8 @@ class TopRatedTVSeriesViewController: UIViewController {
 
     // MARK: - Variables
     var arrayOfTVSeries :[TVSerieData] = []
+    private var currentPage = 1
+    private var totalOfPages = 0
     @IBOutlet weak var tvSeriesCollectionView: UICollectionView!
     
     
@@ -19,7 +21,7 @@ class TopRatedTVSeriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        getTopRatedTVSeries()
+        getTopRatedTVSeries(page: currentPage)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,7 +29,7 @@ class TopRatedTVSeriesViewController: UIViewController {
         print("Volvimos TV Series")
     }
     
-    func getTopRatedTVSeries()
+    func getTopRatedTVSeries(page: NSInteger)
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
@@ -57,6 +59,15 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.row == arrayOfTVSeries.count - 1
+        {
+            if currentPage < totalOfPages
+            {
+                currentPage += 1
+                getTopRatedTVSeries(page: currentPage)
+            }
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = arrayOfTVSeries[indexPath.row].name
@@ -85,9 +96,17 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
+        if let pages = resultDic?["total_pages"] as? NSInteger{
+            self.totalOfPages = pages
+        }
         if let results = resultDic?["results"] as? [[String : Any]]
         {
-            self.arrayOfTVSeries = DataTypeChanger.CreateArrayOfTVSeries(results: results)
+            let auxArrayOfTVSeries = DataTypeChanger.CreateArrayOfTVSeries(results: results)
+            
+            for auxItem in auxArrayOfTVSeries
+            {
+                self.arrayOfTVSeries.append(auxItem)
+            }
             
             DispatchQueue.main.async {
                 self.tvSeriesCollectionView.reloadData()

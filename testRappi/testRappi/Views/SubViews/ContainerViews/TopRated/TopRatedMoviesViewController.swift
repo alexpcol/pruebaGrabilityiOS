@@ -12,12 +12,14 @@ class TopRatedMoviesViewController: UIViewController {
 
     // MARK: - Variables
     var arrayOfMovies :[MovieData] = []
+    private var currentPage = 1
+    private var totalOfPages = 0
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        getTopRatedMovies()
+        getTopRatedMovies(page: currentPage)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,7 +27,7 @@ class TopRatedMoviesViewController: UIViewController {
         print("Volvimos movieees")
     }
     
-    func getTopRatedMovies()
+    func getTopRatedMovies(page: NSInteger)
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
@@ -57,6 +59,15 @@ extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.row == arrayOfMovies.count - 1
+        {
+            if currentPage < totalOfPages
+            {
+                currentPage += 1
+                getTopRatedMovies(page: currentPage)
+            }
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = arrayOfMovies[indexPath.row].title
@@ -84,9 +95,17 @@ extension TopRatedMoviesViewController: ResponseServicesProtocol
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
+        if let pages = resultDic?["total_pages"] as? NSInteger{
+            self.totalOfPages = pages
+        }
         if let results = resultDic?["results"] as? [[String : Any]]
         {
-            self.arrayOfMovies = DataTypeChanger.CreateArrayOfMovies(results: results)
+            let auxArrayOfMovies = DataTypeChanger.CreateArrayOfMovies(results: results)
+            
+            for auxItem in auxArrayOfMovies
+            {
+                self.arrayOfMovies.append(auxItem)
+            }
             
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadData()
