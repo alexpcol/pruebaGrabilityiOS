@@ -72,22 +72,13 @@ class PopularMoviesViewController: UIViewController {
 }
 
 
-extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if indexPath.row == arrayOfMovies.count - 1
-        {
-            if currentPage < totalOfPages
-            {
-                currentPage += 1
-                //getPopularMovies(page: currentPage, showActivity: false)
-            }
-        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = arrayOfMovies[indexPath.row].title
@@ -108,7 +99,10 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
-    
+}
+
+extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout
+{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if isLoading {
             return CGSize.zero
@@ -157,7 +151,6 @@ extension PopularMoviesViewController: UIScrollViewDelegate
         if pullRatio >= 1 {
             self.footerView?.animateFinal()
         }
-        print("pullRation:\(pullRatio)")
     }
     
     //compute the offset and call the load method
