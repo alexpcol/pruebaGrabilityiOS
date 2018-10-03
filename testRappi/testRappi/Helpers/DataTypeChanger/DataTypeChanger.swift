@@ -66,4 +66,37 @@ class DataTypeChanger: NSObject {
         
         return arrayMovies
     }
+    
+    static func CreateArrayOfTVSeries(results: [[String : Any]]) -> [TVSerieData]
+    {
+        var arrayTVSerie: [TVSerieData] = []
+        for result in results
+        {
+            var name = ""
+            var posterPath = ""
+            var firstAirDate = ""
+            var overview = ""
+            
+            if let nameString = result["name"] as? String
+            {
+                name = nameString
+            }
+            if let posterPathString = result["poster_path"] as? String
+            {
+                posterPath = posterPathString
+            }
+            
+            if let firstAirDateString = result["first_air_date"] as? String
+            {
+                firstAirDate = firstAirDateString
+            }
+            if let overviewString = result["overview"] as? String
+            {
+                overview = overviewString
+            }
+            arrayTVSerie.append(TVSerieData.init(name: name, posterPath: posterPath, firstAirDate: firstAirDate, overview: overview))
+        }
+        
+        return arrayTVSerie
+    }
 }

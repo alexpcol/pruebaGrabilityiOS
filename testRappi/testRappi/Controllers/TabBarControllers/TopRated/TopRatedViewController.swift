@@ -12,8 +12,8 @@ class TopRatedViewController: UIViewController {
     
     // MARK: - Variables
     
-    @IBOutlet weak var moviesCollectionView: UIView!
-    @IBOutlet weak var tvSeriesCollectionView: UIView!
+    @IBOutlet weak var moviesContainerView: UIView!
+    @IBOutlet weak var tvSeriesContainerView: UIView!
     
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -25,12 +25,12 @@ class TopRatedViewController: UIViewController {
     @IBAction func segmentIndexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            moviesCollectionView.isHidden = false
-            tvSeriesCollectionView.isHidden = true
+            moviesContainerView.isHidden = false
+            tvSeriesContainerView.isHidden = true
             break
         case 1:
-            moviesCollectionView.isHidden = true
-            tvSeriesCollectionView.isHidden = false
+            moviesContainerView.isHidden = true
+            tvSeriesContainerView.isHidden = false
             break
         default:
             break

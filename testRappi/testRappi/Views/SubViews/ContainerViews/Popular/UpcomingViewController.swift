@@ -1,37 +1,37 @@
 //
-//  TopRatedMoviesViewController.swift
+//  UpcomingViewController.swift
 //  testRappi
 //
-//  Created by Mario on 10/2/18.
+//  Created by chila on 10/2/18.
 //  Copyright © 2018 chila. All rights reserved.
 //
 
 import UIKit
 
-class TopRatedMoviesViewController: UIViewController {
-
+class UpcomingViewController: UIViewController {
+    
+    
     // MARK: - Variables
     var arrayOfMovies :[MovieData] = []
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        getTopRatedMovies()
+        getUpcomingMovies()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        print("Volvimos movieees")
-    }
     
-    func getTopRatedMovies()
+    // MARK:- Requests Methods
+    func getUpcomingMovies()
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
-        service.getTopRatedMovies(language: nil, page: 1, region: nil)
+        service.getUpcomingMovies(language: nil, page: 1, region: nil)
     }
     
+    // MARK:- Configuration Methods
     func configure()
     {
         setUpCollectionsViews()
@@ -45,18 +45,17 @@ class TopRatedMoviesViewController: UIViewController {
     {
         let searchBar = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchBar
-        
     }
-
 }
 
-extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource
+extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = arrayOfMovies[indexPath.row].title
@@ -65,6 +64,7 @@ extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionVi
         }
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
@@ -79,7 +79,7 @@ extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionVi
     }
 }
 
-extension TopRatedMoviesViewController: ResponseServicesProtocol
+extension UpcomingViewController: ResponseServicesProtocol
 {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")

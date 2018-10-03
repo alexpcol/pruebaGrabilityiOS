@@ -11,7 +11,7 @@ import UIKit
 class TopRatedTVSeriesViewController: UIViewController {
 
     // MARK: - Variables
-    var arrayOfTVSeries :[MovieData] = []
+    var arrayOfTVSeries :[TVSerieData] = []
     @IBOutlet weak var tvSeriesCollectionView: UICollectionView!
     
     
@@ -19,7 +19,7 @@ class TopRatedTVSeriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        //getPopularMovies()
+        getTopRatedTVSeries()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,11 +27,11 @@ class TopRatedTVSeriesViewController: UIViewController {
         print("Volvimos TV Series")
     }
     
-    func getPopularMovies()
+    func getTopRatedTVSeries()
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
-        service.getPopularMovies(language: nil, page: 1, region: nil)
+        service.getTopRatedTVSeries(language: nil, page: 1, region: nil)
     }
     
     func configure()
@@ -59,11 +59,24 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
-        cell.titleLabel.text = arrayOfTVSeries[indexPath.row].title
+        cell.titleLabel.text = arrayOfTVSeries[indexPath.row].name
         ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfTVSeries[indexPath.row].posterPath!) { (image) in
             cell.posterImageView.image = image
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        
+        DetailViewController.titleString = arrayOfTVSeries[indexPath.row].name
+        DetailViewController.dateString = arrayOfTVSeries[indexPath.row].firstAirDate
+        DetailViewController.overviewString = arrayOfTVSeries[indexPath.row].overview
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfTVSeries[indexPath.row].posterPath!) { (image) in
+            DetailViewController.posterImage = image
+        }
+        
+        self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
 }
 
@@ -74,7 +87,7 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
         if let results = resultDic?["results"] as? [[String : Any]]
         {
-            self.arrayOfTVSeries = DataTypeChanger.CreateArrayOfMovies(results: results)
+            self.arrayOfTVSeries = DataTypeChanger.CreateArrayOfTVSeries(results: results)
             
             DispatchQueue.main.async {
                 self.tvSeriesCollectionView.reloadData()

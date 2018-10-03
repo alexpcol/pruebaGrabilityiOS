@@ -1,37 +1,37 @@
 //
-//  TopRatedMoviesViewController.swift
+//  PopularTVSeriesViewController.swift
 //  testRappi
 //
-//  Created by Mario on 10/2/18.
+//  Created by chila on 10/2/18.
 //  Copyright © 2018 chila. All rights reserved.
 //
 
 import UIKit
 
-class TopRatedMoviesViewController: UIViewController {
+class PopularTVSeriesViewController: UIViewController {
 
     // MARK: - Variables
-    var arrayOfMovies :[MovieData] = []
-    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    var arrayOfTVSeries :[TVSerieData] = []
     
+    @IBOutlet weak var tvSeriesCollectionView: UICollectionView!
+    
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        getTopRatedMovies()
+        getPopularTVSeries()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        print("Volvimos movieees")
-    }
     
-    func getTopRatedMovies()
+    // MARK:- Requests Methods
+    func getPopularTVSeries()
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
-        service.getTopRatedMovies(language: nil, page: 1, region: nil)
+        service.getPopularTVSeries(language: nil, page: 1, region: nil)
     }
     
+    // MARK:- Configuration Methods
     func configure()
     {
         setUpCollectionsViews()
@@ -39,39 +39,39 @@ class TopRatedMoviesViewController: UIViewController {
     }
     func setUpCollectionsViews()
     {
-        moviesCollectionView.register(UINib(nibName: NibNames.movieNib.rawValue, bundle: nil), forCellWithReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue)
+        tvSeriesCollectionView.register(UINib(nibName: NibNames.movieNib.rawValue, bundle: nil), forCellWithReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue)
     }
     func setUpNavBar()
     {
         let searchBar = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchBar
-        
     }
-
 }
 
-extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource
+extension PopularTVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfMovies.count
+            return arrayOfTVSeries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
-        cell.titleLabel.text = arrayOfMovies[indexPath.row].title
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfMovies[indexPath.row].posterPath!) { (image) in
+        cell.titleLabel.text = arrayOfTVSeries[indexPath.row].name
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfTVSeries[indexPath.row].posterPath!) { (image) in
             cell.posterImageView.image = image
         }
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        DetailViewController.titleString = arrayOfMovies[indexPath.row].title
-        DetailViewController.dateString = arrayOfMovies[indexPath.row].releaseDate
-        DetailViewController.overviewString = arrayOfMovies[indexPath.row].overview
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfMovies[indexPath.row].posterPath!) { (image) in
+        DetailViewController.titleString = arrayOfTVSeries[indexPath.row].name
+        DetailViewController.dateString = arrayOfTVSeries[indexPath.row].firstAirDate
+        DetailViewController.overviewString = arrayOfTVSeries[indexPath.row].overview
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfTVSeries[indexPath.row].posterPath!) { (image) in
             DetailViewController.posterImage = image
         }
         
@@ -79,18 +79,19 @@ extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionVi
     }
 }
 
-extension TopRatedMoviesViewController: ResponseServicesProtocol
+
+extension PopularTVSeriesViewController: ResponseServicesProtocol
 {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
         if let results = resultDic?["results"] as? [[String : Any]]
         {
-            self.arrayOfMovies = DataTypeChanger.CreateArrayOfMovies(results: results)
+            self.arrayOfTVSeries = DataTypeChanger.CreateArrayOfTVSeries(results: results)
             
             DispatchQueue.main.async {
-                self.moviesCollectionView.reloadData()
-                UIHelper.turnOnAlphaWithAnimation(for: self.moviesCollectionView)
+                self.tvSeriesCollectionView.reloadData()
+                UIHelper.turnOnAlphaWithAnimation(for: self.tvSeriesCollectionView)
             }
         }
         

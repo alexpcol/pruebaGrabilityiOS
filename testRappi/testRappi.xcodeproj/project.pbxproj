@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */; };
+		572ABBB721644AF800CAAC08 /* PopularTVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */; };
+		572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */; };
+		572ABBBB21645ABF00CAAC08 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */; };
 		5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749257921626BE100E84F79 /* AppDelegate.swift */; };
 		5749257C21626BE100E84F79 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749257B21626BE100E84F79 /* PopularViewController.swift */; };
 		5749257F21626BE100E84F79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5749257D21626BE100E84F79 /* Main.storyboard */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
+		572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTVSeriesViewController.swift; sourceTree = "<group>"; };
+		572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingViewController.swift; path = testRappi/Views/SubViews/ContainerViews/Popular/UpcomingViewController.swift; sourceTree = SOURCE_ROOT; };
+		572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5749257621626BE100E84F79 /* testRappi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testRappi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5749257921626BE100E84F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5749257B21626BE100E84F79 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		572ABBB221644AAB00CAAC08 /* Popular */ = {
+			isa = PBXGroup;
+			children = (
+				572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */,
+				572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */,
+			);
+			path = Popular;
+			sourceTree = "<group>";
+		};
 		5749256D21626BE100E84F79 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +122,7 @@
 			children = (
 				5749257921626BE100E84F79 /* AppDelegate.swift */,
 				ACC6938921641A0400B0F623 /* TabBarControllers */,
+				572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -245,6 +263,7 @@
 		ACC6938C21641A2B00B0F623 /* Upcoming */ = {
 			isa = PBXGroup;
 			children = (
+				572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */,
 			);
 			path = Upcoming;
 			sourceTree = "<group>";
@@ -261,6 +280,7 @@
 		ACC6939221641B2400B0F623 /* ContainerViews */ = {
 			isa = PBXGroup;
 			children = (
+				572ABBB221644AAB00CAAC08 /* Popular */,
 				ACC6939721641B7F00B0F623 /* TopRated */,
 			);
 			path = ContainerViews;
@@ -348,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9904802162CE2F00676C76 /* MovieData.swift in Sources */,
+				572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */,
 				574925972162B5D100E84F79 /* AlertsPresenter.swift in Sources */,
 				ACC6939421641B6000B0F623 /* TopRatedMoviesViewController.swift in Sources */,
 				AC99047D2162BCD500676C76 /* Constants.swift in Sources */,
@@ -357,12 +378,15 @@
 				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
 				ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */,
+				572ABBBB21645ABF00CAAC08 /* DetailViewController.swift in Sources */,
 				ACC6938E21641A5800B0F623 /* TopRatedViewController.swift in Sources */,
+				572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */,
 				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
 				574925932162B57900E84F79 /* ImageService.swift in Sources */,
 				5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */,
 				ACC6939621641B7800B0F623 /* TopRatedTVSeriesViewController.swift in Sources */,
 				ACC693842163CD8000B0F623 /* MovieCollectionViewCell.swift in Sources */,
+				572ABBB721644AF800CAAC08 /* PopularTVSeriesViewController.swift in Sources */,
 				5749258221626BE100E84F79 /* testRappi.xcdatamodeld in Sources */,
 				AC9904832162CFDF00676C76 /* TVSerieData.swift in Sources */,
 			);
