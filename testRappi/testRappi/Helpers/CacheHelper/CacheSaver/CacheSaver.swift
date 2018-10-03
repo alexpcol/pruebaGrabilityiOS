@@ -15,6 +15,7 @@ class CacheSaver: NSObject {
     static func savePopularMovies(movies: [MovieData])
     {
         let moviesData = MoviesData.init(movies: movies)
+        print(CacheKeys.popularMovies.rawValue as NSString)
         cacheForMovies.setObject(moviesData, forKey: CacheKeys.popularMovies.rawValue as NSString)
     }
     static func saveTopRatedMovies(movies: [MovieData])

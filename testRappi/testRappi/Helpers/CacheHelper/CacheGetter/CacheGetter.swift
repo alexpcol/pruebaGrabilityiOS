@@ -14,7 +14,8 @@ class CacheGetter: NSObject {
     
     static func getPopularMovies(completion: @escaping (_ movies: MoviesData?)->())
     {
-        if let movies = cacheForMovies.object(forKey: CacheKeys.popularMovies.rawValue as NSString)
+        print(CacheKeys.popularMovies.rawValue as NSString)
+        if let movies: MoviesData = cacheForMovies.object(forKey: CacheKeys.popularMovies.rawValue as NSString)
         {
             completion(movies)
         }
