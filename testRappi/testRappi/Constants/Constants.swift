@@ -44,8 +44,10 @@ enum QueryString: String {
 
 enum CellsIdentifiers: String{
     case movieCollectionViewCell = "MovieCollectionViewCell"
+    case refreshFooterView = "RefreshFooterView"
 }
 
 enum NibNames: String{
     case movieNib = "MovieCollectionViewCell"
+    case loaderFooterNib = "LoaderFooterView"
 }
