@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
 		572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTVSeriesViewController.swift; sourceTree = "<group>"; };
-		572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingViewController.swift; path = testRappi/Views/SubViews/ContainerViews/Popular/UpcomingViewController.swift; sourceTree = SOURCE_ROOT; };
+		572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingViewController.swift; path = testRappi/Controllers/TabBarControllers/Upcoming/UpcomingViewController.swift; sourceTree = SOURCE_ROOT; };
 		572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5749257621626BE100E84F79 /* testRappi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testRappi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5749257921626BE100E84F79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			children = (
 				ACC6938A21641A1600B0F623 /* Popular */,
 				ACC6938B21641A1D00B0F623 /* TopRated */,
-				ACC6938C21641A2B00B0F623 /* Upcoming */,
+				ACD7CC8D2165335B00039825 /* Upcoming */,
 			);
 			path = TabBarControllers;
 			sourceTree = "<group>";
@@ -258,14 +258,6 @@
 				ACC6938D21641A5800B0F623 /* TopRatedViewController.swift */,
 			);
 			path = TopRated;
-			sourceTree = "<group>";
-		};
-		ACC6938C21641A2B00B0F623 /* Upcoming */ = {
-			isa = PBXGroup;
-			children = (
-				572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */,
-			);
-			path = Upcoming;
 			sourceTree = "<group>";
 		};
 		ACC6939121641B1200B0F623 /* CellViews */ = {
@@ -293,6 +285,14 @@
 				ACC6939521641B7800B0F623 /* TopRatedTVSeriesViewController.swift */,
 			);
 			path = TopRated;
+			sourceTree = "<group>";
+		};
+		ACD7CC8D2165335B00039825 /* Upcoming */ = {
+			isa = PBXGroup;
+			children = (
+				572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */,
+			);
+			path = Upcoming;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
