@@ -41,28 +41,6 @@ class HttpMethods: NSObject {
         super.init()
     }
     
-    //MARK:- Auxiliary Methods
-    func hasInternet() -> Bool
-    {
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
-                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
-            }
-        }
-        
-        var flags = SCNetworkReachabilityFlags()
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
-            return false
-        }
-        let isReachable = flags.contains(.reachable)
-        let needsConnection = flags.contains(.connectionRequired)
-        return (isReachable && !needsConnection)
-    }
-    
     func notInternetAlert()
     {
         self.delegate?.onError(Error: "No Internet connection", name : .NO_INTERNET)
@@ -113,7 +91,7 @@ class HttpMethods: NSObject {
         print("Request(GET) " + URLString);
         var Request = URLRequest(url: URL(string: URLString)!)
         Request.httpMethod = "GET"
-        if hasInternet()
+        if NetworkHelper.hasInternet()
         {
             //requestTimer()
             ExecuteTask(Request: Request)
@@ -145,7 +123,7 @@ class HttpMethods: NSObject {
         
         Request.httpBody = postString?.data(using: .utf8)
         
-        if hasInternet()
+        if NetworkHelper.hasInternet()
         {
             requestTimer()
             ExecuteTask(Request: Request)

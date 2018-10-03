@@ -23,7 +23,14 @@ class PopularMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        getPopularMovies(page: currentPage, showActivity: true)
+        if NetworkHelper.hasInternet() {
+            getPopularMovies(page: currentPage, showActivity: true)
+        }
+        else
+        {
+            getPopularMoviesCache()
+        }
+        
     }
     
     // MARK:- Requests Methods
@@ -32,6 +39,17 @@ class PopularMoviesViewController: UIViewController {
         if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getPopularMovies(language: nil, page: page, region: nil)
+    }
+    
+    func getPopularMoviesCache()
+    {
+        CacheGetter.getPopularMovies { (moviesData) in
+            if let movies = moviesData?.movies
+            {
+                self.arrayOfMovies = movies
+                self.moviesCollectionView.reloadData()
+            }
+        }
     }
     
     // MARK:- Configuration Methods

@@ -39,6 +39,8 @@
 		ACD7CC9D2165467300039825 /* MoviesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7CC9C2165467300039825 /* MoviesData.swift */; };
 		ACD7CC9F2165493C00039825 /* TVSeriesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7CC9E2165493C00039825 /* TVSeriesData.swift */; };
 		ACD7CCA321654A2E00039825 /* CacheGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7CCA221654A2E00039825 /* CacheGetter.swift */; };
+		ACD7CCA52165692A00039825 /* CacheBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7CCA42165692A00039825 /* CacheBase.swift */; };
+		ACD7CCA821656ABC00039825 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7CCA721656ABC00039825 /* NetworkHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		ACD7CC9C2165467300039825 /* MoviesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesData.swift; sourceTree = "<group>"; };
 		ACD7CC9E2165493C00039825 /* TVSeriesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesData.swift; sourceTree = "<group>"; };
 		ACD7CCA221654A2E00039825 /* CacheGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheGetter.swift; sourceTree = "<group>"; };
+		ACD7CCA42165692A00039825 /* CacheBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheBase.swift; sourceTree = "<group>"; };
+		ACD7CCA721656ABC00039825 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 		574925942162B58700E84F79 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				ACD7CCA621656A9800039825 /* DeviceHelper */,
 				ACD7CCA021654A0B00039825 /* CacheHelper */,
 				ACC693862163DE7800B0F623 /* UIHelper */,
 				574925952162B5BC00E84F79 /* Images */,
@@ -339,6 +344,7 @@
 		ACD7CCA021654A0B00039825 /* CacheHelper */ = {
 			isa = PBXGroup;
 			children = (
+				ACD7CCA42165692A00039825 /* CacheBase.swift */,
 				ACD7CCA121654A1500039825 /* CacheGetter */,
 				ACD7CC99216545BB00039825 /* CacheSaver */,
 			);
@@ -351,6 +357,14 @@
 				ACD7CCA221654A2E00039825 /* CacheGetter.swift */,
 			);
 			path = CacheGetter;
+			sourceTree = "<group>";
+		};
+		ACD7CCA621656A9800039825 /* DeviceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				ACD7CCA721656ABC00039825 /* NetworkHelper.swift */,
+			);
+			path = DeviceHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -440,9 +454,11 @@
 				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
 				ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */,
+				ACD7CCA821656ABC00039825 /* NetworkHelper.swift in Sources */,
 				ACD7CC9D2165467300039825 /* MoviesData.swift in Sources */,
 				572ABBBB21645ABF00CAAC08 /* DetailViewController.swift in Sources */,
 				ACC6938E21641A5800B0F623 /* TopRatedViewController.swift in Sources */,
+				ACD7CCA52165692A00039825 /* CacheBase.swift in Sources */,
 				572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */,
 				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
 				574925932162B57900E84F79 /* ImageService.swift in Sources */,

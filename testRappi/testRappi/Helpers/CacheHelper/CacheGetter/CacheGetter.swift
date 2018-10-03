@@ -8,9 +8,7 @@
 
 import UIKit
 
-class CacheGetter: NSObject {
-    static let cacheForMovies = NSCache<NSString, MoviesData>()
-    static let cacheForTVSeries = NSCache<NSString, TVSeriesData>()
+class CacheGetter: CacheBase {
     
     static func getPopularMovies(completion: @escaping (_ movies: MoviesData?)->())
     {
