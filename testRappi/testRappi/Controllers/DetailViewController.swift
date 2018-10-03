@@ -43,6 +43,12 @@ class DetailViewController: UIViewController {
     @objc func playTrailer()
     {
         print("Play")
+        CacheGetter.getPopularMovies { (moviesData) in
+            if let movies = moviesData?.movies
+            {
+                AlertsPresenter.showOKAlert(title: "Si hay algo", andMessage: "aah", inView: self)
+            }
+        }
     }
     // MARK: - ConfigureViews Methods
     func configureViews()
