@@ -24,6 +24,8 @@
 		574925A02162B6E400E84F79 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259F2162B6E400E84F79 /* APIServices.swift */; };
 		574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A12162B75F00E84F79 /* ActivityPresenter.swift */; };
 		574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A42162B93300E84F79 /* DataTypeChanger.swift */; };
+		57964FB9216586E90062E8C4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57964FB8216586E90062E8C4 /* WebViewController.swift */; };
+		57964FBB21658A280062E8C4 /* VideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57964FBA21658A280062E8C4 /* VideoData.swift */; };
 		AC99047D2162BCD500676C76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99047C2162BCD500676C76 /* Constants.swift */; };
 		AC9904802162CE2F00676C76 /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC99047F2162CE2F00676C76 /* MovieData.swift */; };
 		AC9904832162CFDF00676C76 /* TVSerieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9904822162CFDF00676C76 /* TVSerieData.swift */; };
@@ -63,6 +65,8 @@
 		5749259F2162B6E400E84F79 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
 		574925A12162B75F00E84F79 /* ActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPresenter.swift; sourceTree = "<group>"; };
 		574925A42162B93300E84F79 /* DataTypeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeChanger.swift; sourceTree = "<group>"; };
+		57964FB8216586E90062E8C4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		57964FBA21658A280062E8C4 /* VideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoData.swift; sourceTree = "<group>"; };
 		AC99047C2162BCD500676C76 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AC99047F2162CE2F00676C76 /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
 		AC9904822162CFDF00676C76 /* TVSerieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSerieData.swift; sourceTree = "<group>"; };
@@ -138,7 +142,7 @@
 			children = (
 				5749257921626BE100E84F79 /* AppDelegate.swift */,
 				ACC6938921641A0400B0F623 /* TabBarControllers */,
-				572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */,
+				57964FB7216586C10062E8C4 /* Detail */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -210,6 +214,15 @@
 			path = ActivityPresenter;
 			sourceTree = "<group>";
 		};
+		57964FB7216586C10062E8C4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */,
+				57964FB8216586E90062E8C4 /* WebViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		AC99047B2162B9B500676C76 /* DataTypeChanger */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +246,7 @@
 				ACD7CC9C2165467300039825 /* MoviesData.swift */,
 				AC9904822162CFDF00676C76 /* TVSerieData.swift */,
 				ACD7CC9E2165493C00039825 /* TVSeriesData.swift */,
+				57964FBA21658A280062E8C4 /* VideoData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,8 +467,10 @@
 				5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */,
 				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
+				57964FB9216586E90062E8C4 /* WebViewController.swift in Sources */,
 				ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */,
 				ACD7CCA821656ABC00039825 /* NetworkHelper.swift in Sources */,
+				57964FBB21658A280062E8C4 /* VideoData.swift in Sources */,
 				ACD7CC9D2165467300039825 /* MoviesData.swift in Sources */,
 				572ABBBB21645ABF00CAAC08 /* DetailViewController.swift in Sources */,
 				ACC6938E21641A5800B0F623 /* TopRatedViewController.swift in Sources */,
@@ -615,7 +631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 27P576DGD8;
 				INFOPLIST_FILE = testRappi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -634,7 +650,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 27P576DGD8;
 				INFOPLIST_FILE = testRappi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

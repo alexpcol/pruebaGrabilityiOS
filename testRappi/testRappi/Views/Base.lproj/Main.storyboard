@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UWb-Uw-hJY" userLabel="TV Series">
-                                <rect key="frame" x="8" y="424" width="492" height="709"/>
+                                <rect key="frame" x="8" y="96" width="398" height="709"/>
                                 <connections>
                                     <segue destination="2WN-ip-jpK" kind="embed" id="bhg-cW-7fG"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sB9-W6-b1J" userLabel="Movies">
-                                <rect key="frame" x="8" y="424" width="492" height="709"/>
+                                <rect key="frame" x="8" y="96" width="398" height="709"/>
                                 <connections>
                                     <segue destination="dR0-JN-HcO" kind="embed" id="0bX-1M-IwI"/>
                                 </connections>
@@ -316,11 +316,11 @@
             <objects>
                 <viewController storyboardIdentifier="PopularTVSeriesViewController" id="2WN-ip-jpK" customClass="PopularTVSeriesViewController" customModule="testRappi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qcz-b5-uja">
-                        <rect key="frame" x="0.0" y="0.0" width="492" height="709"/>
+                        <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NW2-Bj-L1s">
-                                <rect key="frame" x="0.0" y="0.0" width="492" height="709"/>
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="NAg-1M-C3S">
                                     <size key="itemSize" width="170" height="220"/>
@@ -342,6 +342,7 @@
                             <constraint firstAttribute="trailing" secondItem="NW2-Bj-L1s" secondAttribute="trailing" id="mtD-kU-GDk"/>
                             <constraint firstAttribute="bottom" secondItem="NW2-Bj-L1s" secondAttribute="bottom" id="qQs-Wl-VfL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Rbh-fZ-II0"/>
                     </view>
                     <connections>
                         <outlet property="tvSeriesCollectionView" destination="NW2-Bj-L1s" id="bIu-32-sjE"/>
@@ -356,11 +357,11 @@
             <objects>
                 <viewController storyboardIdentifier="PopularMoviesViewController" id="dR0-JN-HcO" customClass="PopularMoviesViewController" customModule="testRappi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N8l-6B-6Re">
-                        <rect key="frame" x="0.0" y="0.0" width="492" height="709"/>
+                        <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-kP-Axm">
-                                <rect key="frame" x="0.0" y="0.0" width="492" height="709"/>
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="UvC-7k-9n0">
                                     <size key="itemSize" width="170" height="220"/>
@@ -382,6 +383,7 @@
                             <constraint firstItem="UMI-kP-Axm" firstAttribute="top" secondItem="N8l-6B-6Re" secondAttribute="top" id="lHC-D1-8gK"/>
                             <constraint firstAttribute="trailing" secondItem="UMI-kP-Axm" secondAttribute="trailing" id="oqF-VX-TBx"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="I5r-eX-CHB"/>
                     </view>
                     <connections>
                         <outlet property="moviesCollectionView" destination="UMI-kP-Axm" id="BgQ-ZJ-GLs"/>
@@ -502,6 +504,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSt-UK-39O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6046.875" y="-152.11267605633802"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="jCr-vW-4D9">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="VvE-up-XUR" customClass="WebViewController" customModule="testRappi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qod-Bh-jIe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D84-L2-PIU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="D84-L2-PIU" secondAttribute="trailing" id="CFc-sv-oC9"/>
+                            <constraint firstItem="D84-L2-PIU" firstAttribute="top" secondItem="qod-Bh-jIe" secondAttribute="top" id="UwY-3d-q6Z"/>
+                            <constraint firstItem="D84-L2-PIU" firstAttribute="leading" secondItem="qod-Bh-jIe" secondAttribute="leading" id="usx-z3-FO3"/>
+                            <constraint firstAttribute="bottom" secondItem="D84-L2-PIU" secondAttribute="bottom" id="zzP-X6-OUZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B3F-Md-hh6"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="D84-L2-PIU" id="Y5S-JK-0je"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SQE-qy-vzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6965" y="-153"/>
         </scene>
         <!--Upcoming-->
         <scene sceneID="0bo-dK-Tsh">

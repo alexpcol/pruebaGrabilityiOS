@@ -39,6 +39,7 @@ class DataTypeChanger: NSObject {
         var arrayMovies: [MovieData] = []
         for result in results
         {
+            var id = 0
             var title = ""
             var posterPath = ""
             var releaseDate = ""
@@ -61,7 +62,12 @@ class DataTypeChanger: NSObject {
             {
                 overview = overviewString
             }
-            arrayMovies.append(MovieData.init(title: title, posterPath: posterPath, releaseDate: releaseDate, overview: overview))
+            
+            if let idInteger = result["id"] as? NSInteger
+            {
+                id = idInteger
+            }
+            arrayMovies.append(MovieData.init(id: id,title: title, posterPath: posterPath, releaseDate: releaseDate, overview: overview))
         }
         
         return arrayMovies
@@ -72,6 +78,7 @@ class DataTypeChanger: NSObject {
         var arrayTVSerie: [TVSerieData] = []
         for result in results
         {
+            var id = 0
             var name = ""
             var posterPath = ""
             var firstAirDate = ""
@@ -94,9 +101,43 @@ class DataTypeChanger: NSObject {
             {
                 overview = overviewString
             }
-            arrayTVSerie.append(TVSerieData.init(name: name, posterPath: posterPath, firstAirDate: firstAirDate, overview: overview))
+            if let idInteger = result["id"] as? NSInteger
+            {
+                id = idInteger
+            }
+            arrayTVSerie.append(TVSerieData.init(id: id,name: name, posterPath: posterPath, firstAirDate: firstAirDate, overview: overview))
         }
         
         return arrayTVSerie
     }
+    
+    static func CreateArrayOfVideos(results: [[String : Any]]) -> [VideoData]
+    {
+        var arrayVideos: [VideoData] = []
+        for result in results
+        {
+            var id = ""
+            var key = ""
+            var site = ""
+            
+            if let idString = result["id"] as? String
+            {
+                id = idString
+            }
+            if let keyString = result["key"] as? String
+            {
+                key = keyString
+            }
+            
+            if let siteString = result["site"] as? String
+            {
+                site = siteString
+            }
+            arrayVideos.append(VideoData.init(id: id, key: key, site: site))
+        }
+        
+        return arrayVideos
+    }
+    
+    
 }

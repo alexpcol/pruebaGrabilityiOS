@@ -13,4 +13,9 @@ enum ServicesNames
 {
     case NO_INTERNET
     case GET_POPULAR_MOVIES
+    case GET_POPULAR_TV_SERIES
+    case GET_TOP_RATED_MOVIES
+    case GET_TOP_RATED_TV_SERIES
+    case GET_UPCOMING_MOVIES
+    case GET_MOVIE_DETAIL
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class TVSerieData: NSObject {
     
+    var id: NSInteger?
     var name: String?
     var posterPath: String?
     var firstAirDate: String?
@@ -17,11 +18,13 @@ class TVSerieData: NSObject {
     
     override init() {}
     
-    init(name: String?,
+    init(id: NSInteger?,
+        name: String?,
          posterPath: String?,
          firstAirDate: String?,
          overview: String?)
     {
+        self.id = id
         self.name = name
         self.posterPath = posterPath
         self.firstAirDate = firstAirDate

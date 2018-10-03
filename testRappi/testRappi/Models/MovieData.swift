@@ -10,6 +10,7 @@ import UIKit
 
 class MovieData: NSObject {
     
+    var id: NSInteger?
     var title: String?
     var posterPath: String?
     var releaseDate: String?
@@ -17,11 +18,13 @@ class MovieData: NSObject {
     
     override init() {}
     
-    init(title: String?,
+    init(id: NSInteger?,
+        title: String?,
          posterPath: String?,
          releaseDate: String?,
          overview: String?)
     {
+        self.id = id
         self.title = title
         self.posterPath = posterPath
         self.releaseDate = releaseDate
