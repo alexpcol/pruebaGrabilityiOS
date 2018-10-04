@@ -8,15 +8,11 @@
 
 import UIKit
 
-class MovieData: NSObject {
+class MovieData: BaseItem {
     
-    var id: NSInteger?
     var title: String?
-    var posterPath: String?
     var releaseDate: String?
-    var overview: String?
     
-    override init() {}
     
     init(id: NSInteger?,
         title: String?,
@@ -24,11 +20,9 @@ class MovieData: NSObject {
          releaseDate: String?,
          overview: String?)
     {
-        self.id = id
+        super.init(id: id, posterPath: posterPath, overview: overview)
         self.title = title
-        self.posterPath = posterPath
         self.releaseDate = releaseDate
-        self.overview = overview
     }
 
 }

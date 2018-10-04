@@ -33,6 +33,65 @@ class DataTypeChanger: NSObject {
         return jsonStr
     }
     
+    static func CreateArrayOfSearch(results: [[String : Any]]) -> [SearchItem]
+    {
+        var arraySearch: [SearchItem] = []
+        for result in results
+        {
+            var id = 0
+            var mediaType = ""
+            var title = ""
+            var posterPath = ""
+            var date = ""
+            var overview = ""
+            
+            if let mediaTypeString = result["media_type"] as? String
+            {
+                if mediaTypeString == "tv" || mediaTypeString == "movie"
+                {
+                    mediaType = mediaTypeString
+                    if let titleString = result["title"] as? String
+                    {
+                        title = titleString
+                    }
+                    else if let nameString = result["name"] as? String
+                    {
+                        title = nameString
+                    }
+                    
+                    if let posterPathString = result["poster_path"] as? String
+                    {
+                        posterPath = posterPathString
+                    }
+                    
+                    if let releaseDateString = result["release_date"] as? String
+                    {
+                        date = releaseDateString
+                    }
+                    else if let firstAirDateString = result["first_air_date"] as? String
+                    {
+                        date = firstAirDateString
+                    }
+                    
+                    if let overviewString = result["overview"] as? String
+                    {
+                        overview = overviewString
+                    }
+                    
+                    if let idInteger = result["id"] as? NSInteger
+                    {
+                        id = idInteger
+                    }
+                    arraySearch.append(SearchItem.init(mediaType: mediaType, id: id, title: title, posterPath: posterPath, date: date, overview: overview))
+                }
+            }
+            
+            
+        }
+        
+        return arraySearch
+    }
+    
     
     static func CreateArrayOfMovies(results: [[String : Any]]) -> [MovieData]
     {

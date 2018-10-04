@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6L-Rl-MI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3753" y="-185"/>
+            <point key="canvasLocation" x="-823" y="1569"/>
         </scene>
         <!--Top Rated View Controller-->
         <scene sceneID="FjS-CU-1GX">
@@ -127,7 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPT-nM-IcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4695.1999999999998" y="551.97044334975374"/>
+            <point key="canvasLocation" x="1554" y="1569"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="maJ-AZ-OYp">
@@ -143,6 +143,7 @@
                         <segue destination="AXH-dg-lcs" kind="relationship" relationship="viewControllers" id="wmP-Y8-kXI"/>
                         <segue destination="V7v-YQ-kMA" kind="relationship" relationship="viewControllers" id="cs5-5x-LsC"/>
                         <segue destination="AKD-hR-uAA" kind="relationship" relationship="viewControllers" id="PnZ-wj-u56"/>
+                        <segue destination="vb5-71-Iby" kind="relationship" relationship="viewControllers" id="TsQ-x6-RKb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsk-Lz-qfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,7 +167,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmD-df-gV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2496.8000000000002" y="-185.46798029556652"/>
+            <point key="canvasLocation" x="-823" y="890"/>
         </scene>
         <!--Movies-->
         <scene sceneID="J9A-Y6-VLJ">
@@ -176,7 +177,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-l3-gjN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-l3-gjN">
                                 <rect key="frame" x="8" y="148" width="398" height="657"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="0wG-vy-XAO">
@@ -208,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vN1-7w-eM5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="1329"/>
+            <point key="canvasLocation" x="3483" y="1636"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YtU-yD-JVA">
@@ -227,7 +228,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rKV-fQ-6BZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3049" y="552"/>
+            <point key="canvasLocation" x="1554" y="890"/>
         </scene>
         <!--Top Rated Movies View Controller-->
         <scene sceneID="ww4-dI-XeA">
@@ -244,7 +245,7 @@
                                     <constraint firstAttribute="height" constant="65" id="xVz-X5-Abr"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-ZH-7e9">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-ZH-7e9">
                                 <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="xC8-Nz-YHh">
@@ -279,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIX-cN-3eK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4155.072463768116" y="1230.46875"/>
+            <point key="canvasLocation" x="836" y="2271"/>
         </scene>
         <!--Top RatedTV Series View Controller-->
         <scene sceneID="N3R-Di-j5m">
@@ -296,7 +297,7 @@
                                     <constraint firstAttribute="height" constant="65" id="zuQ-Qq-11D"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SEs-8D-2lN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SEs-8D-2lN">
                                 <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="zvD-IK-30w">
@@ -331,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vuB-fn-ZQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5217.3913043478269" y="1230.46875"/>
+            <point key="canvasLocation" x="2042" y="2271"/>
         </scene>
         <!--PopularTV Series View Controller-->
         <scene sceneID="qj0-i0-8EP">
@@ -348,7 +349,7 @@
                                     <constraint firstAttribute="height" constant="65" id="cVS-pj-Dqo"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NW2-Bj-L1s">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NW2-Bj-L1s">
                                 <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="NAg-1M-C3S">
@@ -383,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kce-um-T6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4885.507246376812" y="-755.02232142857144"/>
+            <point key="canvasLocation" x="-558" y="2271"/>
         </scene>
         <!--Popular Movies View Controller-->
         <scene sceneID="9wX-1s-fTD">
@@ -400,7 +401,7 @@
                                     <constraint firstAttribute="height" constant="65" id="MZc-OJ-orT"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-kP-Axm">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-kP-Axm">
                                 <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="UvC-7k-9n0">
@@ -435,7 +436,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFn-ev-p6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4885.507246376812" y="-150.33482142857142"/>
+            <point key="canvasLocation" x="-1326" y="2271"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Rf6-fr-Ott">
@@ -600,7 +601,68 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BkG-Ei-s5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1554" y="583"/>
+            <point key="canvasLocation" x="3484" y="890"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="PaM-jx-SXu">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="I1x-Dh-wBM" customClass="SearchViewController" customModule="testRappi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q9k-h3-ehh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tb4-nB-0rT">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yC9-mq-FIu">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="I1x-Dh-wBM" id="aMe-rf-b0m"/>
+                                    <outlet property="delegate" destination="I1x-Dh-wBM" id="UjJ-7n-F1F"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Tb4-nB-0rT" firstAttribute="top" secondItem="giX-WB-hgf" secondAttribute="top" id="EzS-WN-VW0"/>
+                            <constraint firstItem="Tb4-nB-0rT" firstAttribute="leading" secondItem="giX-WB-hgf" secondAttribute="leading" id="ao4-hb-E8i"/>
+                            <constraint firstItem="giX-WB-hgf" firstAttribute="bottom" secondItem="Tb4-nB-0rT" secondAttribute="bottom" id="n7A-Rm-hqe"/>
+                            <constraint firstItem="giX-WB-hgf" firstAttribute="trailing" secondItem="Tb4-nB-0rT" secondAttribute="trailing" id="sp5-IL-nLs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="giX-WB-hgf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="3ac-le-hhP"/>
+                    <connections>
+                        <outlet property="itemsCollectionView" destination="Tb4-nB-0rT" id="KUn-DW-XHD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FSQ-u9-bie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5099" y="1636"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aZf-qI-5dG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vb5-71-Iby" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="fKo-0L-KUQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="86n-G4-Y8u">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="I1x-Dh-wBM" kind="relationship" relationship="rootViewController" id="12F-0p-uFh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nwM-3O-wg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5098.5507246376819" y="889.95535714285711"/>
         </scene>
     </scenes>
     <resources>

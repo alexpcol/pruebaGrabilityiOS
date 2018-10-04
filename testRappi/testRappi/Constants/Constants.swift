@@ -37,6 +37,8 @@ enum URLPaths: String {
     //MARK:- Detail Category
     case movieDetail = "/movie/" //Add id
     case tvDetail = "/tv/"
+    
+    case searchItem = "/search/multi"
 }
 
 enum QueryString: String {
@@ -47,6 +49,7 @@ enum QueryString: String {
     case region = "&region="
     
     case appendToResponse = "&append_to_response="
+    case query = "&query="
 }
 
 enum CellsIdentifiers: String{

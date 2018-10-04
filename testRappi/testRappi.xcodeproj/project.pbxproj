@@ -44,6 +44,9 @@
 		ACD7CCA821656ABC00039825 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD7CCA721656ABC00039825 /* NetworkHelper.swift */; };
 		ACFD8D702166918F0096D60B /* ImageCacheItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD8D6F2166918F0096D60B /* ImageCacheItem.swift */; };
 		ACFD8D732166920F0096D60B /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD8D722166920F0096D60B /* CustomImageView.swift */; };
+		ACFD8D802166C2F30096D60B /* BaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD8D7F2166C2F30096D60B /* BaseItem.swift */; };
+		ACFD8D832166C9190096D60B /* SearchItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD8D822166C9190096D60B /* SearchItem.swift */; };
+		ACFD8D862166CADC0096D60B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD8D852166CADC0096D60B /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +89,9 @@
 		ACD7CCA721656ABC00039825 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		ACFD8D6F2166918F0096D60B /* ImageCacheItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheItem.swift; sourceTree = "<group>"; };
 		ACFD8D722166920F0096D60B /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		ACFD8D7F2166C2F30096D60B /* BaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseItem.swift; sourceTree = "<group>"; };
+		ACFD8D822166C9190096D60B /* SearchItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItem.swift; sourceTree = "<group>"; };
+		ACFD8D852166CADC0096D60B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,11 +241,11 @@
 		AC9904812162CFA800676C76 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AC99047F2162CE2F00676C76 /* MovieData.swift */,
-				ACD7CC9C2165467300039825 /* MoviesData.swift */,
-				AC9904822162CFDF00676C76 /* TVSerieData.swift */,
-				ACD7CC9E2165493C00039825 /* TVSeriesData.swift */,
-				57964FBA21658A280062E8C4 /* VideoData.swift */,
+				ACFD8D812166C9050096D60B /* SearchItem */,
+				ACFD8D7C2166C2A90096D60B /* Movie */,
+				ACFD8D7D2166C2B50096D60B /* TVSeries */,
+				ACFD8D7E2166C2BE0096D60B /* Video */,
+				ACFD8D7F2166C2F30096D60B /* BaseItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 				ACC6938A21641A1600B0F623 /* Popular */,
 				ACC6938B21641A1D00B0F623 /* TopRated */,
 				ACD7CC8D2165335B00039825 /* Upcoming */,
+				ACFD8D842166CAB80096D60B /* Search */,
 			);
 			path = TabBarControllers;
 			sourceTree = "<group>";
@@ -400,6 +407,48 @@
 			path = ImageCache;
 			sourceTree = "<group>";
 		};
+		ACFD8D7C2166C2A90096D60B /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				AC99047F2162CE2F00676C76 /* MovieData.swift */,
+				ACD7CC9C2165467300039825 /* MoviesData.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		ACFD8D7D2166C2B50096D60B /* TVSeries */ = {
+			isa = PBXGroup;
+			children = (
+				AC9904822162CFDF00676C76 /* TVSerieData.swift */,
+				ACD7CC9E2165493C00039825 /* TVSeriesData.swift */,
+			);
+			path = TVSeries;
+			sourceTree = "<group>";
+		};
+		ACFD8D7E2166C2BE0096D60B /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				57964FBA21658A280062E8C4 /* VideoData.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
+		ACFD8D812166C9050096D60B /* SearchItem */ = {
+			isa = PBXGroup;
+			children = (
+				ACFD8D822166C9190096D60B /* SearchItem.swift */,
+			);
+			path = SearchItem;
+			sourceTree = "<group>";
+		};
+		ACFD8D842166CAB80096D60B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				ACFD8D852166CADC0096D60B /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -487,8 +536,11 @@
 				5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */,
 				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
+				ACFD8D832166C9190096D60B /* SearchItem.swift in Sources */,
+				ACFD8D862166CADC0096D60B /* SearchViewController.swift in Sources */,
 				57964FB9216586E90062E8C4 /* WebViewController.swift in Sources */,
 				ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */,
+				ACFD8D802166C2F30096D60B /* BaseItem.swift in Sources */,
 				ACD7CCA821656ABC00039825 /* NetworkHelper.swift in Sources */,
 				57964FBB21658A280062E8C4 /* VideoData.swift in Sources */,
 				ACD7CC9D2165467300039825 /* MoviesData.swift in Sources */,

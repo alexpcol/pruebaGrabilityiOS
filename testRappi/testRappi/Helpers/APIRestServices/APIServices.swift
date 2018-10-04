@@ -203,5 +203,31 @@ class APIServices: NSObject {
         let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_TV_SERE_DETAIL)
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
+    
+    func getSearchItem(language:String?, page: NSInteger, region: String?, query:String)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.searchItem.rawValue
+        
+        let pageKey = QueryString.page.rawValue + String(page)
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        let queryKey = QueryString.query.rawValue + query
+        var languageKey = ""
+        var regionKey = ""
+        
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        if let regionString = region
+        {
+            regionKey = QueryString.region.rawValue + regionString
+        }
+        
+        let url = urlRequest + apiKey + queryKey + languageKey + pageKey + regionKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_SEARCH_ITEM)
+        
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
 
 }

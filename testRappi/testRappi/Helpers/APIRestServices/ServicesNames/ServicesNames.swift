@@ -19,4 +19,5 @@ enum ServicesNames
     case GET_UPCOMING_MOVIES
     case GET_MOVIE_DETAIL
     case GET_TV_SERE_DETAIL
+    case GET_SEARCH_ITEM
 }
