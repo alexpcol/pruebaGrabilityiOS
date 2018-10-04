@@ -611,11 +611,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tb4-nB-0rT">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F99-4j-jZ6">
+                                <rect key="frame" x="0.0" y="140" width="414" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yC9-mq-FIu">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Qfi-Ul-K4z"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Tb4-nB-0rT">
+                                <rect key="frame" x="0.0" y="220" width="414" height="593"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="yC9-mq-FIu">
+                                    <size key="itemSize" width="170" height="220"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -629,8 +636,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Tb4-nB-0rT" firstAttribute="top" secondItem="giX-WB-hgf" secondAttribute="top" id="EzS-WN-VW0"/>
+                            <constraint firstItem="F99-4j-jZ6" firstAttribute="trailing" secondItem="giX-WB-hgf" secondAttribute="trailing" id="BcU-At-CXA"/>
+                            <constraint firstItem="F99-4j-jZ6" firstAttribute="top" secondItem="giX-WB-hgf" secondAttribute="top" id="Jmd-ri-fV6"/>
+                            <constraint firstItem="Tb4-nB-0rT" firstAttribute="top" secondItem="F99-4j-jZ6" secondAttribute="bottom" id="Zk5-F0-8wz"/>
                             <constraint firstItem="Tb4-nB-0rT" firstAttribute="leading" secondItem="giX-WB-hgf" secondAttribute="leading" id="ao4-hb-E8i"/>
+                            <constraint firstItem="F99-4j-jZ6" firstAttribute="leading" secondItem="giX-WB-hgf" secondAttribute="leading" id="b9e-ZT-gIX"/>
                             <constraint firstItem="giX-WB-hgf" firstAttribute="bottom" secondItem="Tb4-nB-0rT" secondAttribute="bottom" id="n7A-Rm-hqe"/>
                             <constraint firstItem="giX-WB-hgf" firstAttribute="trailing" secondItem="Tb4-nB-0rT" secondAttribute="trailing" id="sp5-IL-nLs"/>
                         </constraints>
@@ -639,11 +649,12 @@
                     <navigationItem key="navigationItem" title="Search" id="3ac-le-hhP"/>
                     <connections>
                         <outlet property="itemsCollectionView" destination="Tb4-nB-0rT" id="KUn-DW-XHD"/>
+                        <outlet property="searchPlaceHolderView" destination="F99-4j-jZ6" id="g2V-Sy-Pde"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSQ-u9-bie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5099" y="1636"/>
+            <point key="canvasLocation" x="5098.5507246376819" y="1635.9375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aZf-qI-5dG">

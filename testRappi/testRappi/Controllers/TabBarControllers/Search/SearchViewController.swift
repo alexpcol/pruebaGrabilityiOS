@@ -16,8 +16,10 @@ class SearchViewController: UIViewController {
     private var currentPage = 1
     private var totalOfPages = 0
     var isLoading:Bool = false
+    var shouldClearArray: Bool = false
     var searchController: UISearchController!
     @IBOutlet weak var itemsCollectionView: UICollectionView!
+    @IBOutlet weak var searchPlaceHolderView: UIView!
     
     // MARK: - Lifecycle method
     override func viewDidLoad() {
@@ -29,14 +31,16 @@ class SearchViewController: UIViewController {
     // MARK:- Requests Methods
     func searchItem(text: String, showActivity: Bool)
     {
+        shouldClearArray = true
         if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getSearchItem(language: nil, page: 1, region: nil, query: text)
     }
-    func getMoreSearchItems(page: NSInteger)
+    func getMoreSearchItems(page: NSInteger, text: String)
     {
+        shouldClearArray = false
         let service = APIServices.init(delegate: self)
-        service.getUpcomingMovies(language: nil, page: page, region: nil)
+        service.getSearchItem(language: nil, page: page, region: nil, query: text)
     }
     
     // MARK:- Configuration Methods
@@ -55,9 +59,10 @@ class SearchViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        searchPlaceHolderView.addSubview(searchController.searchBar)
         itemsCollectionView.contentInsetAdjustmentBehavior = .automatic
         definesPresentationContext = true
-        navigationItem.searchController = searchController
     }
 }
 
@@ -65,7 +70,9 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate
 {
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text{
-            self.searchItem(text: searchText, showActivity: true)
+            if !searchText.isEmpty{
+                self.searchItem(text: searchText, showActivity: true)
+            }
         }
     }
 }
@@ -163,7 +170,12 @@ extension SearchViewController: UIScrollViewDelegate
                 if currentPage < totalOfPages
                 {
                     currentPage += 1
-                    getMoreSearchItems(page: currentPage)
+                    if let searchText = searchController.searchBar.text{
+                        if !searchText.isEmpty{
+                            self.getMoreSearchItems(page: currentPage, text: searchText)
+                        }
+                    }
+                    
                 }
             }
         }
@@ -182,6 +194,11 @@ extension SearchViewController: ResponseServicesProtocol
         if let results = resultDic?["results"] as? [[String : Any]]
         {
             let auxArrayOfSearch = DataTypeChanger.CreateArrayOfSearch(results: results)
+            
+            if shouldClearArray
+            {
+                self.arrayOfItems.removeAll()
+            }
             
             for auxItem in auxArrayOfSearch
             {
