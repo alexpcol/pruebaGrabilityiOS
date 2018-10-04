@@ -97,22 +97,19 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = filteredArrayOfTVSeries[indexPath.row].name
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfTVSeries[indexPath.row].posterPath!) { (image) in
-            cell.posterImageView.image = image
-        }
+        cell.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfTVSeries[indexPath.row].posterPath!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! MovieCollectionViewCell
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
         DetailViewController.titleString = filteredArrayOfTVSeries[indexPath.row].name
         DetailViewController.dateString = filteredArrayOfTVSeries[indexPath.row].firstAirDate
         DetailViewController.overviewString = filteredArrayOfTVSeries[indexPath.row].overview
         DetailViewController.id = filteredArrayOfTVSeries[indexPath.row].id
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfTVSeries[indexPath.row].posterPath!) { (image) in
-            DetailViewController.posterImage = image
-        }
+        DetailViewController.posterImage = cell.posterImageView.image
         
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }

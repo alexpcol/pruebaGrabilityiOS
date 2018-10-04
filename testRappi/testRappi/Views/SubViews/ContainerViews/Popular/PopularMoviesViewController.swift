@@ -101,22 +101,21 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = filteredArrayOfMovies[indexPath.row].title
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!) { (image) in
-            cell.posterImageView.image = image
-        }
+        cell.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! MovieCollectionViewCell
+        
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
         DetailViewController.titleString = filteredArrayOfMovies[indexPath.row].title
         DetailViewController.dateString = filteredArrayOfMovies[indexPath.row].releaseDate
         DetailViewController.overviewString = filteredArrayOfMovies[indexPath.row].overview
         DetailViewController.id = filteredArrayOfMovies[indexPath.row].id
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!) { (image) in
-            DetailViewController.posterImage = image
-        }
-        
+        DetailViewController.posterImage = cell.posterImageView.image
+
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
 }

@@ -14,7 +14,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var posterImageView: CustomImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

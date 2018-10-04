@@ -25,7 +25,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiV-ja-j3v">
                                 <rect key="frame" x="0.0" y="0.0" width="170" height="220"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zL6-S1-vfh">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zL6-S1-vfh" customClass="CustomImageView" customModule="testRappi" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="220"/>
                                     </imageView>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXv-eR-Zra">
@@ -89,7 +89,7 @@
             <connections>
                 <outlet property="cardView" destination="Q9k-My-rJz" id="VfP-Nl-Z4e"/>
                 <outlet property="containerView" destination="wiV-ja-j3v" id="PM8-Xm-c3Z"/>
-                <outlet property="posterImageView" destination="zL6-S1-vfh" id="Fc9-91-Mdw"/>
+                <outlet property="posterImageView" destination="zL6-S1-vfh" id="TL9-3m-pS2"/>
                 <outlet property="titleLabel" destination="WeV-AX-wVf" id="huy-Y3-LhQ"/>
             </connections>
             <point key="canvasLocation" x="64" y="48.575712143928037"/>
