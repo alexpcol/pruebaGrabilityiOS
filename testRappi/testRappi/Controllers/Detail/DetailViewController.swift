@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     var dateString: String?
     var overviewString: String?
     var id: NSInteger!
+    var isMovie: Bool!
     @IBOutlet weak var posterBackgroundImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -29,11 +30,20 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
+    
+    // MARK: - Request Methods
     func getMovieDetail()
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
         service.getMovieDetail(id: id, language: nil, appendToResponse: "videos")
+    }
+    
+    func getTVSerieDetail()
+    {
+        UIHelper.showActivityIndicator(in: self.view)
+        let service = APIServices.init(delegate: self)
+        service.getTvSerieDetail(id: id, language: nil, appendToResponse: "videos")
     }
     // MARK: - Configure Methods
     func configure()
@@ -49,9 +59,10 @@ class DetailViewController: UIViewController {
     }
     @objc func playTrailer()
     {
-        getMovieDetail()
+        if isMovie { getMovieDetail()}
+        else {getTVSerieDetail()}
     }
-    
+    // MARK: - Changeview Methods
     func pushNextView(video: VideoData)
     {
         let WebViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController

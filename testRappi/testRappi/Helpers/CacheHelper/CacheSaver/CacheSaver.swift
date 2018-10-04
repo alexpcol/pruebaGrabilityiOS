@@ -40,19 +40,4 @@ class CacheSaver: CacheBase {
         cacheForTVSeries.setObject(tvSeriesData, forKey: CacheKeys.topRatedTVSeries.rawValue as NSString)
     }
     
-    
-    static func getPopularMovies(completion: @escaping (_ movies: MoviesData?)->())
-    {
-        print(CacheKeys.popularMovies.rawValue as NSString)
-        if let movies: MoviesData = cacheForMovies.object(forKey: CacheKeys.popularMovies.rawValue as NSString)
-        {
-            completion(movies)
-        }
-        else
-        {
-            completion(nil)
-        }
-    }
-    
-    
 }

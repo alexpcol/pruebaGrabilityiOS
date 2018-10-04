@@ -9,7 +9,7 @@
 import UIKit
 
 open class ImageCacheItem: NSObject, NSDiscardableContent {
-    
+    //Generic method (trying to find the best way to set it) 🧐
     private(set) public var image: UIImage?
     var accessCount: UInt = 0
     

@@ -115,6 +115,7 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         DetailViewController.overviewString = filteredArrayOfMovies[indexPath.row].overview
         DetailViewController.id = filteredArrayOfMovies[indexPath.row].id
         DetailViewController.posterImage = cell.posterImageView.image
+        DetailViewController.isMovie = true
 
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
@@ -156,7 +157,6 @@ extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout
 
 extension PopularMoviesViewController: UIScrollViewDelegate
 {
-    //compute the scroll value and play witht the threshold to get desired effect
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let threshold   = 100.0 ;
         let contentOffset = scrollView.contentOffset.y;
@@ -171,8 +171,6 @@ extension PopularMoviesViewController: UIScrollViewDelegate
             self.footerView?.animateFinal()
         }
     }
-    
-    //compute the offset and call the load method
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y;
         let contentHeight = scrollView.contentSize.height;
@@ -181,7 +179,8 @@ extension PopularMoviesViewController: UIScrollViewDelegate
         let pullHeight  = abs(diffHeight - frameHeight);
         if pullHeight == 0.0
         {
-            if (self.footerView?.isAnimatingFinal)! {
+            if (self.footerView?.isAnimatingFinal)!
+            {
                 print("load more trigger")
                 self.isLoading = true
                 self.footerView?.startAnimate()

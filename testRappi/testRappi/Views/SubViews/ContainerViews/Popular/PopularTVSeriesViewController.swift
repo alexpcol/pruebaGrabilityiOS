@@ -112,7 +112,7 @@ extension PopularTVSeriesViewController: UICollectionViewDelegate, UICollectionV
         DetailViewController.overviewString = filteredArrayOfTVSeries[indexPath.row].overview
         DetailViewController.id = filteredArrayOfTVSeries[indexPath.row].id
         DetailViewController.posterImage = cell.posterImageView.image
-        
+        DetailViewController.isMovie = false
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
 }
@@ -168,7 +168,6 @@ extension PopularTVSeriesViewController: UIScrollViewDelegate
         }
     }
     
-    //compute the offset and call the load method
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset.y;
         let contentHeight = scrollView.contentSize.height;
@@ -177,7 +176,8 @@ extension PopularTVSeriesViewController: UIScrollViewDelegate
         let pullHeight  = abs(diffHeight - frameHeight);
         if pullHeight == 0.0
         {
-            if (self.footerView?.isAnimatingFinal)! {
+            if (self.footerView?.isAnimatingFinal)!
+            {
                 print("load more trigger")
                 self.isLoading = true
                 self.footerView?.startAnimate()

@@ -17,7 +17,6 @@
 		5749258221626BE100E84F79 /* testRappi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5749258021626BE100E84F79 /* testRappi.xcdatamodeld */; };
 		5749258421626BE400E84F79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5749258321626BE400E84F79 /* Assets.xcassets */; };
 		5749258721626BE400E84F79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5749258521626BE400E84F79 /* LaunchScreen.storyboard */; };
-		574925932162B57900E84F79 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925922162B57900E84F79 /* ImageService.swift */; };
 		574925972162B5D100E84F79 /* AlertsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925962162B5D100E84F79 /* AlertsPresenter.swift */; };
 		5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925992162B61A00E84F79 /* ServicesNames.swift */; };
 		5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259D2162B6A200E84F79 /* HttpMethods.swift */; };
@@ -60,7 +59,6 @@
 		5749258321626BE400E84F79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5749258621626BE400E84F79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5749258821626BE400E84F79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		574925922162B57900E84F79 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		574925962162B5D100E84F79 /* AlertsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsPresenter.swift; sourceTree = "<group>"; };
 		574925992162B61A00E84F79 /* ServicesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesNames.swift; sourceTree = "<group>"; };
 		5749259D2162B6A200E84F79 /* HttpMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethods.swift; sourceTree = "<group>"; };
@@ -167,21 +165,12 @@
 				ACD7CCA621656A9800039825 /* DeviceHelper */,
 				ACD7CCA021654A0B00039825 /* CacheHelper */,
 				ACC693862163DE7800B0F623 /* UIHelper */,
-				574925952162B5BC00E84F79 /* Images */,
 				574925982162B5F200E84F79 /* Alerts */,
 				5749259C2162B67800E84F79 /* APIRestServices */,
 				574925A32162B77900E84F79 /* ActivityPresenter */,
 				AC99047B2162B9B500676C76 /* DataTypeChanger */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		574925952162B5BC00E84F79 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				574925922162B57900E84F79 /* ImageService.swift */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		574925982162B5F200E84F79 /* Alerts */ = {
@@ -508,7 +497,6 @@
 				ACD7CCA52165692A00039825 /* CacheBase.swift in Sources */,
 				572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */,
 				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
-				574925932162B57900E84F79 /* ImageService.swift in Sources */,
 				5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */,
 				ACD7CC9F2165493C00039825 /* TVSeriesData.swift in Sources */,
 				ACC6939621641B7800B0F623 /* TopRatedTVSeriesViewController.swift in Sources */,
