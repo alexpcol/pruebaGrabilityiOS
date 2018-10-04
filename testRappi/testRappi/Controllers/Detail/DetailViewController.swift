@@ -61,6 +61,7 @@ class DetailViewController: UIViewController {
     // MARK: - ConfigureViews Methods
     func configureViews()
     {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         posterBackgroundImageView.image = posterImage
         posterImageView.image = posterImage
         titleLabel.text = titleString
