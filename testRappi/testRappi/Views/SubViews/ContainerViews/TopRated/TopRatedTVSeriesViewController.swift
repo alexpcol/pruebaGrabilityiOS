@@ -13,10 +13,13 @@ class TopRatedTVSeriesViewController: UIViewController {
     // MARK: - Variables
     var footerView:LoaderFooterView?
     var arrayOfTVSeries :[TVSerieData] = []
+    var filteredArrayOfTVSeries : [TVSerieData] = []
     private var currentPage = 1
     private var totalOfPages = 0
     var isLoading:Bool = false
+    var searchController: UISearchController!
     @IBOutlet weak var tvSeriesCollectionView: UICollectionView!
+    @IBOutlet weak var searchPlaceHolderView: UIView!
     
     
     // MARK: - LifecycleMethods
@@ -31,12 +34,12 @@ class TopRatedTVSeriesViewController: UIViewController {
             getTopRatedTVSeriesCache()
         }
     }
-    
+    // MARK: - Request methods
     func getTopRatedTVSeries(page: NSInteger, showActivity: Bool)
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
-        service.getTopRatedTVSeries(language: nil, page: 1, region: nil)
+        service.getTopRatedTVSeries(language: nil, page: page, region: nil)
     }
     
     func getTopRatedTVSeriesCache()
@@ -49,7 +52,7 @@ class TopRatedTVSeriesViewController: UIViewController {
             }
         }
     }
-    
+    // MARK: - Configurations methods
     func configure()
     {
         setUpCollectionsViews()
@@ -62,22 +65,39 @@ class TopRatedTVSeriesViewController: UIViewController {
     }
     func setUpNavBar()
     {
-        let searchBar = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchBar
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        searchPlaceHolderView.addSubview(searchController.searchBar)
+        tvSeriesCollectionView.contentInsetAdjustmentBehavior = .automatic
+        definesPresentationContext = true
     }
+}
+
+extension TopRatedTVSeriesViewController: UISearchResultsUpdating, UISearchBarDelegate
+{
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text{
+            filteredArrayOfTVSeries = searchText.isEmpty ? arrayOfTVSeries : arrayOfTVSeries.filter({($0.name?.localizedCaseInsensitiveContains(searchText))!})
+            
+            tvSeriesCollectionView.reloadData()
+        }
+    }
+    
 }
 
 extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfTVSeries.count
+        return filteredArrayOfTVSeries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
-        cell.titleLabel.text = arrayOfTVSeries[indexPath.row].name
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfTVSeries[indexPath.row].posterPath!) { (image) in
+        cell.titleLabel.text = filteredArrayOfTVSeries[indexPath.row].name
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfTVSeries[indexPath.row].posterPath!) { (image) in
             cell.posterImageView.image = image
         }
         return cell
@@ -86,10 +106,11 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        DetailViewController.titleString = arrayOfTVSeries[indexPath.row].name
-        DetailViewController.dateString = arrayOfTVSeries[indexPath.row].firstAirDate
-        DetailViewController.overviewString = arrayOfTVSeries[indexPath.row].overview
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfTVSeries[indexPath.row].posterPath!) { (image) in
+        DetailViewController.titleString = filteredArrayOfTVSeries[indexPath.row].name
+        DetailViewController.dateString = filteredArrayOfTVSeries[indexPath.row].firstAirDate
+        DetailViewController.overviewString = filteredArrayOfTVSeries[indexPath.row].overview
+        DetailViewController.id = filteredArrayOfTVSeries[indexPath.row].id
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfTVSeries[indexPath.row].posterPath!) { (image) in
             DetailViewController.posterImage = image
         }
         
@@ -188,7 +209,7 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
             {
                 self.arrayOfTVSeries.append(auxItem)
             }
-            
+            self.filteredArrayOfTVSeries = self.arrayOfTVSeries
             DispatchQueue.main.async {
                 self.tvSeriesCollectionView.reloadData()
                 UIHelper.turnOnAlphaWithAnimation(for: self.tvSeriesCollectionView)

@@ -13,11 +13,15 @@ class TopRatedMoviesViewController: UIViewController {
     // MARK: - Variables
     var footerView:LoaderFooterView?
     var arrayOfMovies :[MovieData] = []
+    var filteredArrayOfMovies : [MovieData] = []
     private var currentPage = 1
     private var totalOfPages = 0
     var isLoading:Bool = false
+    var searchController: UISearchController!
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    @IBOutlet weak var searchPlaceHolderView: UIView!
     
+    // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -29,12 +33,12 @@ class TopRatedMoviesViewController: UIViewController {
             getTopRatedMoviesCache()
         }
     }
-    
+     // MARK: - Request methods
     func getTopRatedMovies(page: NSInteger, showActivity: Bool)
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
-        service.getTopRatedMovies(language: nil, page: 1, region: nil)
+        service.getTopRatedMovies(language: nil, page: page, region: nil)
     }
     
     func getTopRatedMoviesCache()
@@ -47,7 +51,7 @@ class TopRatedMoviesViewController: UIViewController {
             }
         }
     }
-    
+    // MARK: - configurations methods
     func configure()
     {
         setUpCollectionsViews()
@@ -60,24 +64,40 @@ class TopRatedMoviesViewController: UIViewController {
     }
     func setUpNavBar()
     {
-        let searchBar = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchBar
-        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        searchPlaceHolderView.addSubview(searchController.searchBar)
+        moviesCollectionView.contentInsetAdjustmentBehavior = .automatic
+        definesPresentationContext = true
     }
 
+}
+
+extension TopRatedMoviesViewController: UISearchResultsUpdating, UISearchBarDelegate
+{
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text{
+            filteredArrayOfMovies = searchText.isEmpty ? arrayOfMovies : arrayOfMovies.filter({($0.title?.localizedCaseInsensitiveContains(searchText))!})
+            
+            moviesCollectionView.reloadData()
+        }
+    }
+    
 }
 
 extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arrayOfMovies.count
+        return filteredArrayOfMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
         
-        cell.titleLabel.text = arrayOfMovies[indexPath.row].title
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfMovies[indexPath.row].posterPath!) { (image) in
+        cell.titleLabel.text = filteredArrayOfMovies[indexPath.row].title
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!) { (image) in
             cell.posterImageView.image = image
         }
         return cell
@@ -85,10 +105,11 @@ extension TopRatedMoviesViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         
-        DetailViewController.titleString = arrayOfMovies[indexPath.row].title
-        DetailViewController.dateString = arrayOfMovies[indexPath.row].releaseDate
-        DetailViewController.overviewString = arrayOfMovies[indexPath.row].overview
-        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + arrayOfMovies[indexPath.row].posterPath!) { (image) in
+        DetailViewController.titleString = filteredArrayOfMovies[indexPath.row].title
+        DetailViewController.dateString = filteredArrayOfMovies[indexPath.row].releaseDate
+        DetailViewController.overviewString = filteredArrayOfMovies[indexPath.row].overview
+        DetailViewController.id = filteredArrayOfMovies[indexPath.row].id
+        ImageService.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!) { (image) in
             DetailViewController.posterImage = image
         }
         
@@ -188,7 +209,7 @@ extension TopRatedMoviesViewController: ResponseServicesProtocol
             {
                 self.arrayOfMovies.append(auxItem)
             }
-            
+            self.filteredArrayOfMovies = self.arrayOfMovies
             DispatchQueue.main.async {
                 self.moviesCollectionView.reloadData()
                 UIHelper.turnOnAlphaWithAnimation(for: self.moviesCollectionView)

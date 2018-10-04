@@ -80,7 +80,7 @@ class APIServices: NSObject {
         
         let url = urlRequest + apiKey + languageKey + pageKey + regionKey
         
-        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_TV_SERIES)
         
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
@@ -105,7 +105,7 @@ class APIServices: NSObject {
         
         let url = urlRequest + apiKey + languageKey + pageKey + regionKey + "&append_to_response=videos"
         
-        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_TOP_RATED_MOVIES)
         
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
@@ -130,7 +130,7 @@ class APIServices: NSObject {
         
         let url = urlRequest + apiKey + languageKey + pageKey + regionKey
         
-        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_TOP_RATED_TV_SERIES)
         
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
@@ -155,10 +155,53 @@ class APIServices: NSObject {
         
         let url = urlRequest + apiKey + languageKey + pageKey + regionKey
         
-        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_POPULAR_MOVIES)
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_UPCOMING_MOVIES)
         
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
+    func getMovieDetail(id: NSInteger, language:String?, appendToResponse: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.movieDetail.rawValue + String(id)
+        
+        var appendToResponseKey = ""
+        var languageKey = ""
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        if let appendToResponseString = appendToResponse
+        {
+            appendToResponseKey = QueryString.appendToResponse.rawValue + appendToResponseString
+        }
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        
+        let url = urlRequest + apiKey + languageKey + appendToResponseKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_MOVIE_DETAIL)
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
+    
+    func getTvSerieDetail(id: NSInteger, language:String?, appendToResponse: String?)
+    {
+        let urlRequest = URLS.apiURL.rawValue + URLPaths.tvDetail.rawValue + String(id)
+        
+        var appendToResponseKey = ""
+        var languageKey = ""
+        let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
+        if let appendToResponseString = appendToResponse
+        {
+            appendToResponseKey = QueryString.appendToResponse.rawValue + appendToResponseString
+        }
+        if let languageString = language
+        {
+            languageKey = QueryString.language.rawValue + languageString
+        }
+        
+        let url = urlRequest + apiKey + languageKey + appendToResponseKey
+        
+        let serviceRequest = HttpMethods.init(delegate: self.delegate!, service: ServicesNames.GET_TV_SERE_DETAIL)
+        serviceRequest.RequestGETWithAutorization(URLString: url)
+    }
 
 }

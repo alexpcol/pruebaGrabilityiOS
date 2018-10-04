@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     var titleString: String?
     var dateString: String?
     var overviewString: String?
+    var id: NSInteger!
     @IBOutlet weak var posterBackgroundImageView: UIImageView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -28,7 +29,12 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         configure()
     }
-    
+    func getMovieDetail()
+    {
+        UIHelper.showActivityIndicator(in: self.view)
+        let service = APIServices.init(delegate: self)
+        service.getMovieDetail(id: id, language: nil, appendToResponse: "videos")
+    }
     // MARK: - Configure Methods
     func configure()
     {
@@ -43,11 +49,13 @@ class DetailViewController: UIViewController {
     }
     @objc func playTrailer()
     {
-        
-        
-        
+        getMovieDetail()
+    }
+    
+    func pushNextView(video: VideoData)
+    {
         let WebViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        
+        WebViewController.videoKey = video.key
         self.navigationController?.pushViewController(WebViewController, animated: true)
     }
     // MARK: - ConfigureViews Methods
@@ -73,10 +81,13 @@ extension DetailViewController: ResponseServicesProtocol
             if let results = videos["results"] as? [[String :Any]]
             {
                 let auxArrayVideos = DataTypeChanger.CreateArrayOfVideos(results: results)
+                let video = VideoData.init(id: auxArrayVideos[0].id, key: auxArrayVideos[0].key, site: auxArrayVideos[0].site)
+                DispatchQueue.main.async {
+                    self.pushNextView(video: video)
+                }
                 
             }
         }
-        
         
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)

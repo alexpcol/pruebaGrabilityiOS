@@ -47,10 +47,10 @@
                     <navigationItem key="navigationItem" id="KLR-XW-m7n">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Jtv-uF-5yE">
-                            <rect key="frame" x="133.66666666666666" y="7.6666666666666679" width="146.99999999999997" height="29.000000000000004"/>
+                            <rect key="frame" x="133.66666666666666" y="7" width="146.99999999999997" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Movie"/>
+                                <segment title="Movies"/>
                                 <segment title="TV Series"/>
                             </segments>
                             <connections>
@@ -237,8 +237,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cb6-M5-f68">
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="xVz-X5-Abr"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Ku-ZH-7e9">
-                                <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
+                                <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="xC8-Nz-YHh">
                                     <size key="itemSize" width="170" height="220"/>
@@ -256,19 +263,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7Ku-ZH-7e9" firstAttribute="leading" secondItem="cUO-TL-JY6" secondAttribute="leading" id="7Ak-Oc-c6A"/>
-                            <constraint firstItem="7Ku-ZH-7e9" firstAttribute="top" secondItem="cUO-TL-JY6" secondAttribute="top" id="Czq-6O-ldX"/>
+                            <constraint firstItem="cb6-M5-f68" firstAttribute="top" secondItem="cUO-TL-JY6" secondAttribute="top" id="IZn-34-dtH"/>
+                            <constraint firstItem="cb6-M5-f68" firstAttribute="leading" secondItem="MaX-ym-2N9" secondAttribute="leading" id="Or6-bB-Efs"/>
+                            <constraint firstItem="cb6-M5-f68" firstAttribute="trailing" secondItem="MaX-ym-2N9" secondAttribute="trailing" id="QqS-4S-dRL"/>
                             <constraint firstAttribute="bottom" secondItem="7Ku-ZH-7e9" secondAttribute="bottom" id="UU4-Jk-lT9"/>
                             <constraint firstAttribute="trailing" secondItem="7Ku-ZH-7e9" secondAttribute="trailing" id="eP1-0Q-pOB"/>
+                            <constraint firstItem="7Ku-ZH-7e9" firstAttribute="top" secondItem="cb6-M5-f68" secondAttribute="bottom" id="xhv-KK-1cw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MaX-ym-2N9"/>
                     </view>
                     <connections>
                         <outlet property="moviesCollectionView" destination="7Ku-ZH-7e9" id="0NO-Xa-Hqh"/>
+                        <outlet property="searchPlaceHolderView" destination="cb6-M5-f68" id="Up0-og-o7P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIX-cN-3eK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4156" y="1230.6650246305419"/>
+            <point key="canvasLocation" x="4155.072463768116" y="1230.46875"/>
         </scene>
         <!--Top RatedTV Series View Controller-->
         <scene sceneID="N3R-Di-j5m">
@@ -278,8 +289,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3l-aH-03V">
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="zuQ-Qq-11D"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SEs-8D-2lN">
-                                <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
+                                <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="zvD-IK-30w">
                                     <size key="itemSize" width="170" height="220"/>
@@ -297,19 +315,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SEs-8D-2lN" secondAttribute="bottom" id="8bq-Lu-sD6"/>
-                            <constraint firstItem="SEs-8D-2lN" firstAttribute="top" secondItem="aAE-sf-KLM" secondAttribute="top" id="Xye-hu-Gqf"/>
+                            <constraint firstItem="b3l-aH-03V" firstAttribute="top" secondItem="aAE-sf-KLM" secondAttribute="top" id="CKC-Rs-zG6"/>
+                            <constraint firstItem="SEs-8D-2lN" firstAttribute="top" secondItem="b3l-aH-03V" secondAttribute="bottom" id="GPp-EJ-jej"/>
+                            <constraint firstItem="b3l-aH-03V" firstAttribute="trailing" secondItem="peQ-ir-flp" secondAttribute="trailing" id="baa-oF-5Q6"/>
+                            <constraint firstItem="b3l-aH-03V" firstAttribute="leading" secondItem="peQ-ir-flp" secondAttribute="leading" id="boG-2h-SM8"/>
                             <constraint firstItem="SEs-8D-2lN" firstAttribute="leading" secondItem="aAE-sf-KLM" secondAttribute="leading" id="eLE-X7-FUN"/>
                             <constraint firstAttribute="trailing" secondItem="SEs-8D-2lN" secondAttribute="trailing" id="mXi-F3-mm3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="peQ-ir-flp"/>
                     </view>
                     <connections>
+                        <outlet property="searchPlaceHolderView" destination="b3l-aH-03V" id="aRH-li-cOJ"/>
                         <outlet property="tvSeriesCollectionView" destination="SEs-8D-2lN" id="50M-aq-m0I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vuB-fn-ZQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5220" y="1230.6650246305419"/>
+            <point key="canvasLocation" x="5217.3913043478269" y="1230.46875"/>
         </scene>
         <!--PopularTV Series View Controller-->
         <scene sceneID="qj0-i0-8EP">
@@ -319,8 +341,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jfJ-s2-lTH">
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="cVS-pj-Dqo"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NW2-Bj-L1s">
-                                <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
+                                <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="NAg-1M-C3S">
                                     <size key="itemSize" width="170" height="220"/>
@@ -337,20 +366,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NW2-Bj-L1s" firstAttribute="top" secondItem="Qcz-b5-uja" secondAttribute="top" id="Kgh-Vz-JKm"/>
+                            <constraint firstItem="jfJ-s2-lTH" firstAttribute="top" secondItem="Qcz-b5-uja" secondAttribute="top" id="Rc5-oL-SqJ"/>
                             <constraint firstItem="NW2-Bj-L1s" firstAttribute="leading" secondItem="Qcz-b5-uja" secondAttribute="leading" id="UTQ-As-2tM"/>
+                            <constraint firstItem="NW2-Bj-L1s" firstAttribute="top" secondItem="jfJ-s2-lTH" secondAttribute="bottom" id="Vk1-uF-Ule"/>
+                            <constraint firstItem="jfJ-s2-lTH" firstAttribute="leading" secondItem="Rbh-fZ-II0" secondAttribute="leading" id="Zbq-T7-gRS"/>
+                            <constraint firstItem="jfJ-s2-lTH" firstAttribute="trailing" secondItem="Rbh-fZ-II0" secondAttribute="trailing" id="cch-y0-pud"/>
                             <constraint firstAttribute="trailing" secondItem="NW2-Bj-L1s" secondAttribute="trailing" id="mtD-kU-GDk"/>
                             <constraint firstAttribute="bottom" secondItem="NW2-Bj-L1s" secondAttribute="bottom" id="qQs-Wl-VfL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rbh-fZ-II0"/>
                     </view>
                     <connections>
+                        <outlet property="searchPlaceHolderView" destination="jfJ-s2-lTH" id="3av-oy-id8"/>
                         <outlet property="tvSeriesCollectionView" destination="NW2-Bj-L1s" id="bIu-32-sjE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kce-um-T6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4886" y="-755"/>
+            <point key="canvasLocation" x="4885.507246376812" y="-755.02232142857144"/>
         </scene>
         <!--Popular Movies View Controller-->
         <scene sceneID="9wX-1s-fTD">
@@ -360,8 +393,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1W-W8-Kcn">
+                                <rect key="frame" x="0.0" y="0.0" width="398" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="MZc-OJ-orT"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UMI-kP-Axm">
-                                <rect key="frame" x="0.0" y="0.0" width="398" height="709"/>
+                                <rect key="frame" x="0.0" y="65" width="398" height="644"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="50" minimumInteritemSpacing="10" id="UvC-7k-9n0">
                                     <size key="itemSize" width="170" height="220"/>
@@ -378,20 +418,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="UMI-kP-Axm" firstAttribute="top" secondItem="F1W-W8-Kcn" secondAttribute="bottom" id="4GD-ZU-cia"/>
                             <constraint firstAttribute="bottom" secondItem="UMI-kP-Axm" secondAttribute="bottom" id="4iD-x4-R89"/>
                             <constraint firstItem="UMI-kP-Axm" firstAttribute="leading" secondItem="N8l-6B-6Re" secondAttribute="leading" id="B3K-QA-gJR"/>
-                            <constraint firstItem="UMI-kP-Axm" firstAttribute="top" secondItem="N8l-6B-6Re" secondAttribute="top" id="lHC-D1-8gK"/>
+                            <constraint firstItem="F1W-W8-Kcn" firstAttribute="top" secondItem="N8l-6B-6Re" secondAttribute="top" id="VQn-1g-S5a"/>
                             <constraint firstAttribute="trailing" secondItem="UMI-kP-Axm" secondAttribute="trailing" id="oqF-VX-TBx"/>
+                            <constraint firstItem="F1W-W8-Kcn" firstAttribute="trailing" secondItem="I5r-eX-CHB" secondAttribute="trailing" id="pI0-JX-Rmm"/>
+                            <constraint firstItem="F1W-W8-Kcn" firstAttribute="leading" secondItem="I5r-eX-CHB" secondAttribute="leading" id="pPw-18-S5K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I5r-eX-CHB"/>
                     </view>
                     <connections>
                         <outlet property="moviesCollectionView" destination="UMI-kP-Axm" id="BgQ-ZJ-GLs"/>
+                        <outlet property="searchPlaceHolderView" destination="F1W-W8-Kcn" id="KOo-xD-Euf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFn-ev-p6Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4886" y="-150"/>
+            <point key="canvasLocation" x="4885.507246376812" y="-150.33482142857142"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Rf6-fr-Ott">
@@ -442,7 +486,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rZP-8e-guw">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZP-8e-guw">
                                                 <rect key="frame" x="13" y="75.666666666666686" width="372" height="218"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>

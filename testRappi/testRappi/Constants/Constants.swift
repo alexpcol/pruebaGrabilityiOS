@@ -33,6 +33,10 @@ enum URLPaths: String {
     
     //MARK:- Upcoming Category
     case upcomingMovies = "/movie/upcoming"
+    
+    //MARK:- Detail Category
+    case movieDetail = "/movie/" //Add id
+    case tvDetail = "/tv/"
 }
 
 enum QueryString: String {
@@ -41,6 +45,8 @@ enum QueryString: String {
     case language = "&language="
     case page = "&page="
     case region = "&region="
+    
+    case appendToResponse = "&append_to_response="
 }
 
 enum CellsIdentifiers: String{

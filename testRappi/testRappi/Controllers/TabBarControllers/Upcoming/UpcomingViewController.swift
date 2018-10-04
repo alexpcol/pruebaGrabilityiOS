@@ -17,6 +17,7 @@ class UpcomingViewController: UIViewController {
     private var currentPage = 1
     private var totalOfPages = 0
     var isLoading:Bool = false
+    
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     
     // MARK: - Lifecycle Methods
@@ -38,7 +39,7 @@ class UpcomingViewController: UIViewController {
     {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
-        service.getUpcomingMovies(language: nil, page: 1, region: nil)
+        service.getUpcomingMovies(language: nil, page: page, region: nil)
     }
     
     func getUpcomingMoviesCache()

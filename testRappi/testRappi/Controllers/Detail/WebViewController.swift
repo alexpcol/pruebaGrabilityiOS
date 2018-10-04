@@ -13,6 +13,7 @@ class WebViewController: UIViewController {
 
     
     // MARK: - Variables
+    var videoKey: String!
     @IBOutlet weak var webView: WKWebView!
     
     // MARK: - Lifecycle methods
@@ -22,7 +23,7 @@ class WebViewController: UIViewController {
     }
     func getVideo()
     {
-        let url = URL(string: "https://www.youtube.com/watch?v=SPHfeNgogVs")
+        let url = URL(string: URLS.youtubeURL.rawValue + videoKey)
         webView.load(URLRequest(url: url!))
     }
 
