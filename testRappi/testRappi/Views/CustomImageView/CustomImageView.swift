@@ -21,7 +21,13 @@ class CustomImageView: UIImageView {
         self.urlStringItem = urlString
         if let imageCache = CustomImageView.cache.object(forKey: urlString as NSString)
         {
-            image = imageCache.image
+            DispatchQueue.main.async {
+                UIView.transition(with: self,
+                                  duration:0.45,
+                                  options: .transitionCrossDissolve,
+                                  animations: {self.image = imageCache.image },
+                                  completion: nil)
+            }
             completion?()
         }
         else
@@ -47,7 +53,14 @@ class CustomImageView: UIImageView {
                     CustomImageView.cache.setObject(imageCache, forKey: url.absoluteString as NSString)
                     if url.absoluteString == self.urlStringItem
                     {
-                        self.image = image
+                        //self.image = image
+                        DispatchQueue.main.async {
+                            UIView.transition(with: self,
+                                              duration:0.45,
+                                              options: .transitionCrossDissolve,
+                                              animations: {self.image = image },
+                                              completion: nil)
+                        }
                         completion?()
                     }
                 }

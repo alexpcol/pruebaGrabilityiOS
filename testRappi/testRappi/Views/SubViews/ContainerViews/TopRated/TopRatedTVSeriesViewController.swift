@@ -37,7 +37,7 @@ class TopRatedTVSeriesViewController: UIViewController {
     // MARK: - Request methods
     func getTopRatedTVSeries(page: NSInteger, showActivity: Bool)
     {
-        UIHelper.showActivityIndicator(in: self.view)
+        if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getTopRatedTVSeries(language: nil, page: page, region: nil)
     }

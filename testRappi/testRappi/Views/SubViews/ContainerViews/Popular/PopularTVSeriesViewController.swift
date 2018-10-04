@@ -37,7 +37,7 @@ class PopularTVSeriesViewController: UIViewController {
     // MARK:- Requests Methods
     func getPopularTVSeries(page: NSInteger, showActivity: Bool)
     {
-        UIHelper.showActivityIndicator(in: self.view)
+        if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getPopularTVSeries(language: nil, page: page, region: nil)
     }
