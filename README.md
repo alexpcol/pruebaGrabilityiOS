@@ -1,4 +1,4 @@
-# pruebaGrabilityiOS The Movie Data Base
+# The Movie Data Base
 Test Rappi
 El proyecto esta realizado en swift
 
