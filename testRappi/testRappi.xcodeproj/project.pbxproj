@@ -217,7 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				572ABBBA21645ABF00CAAC08 /* DetailViewController.swift */,
-				57964FB8216586E90062E8C4 /* WebViewController.swift */,
+				ACFD8D872167ACDD0096D60B /* WebViewForVideo */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -447,6 +447,14 @@
 				ACFD8D852166CADC0096D60B /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		ACFD8D872167ACDD0096D60B /* WebViewForVideo */ = {
+			isa = PBXGroup;
+			children = (
+				57964FB8216586E90062E8C4 /* WebViewController.swift */,
+			);
+			path = WebViewForVideo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
