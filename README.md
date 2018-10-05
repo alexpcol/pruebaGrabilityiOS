@@ -24,7 +24,7 @@ El proyecto esta realizado en swift
 El proyecto en Xcode se divide en 5 capas principales
 
 1) Models
-2) Constans
+2) Constants
 3) Helpers
 4) Controllers
 5) Views
@@ -35,17 +35,76 @@ El proyecto en Xcode se divide en 5 capas principales
 
     En esta se encuentran las clases para almacenar los objetos con los que se trabajan, como se estan realizando consultas al API de The Movie Database los principales elementos que necesitamos son "Movie" o "TVSerie"
     
-    Los objetos de esta API contienen varios campos para dichos elementos (Movie, TVSeire) de los cuales solo obtengo los siguientes:
+    Los objetos de esta API contienen varios campos para dichos elementos (Movie, TVSeire) de los cuales solo obtengo algunos campos como se pueden ver en los ejemplos de las clases:
     
-        Movie
-        - id, title, posterPath, releaseDate, overview
+        class MovieData: BaseItem {
         
-        TVSerie
-        - id, name, posterPath, firstAirDate, overview
-        
-    Los cuales se almacenan en las clases "TVSerieData" y "MovieData" respectivamente, heredando de una clase base que contiene los elementos en común
-    
+        var title: String?
+        var releaseDate: String?
 
+        init(id: NSInteger?,
+            title: String?,
+            posterPath: String?,
+            releaseDate: String?,
+            overview: String?)
+            {
+                super.init(id: id, posterPath: posterPath, overview: overview)
+                self.title = title
+                self.releaseDate = releaseDate
+            }
+        }
+        
+        
+        class MoviesData: NSObject {
+        
+        var movies: [MovieData]?
+        
+        override init() {}
+        
+        init(movies: [MovieData]?)
+            {
+                self.movies = movies
+            }
+        
+        }
+        
+    Los cuales se almacenan en las clases "TVSerieData" y "MovieData" respectivamente, heredando de una clase base que contiene los elementos en común el id, el posterPath y el overview.
     
+    Adicionalemente se cuenta con una clase "VideoData" ya que al obtener los videos de alguno de los elementos vienen como un arreglo de objetos de igual manera solo tomo la información que necesito.
+
+    Por último esta la clase  "SearchItem" donde se almecnan los objetos al momento de realizar una busqueda online ya que esta trae ambos elementos, "Movie" y "TVSerie"
     
+----------------------------------------------------------------------------------------------------------------------------------------
+
+2) Constants
+
+    Se utiliza para manejar y administrar los strings hardcodeados, que se requieren para acceder a los nodos de la aplicación o identificadores de controladores, por medio de enums y estan divididos por categorias:
+    
+        enum ServicesFieldsKeys: String{
+            case totalPages = "total_pages"
+            case results = "results"
+            case errors = "errors"
+            case statusMessage = "status_message"
+            case mediaType = "media_type"
+            
+            case title = "title"
+            case name = "name"
+            case posterPath = "poster_path"
+            case firstAirDate = "first_air_date"
+            case releadeDate = "release_date"
+            case overview = "overview"
+            case id = "id"
+            case key = "key"
+            case site = "site"
+        }
+    Este es un ejemplo de como estan organizados los campos de los objetos de los servicios
+    
+----------------------------------------------------------------------------------------------------------------------------------------
+
+3) Helpers
+
+    En helpers se encuantran varias clases, que como su nombre lo indica, nos ayudan a realizar "tareas genericas" o funciones que se requieren a lo largo de la aplicación algunas de ellas se han obtenido a lo largo de proyectos previos. Los Helpers son los siguientes (Con sus respectivas clases).
+        
+    1) DeviceHelper - NetworkHelper.swift: "Revisa si el dispositivo cuenta con Internet"
+    1) DeviceHelper - NetworkHelper.swift: "Revisa si el dispositivo cuenta con Internet"
 

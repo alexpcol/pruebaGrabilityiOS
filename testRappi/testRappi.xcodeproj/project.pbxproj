@@ -192,12 +192,12 @@
 			isa = PBXGroup;
 			children = (
 				ACD7CCA621656A9800039825 /* DeviceHelper */,
-				ACD7CCA021654A0B00039825 /* CacheHelper */,
 				ACC693862163DE7800B0F623 /* UIHelper */,
 				574925982162B5F200E84F79 /* Alerts */,
 				5749259C2162B67800E84F79 /* APIRestServices */,
 				574925A32162B77900E84F79 /* ActivityPresenter */,
 				AC99047B2162B9B500676C76 /* DataTypeChanger */,
+				ACD7CCA021654A0B00039825 /* CacheHelper */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

@@ -24,5 +24,4 @@ class MovieData: BaseItem {
         self.title = title
         self.releaseDate = releaseDate
     }
-
 }
