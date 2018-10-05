@@ -21,6 +21,7 @@ class CustomImageView: UIImageView {
         self.urlStringItem = urlString
         if let imageCache = CustomImageView.cache.object(forKey: urlString as NSString)
         {
+            shouldShowDefault = false
             DispatchQueue.main.async {
                 UIView.transition(with: self,
                                   duration:0.45,
@@ -53,7 +54,7 @@ class CustomImageView: UIImageView {
                     CustomImageView.cache.setObject(imageCache, forKey: url.absoluteString as NSString)
                     if url.absoluteString == self.urlStringItem
                     {
-                        //self.image = image
+                        self.shouldShowDefault = false
                         DispatchQueue.main.async {
                             UIView.transition(with: self,
                                               duration:0.45,
