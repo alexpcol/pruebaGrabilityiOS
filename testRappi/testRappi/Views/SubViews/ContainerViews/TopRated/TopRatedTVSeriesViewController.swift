@@ -94,7 +94,7 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue, for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = filteredArrayOfTVSeries[indexPath.row].name
         cell.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfTVSeries[indexPath.row].posterPath!)
@@ -103,7 +103,7 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! MovieCollectionViewCell
-        let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIdentifiers.detailVC.rawValue) as! DetailViewController
         
         DetailViewController.titleString = filteredArrayOfTVSeries[indexPath.row].name
         DetailViewController.dateString = filteredArrayOfTVSeries[indexPath.row].firstAirDate
@@ -152,14 +152,14 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegateFlowLayout
 extension TopRatedTVSeriesViewController: UIScrollViewDelegate
 {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let threshold   = 100.0 ;
+        let pointToReach   = 150.0 ;
         let contentOffset = scrollView.contentOffset.y;
         let contentHeight = scrollView.contentSize.height;
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
-        var triggerThreshold  = Float((diffHeight - frameHeight))/Float(threshold);
-        triggerThreshold   =  min(triggerThreshold, 0.0)
-        let pullRatio  = min(abs(triggerThreshold),1.0);
+        var reachedThePoint  = Float((diffHeight - frameHeight))/Float(pointToReach);
+        reachedThePoint   =  min(reachedThePoint, 0.0)
+        let pullRatio  = min(abs(reachedThePoint),1.0);
         self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
         if pullRatio >= 1 {
             self.footerView?.animateFinal()
@@ -195,10 +195,10 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         print("success")
         self.isLoading = false
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
-        if let pages = resultDic?["total_pages"] as? NSInteger{
+        if let pages = resultDic?[ServicesFieldsKeys.totalPages.rawValue] as? NSInteger{
             self.totalOfPages = pages
         }
-        if let results = resultDic?["results"] as? [[String : Any]]
+        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]]
         {
             let auxArrayOfTVSeries = DataTypeChanger.CreateArrayOfTVSeries(results: results)
             
@@ -224,13 +224,13 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         self.isLoading = false
         var messagage = ""
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Error)
-        if let errors: [String] = resultDic?["errors"] as? [String]
+        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String]
         {
             messagage = errors[0]
         }
         else
         {
-            if let statusMessagage: String = resultDic?["status_message"] as? String
+            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String
             {
                 messagage = statusMessagage
             }
@@ -241,7 +241,7 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         }
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)
-            AlertsPresenter.showOKAlert(title: "Error", andMessage: messagage, inView: self)
+            AlertsPresenter.showOKAlert(title: messagesTitle.error.rawValue, andMessage: messagage, inView: self)
         }
     }
 }

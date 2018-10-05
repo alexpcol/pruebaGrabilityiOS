@@ -45,40 +45,40 @@ class DataTypeChanger: NSObject {
             var date = ""
             var overview = ""
             
-            if let mediaTypeString = result["media_type"] as? String
+            if let mediaTypeString = result[ServicesFieldsKeys.mediaType.rawValue] as? String
             {
                 if mediaTypeString == "tv" || mediaTypeString == "movie"
                 {
                     mediaType = mediaTypeString
-                    if let titleString = result["title"] as? String
+                    if let titleString = result[ServicesFieldsKeys.title.rawValue] as? String
                     {
                         title = titleString
                     }
-                    else if let nameString = result["name"] as? String
+                    else if let nameString = result[ServicesFieldsKeys.name.rawValue] as? String
                     {
                         title = nameString
                     }
                     
-                    if let posterPathString = result["poster_path"] as? String
+                    if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String
                     {
                         posterPath = posterPathString
                     }
                     
-                    if let releaseDateString = result["release_date"] as? String
+                    if let releaseDateString = result[ServicesFieldsKeys.releadeDate.rawValue] as? String
                     {
                         date = releaseDateString
                     }
-                    else if let firstAirDateString = result["first_air_date"] as? String
+                    else if let firstAirDateString = result[ServicesFieldsKeys.firstAirDate.rawValue] as? String
                     {
                         date = firstAirDateString
                     }
                     
-                    if let overviewString = result["overview"] as? String
+                    if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String
                     {
                         overview = overviewString
                     }
                     
-                    if let idInteger = result["id"] as? NSInteger
+                    if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger
                     {
                         id = idInteger
                     }
@@ -104,25 +104,25 @@ class DataTypeChanger: NSObject {
             var releaseDate = ""
             var overview = ""
             
-            if let titleString = result["title"] as? String
+            if let titleString = result[ServicesFieldsKeys.title.rawValue] as? String
             {
                 title = titleString
             }
-            if let posterPathString = result["poster_path"] as? String
+            if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String
             {
                 posterPath = posterPathString
             }
             
-            if let releaseDateString = result["release_date"] as? String
+            if let releaseDateString = result[ServicesFieldsKeys.releadeDate.rawValue] as? String
             {
                 releaseDate = releaseDateString
             }
-            if let overviewString = result["overview"] as? String
+            if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String
             {
                 overview = overviewString
             }
             
-            if let idInteger = result["id"] as? NSInteger
+            if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger
             {
                 id = idInteger
             }
@@ -143,24 +143,24 @@ class DataTypeChanger: NSObject {
             var firstAirDate = ""
             var overview = ""
             
-            if let nameString = result["name"] as? String
+            if let nameString = result[ServicesFieldsKeys.name.rawValue] as? String
             {
                 name = nameString
             }
-            if let posterPathString = result["poster_path"] as? String
+            if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String
             {
                 posterPath = posterPathString
             }
             
-            if let firstAirDateString = result["first_air_date"] as? String
+            if let firstAirDateString = result[ServicesFieldsKeys.firstAirDate.rawValue] as? String
             {
                 firstAirDate = firstAirDateString
             }
-            if let overviewString = result["overview"] as? String
+            if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String
             {
                 overview = overviewString
             }
-            if let idInteger = result["id"] as? NSInteger
+            if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger
             {
                 id = idInteger
             }
@@ -179,16 +179,16 @@ class DataTypeChanger: NSObject {
             var key = ""
             var site = ""
             
-            if let idString = result["id"] as? String
+            if let idString = result[ServicesFieldsKeys.id.rawValue] as? String
             {
                 id = idString
             }
-            if let keyString = result["key"] as? String
+            if let keyString = result[ServicesFieldsKeys.key.rawValue] as? String
             {
                 key = keyString
             }
             
-            if let siteString = result["site"] as? String
+            if let siteString = result[ServicesFieldsKeys.site.rawValue] as? String
             {
                 site = siteString
             }

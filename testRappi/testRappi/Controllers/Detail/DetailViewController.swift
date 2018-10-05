@@ -65,7 +65,7 @@ class DetailViewController: UIViewController {
     // MARK: - Changeview Methods
     func pushNextView(video: VideoData)
     {
-        let WebViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        let WebViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIdentifiers.webVC.rawValue) as! WebViewController
         WebViewController.videoKey = video.key
         self.navigationController?.pushViewController(WebViewController, animated: true)
     }
@@ -91,14 +91,22 @@ extension DetailViewController: ResponseServicesProtocol
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
         if let videos = resultDic?["videos"] as? [String : Any]
         {
-            if let results = videos["results"] as? [[String :Any]]
+            if let results = videos[ServicesFieldsKeys.results.rawValue] as? [[String :Any]]
             {
                 let auxArrayVideos = DataTypeChanger.CreateArrayOfVideos(results: results)
-                let video = VideoData.init(id: auxArrayVideos[0].id, key: auxArrayVideos[0].key, site: auxArrayVideos[0].site)
-                DispatchQueue.main.async {
-                    self.pushNextView(video: video)
+                if !auxArrayVideos.isEmpty
+                {
+                    let video = VideoData.init(id: auxArrayVideos[0].id, key: auxArrayVideos[0].key, site: auxArrayVideos[0].site)
+                    DispatchQueue.main.async {
+                        self.pushNextView(video: video)
+                    }
                 }
-                
+                else
+                {
+                    DispatchQueue.main.async {
+                        AlertsPresenter.showOKAlert(title: messagesTitle.sorry.rawValue, andMessage: messagesText.noVideos.rawValue, inView: self)
+                    }
+                }
             }
         }
         
@@ -111,13 +119,13 @@ extension DetailViewController: ResponseServicesProtocol
         print("Error")
         var messagage = ""
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Error)
-        if let errors: [String] = resultDic?["errors"] as? [String]
+        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String]
         {
             messagage = errors[0]
         }
         else
         {
-            if let statusMessagage: String = resultDic?["status_message"] as? String
+            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String
             {
                 messagage = statusMessagage
             }
@@ -128,7 +136,7 @@ extension DetailViewController: ResponseServicesProtocol
         }
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)
-            AlertsPresenter.showOKAlert(title: "Error", andMessage: messagage, inView: self)
+            AlertsPresenter.showOKAlert(title: messagesTitle.error.rawValue, andMessage: messagage, inView: self)
         }
     }
     

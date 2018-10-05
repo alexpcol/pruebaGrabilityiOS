@@ -64,4 +64,8 @@ class UIHelper: NSObject {
             }
         }
     }
+    static func setLargeTitles(in viewController: UIViewController)
+    {
+        viewController.navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }

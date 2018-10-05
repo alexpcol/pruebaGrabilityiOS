@@ -70,3 +70,35 @@ enum CacheKeys: String{
     case popularTVSeries = "popularTVSeriesKey"
     case topRatedTVSeries = "topRatedTVSeriesKey"
 }
+
+enum messagesText: String{
+    case noVideos = "No videos founded"
+}
+
+enum messagesTitle: String{
+    case sorry = "Sorry"
+    case error = "Error"
+}
+
+enum ServicesFieldsKeys: String{
+    case totalPages = "total_pages"
+    case results = "results"
+    case errors = "errors"
+    case statusMessage = "status_message"
+    case mediaType = "media_type"
+    
+    case title = "title"
+    case name = "name"
+    case posterPath = "poster_path"
+    case firstAirDate = "first_air_date"
+    case releadeDate = "release_date"
+    case overview = "overview"
+    case id = "id"
+    case key = "key"
+    case site = "site"
+}
+
+enum ViewControllerIdentifiers: String{
+    case detailVC = "DetailViewController"
+    case webVC = "WebViewController"
+}
