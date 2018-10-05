@@ -18,7 +18,7 @@ class PopularViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    // MARK:- Action Methods
     @IBAction func segmentIndexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:

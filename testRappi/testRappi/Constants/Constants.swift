@@ -78,6 +78,7 @@ enum messagesText: String{
 enum messagesTitle: String{
     case sorry = "Sorry"
     case error = "Error"
+    case ok = "OK"
 }
 
 enum ServicesFieldsKeys: String{
@@ -101,4 +102,11 @@ enum ServicesFieldsKeys: String{
 enum ViewControllerIdentifiers: String{
     case detailVC = "DetailViewController"
     case webVC = "WebViewController"
+}
+
+enum ErrorMessages: String{
+    case noInternet = "No Internet connection"
+    case sorryErrorSystem = "Sorry! an error occurred in the system, please try again later"
+    case error404 = "Error 404: Resource not found"
+    case error400 = "Error 400: Bad request"
 }

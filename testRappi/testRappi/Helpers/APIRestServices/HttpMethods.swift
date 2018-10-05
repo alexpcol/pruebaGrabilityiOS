@@ -43,7 +43,7 @@ class HttpMethods: NSObject {
     
     func notInternetAlert()
     {
-        self.delegate?.onError(Error: "No Internet connection", name : .NO_INTERNET)
+        self.delegate?.onError(Error: ErrorMessages.noInternet.rawValue, name : .NO_INTERNET)
         return
     }
     
@@ -148,7 +148,7 @@ extension HttpMethods
             {
                 self.requestDone = true
                 print("FATAL Error")
-                self.delegate?.onError(Error: "Sorry! an error occurred in the system, please try again later", name : self.currentService!)
+                self.delegate?.onError(Error: ErrorMessages.sorryErrorSystem.rawValue, name : self.currentService!)
                 return
             }
             
@@ -159,7 +159,7 @@ extension HttpMethods
                 let responseString = String(data: data, encoding: .utf8)
                 print("Result:\n \(String(describing: responseString!))")
                 
-                self.delegate?.onError(Error: "Error 404: Resource not found", name : self.currentService!)
+                self.delegate?.onError(Error: ErrorMessages.error404.rawValue, name : self.currentService!)
                 return
             }
             
@@ -170,7 +170,7 @@ extension HttpMethods
                 let responseString = String(data: data, encoding: .utf8)
                 print("Result:\n \(String(describing: responseString!))")
                 
-                self.delegate?.onError(Error: "Error 400: Bad request", name : self.currentService!)
+                self.delegate?.onError(Error: ErrorMessages.error400.rawValue, name : self.currentService!)
                 return
             }
             

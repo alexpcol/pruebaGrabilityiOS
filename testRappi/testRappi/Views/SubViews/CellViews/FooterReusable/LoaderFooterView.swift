@@ -31,7 +31,6 @@ class LoaderFooterView: UICollectionReusableView {
         self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
     }
     
-    //reset the animation
     func prepareInitialAnimation() {
         self.isAnimatingFinal = false
         self.refreshControlIndicator?.stopAnimating()
