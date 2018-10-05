@@ -21,7 +21,6 @@
 		5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925992162B61A00E84F79 /* ServicesNames.swift */; };
 		5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259D2162B6A200E84F79 /* HttpMethods.swift */; };
 		574925A02162B6E400E84F79 /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749259F2162B6E400E84F79 /* APIServices.swift */; };
-		574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A12162B75F00E84F79 /* ActivityPresenter.swift */; };
 		574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574925A42162B93300E84F79 /* DataTypeChanger.swift */; };
 		577E8F642167B7C300797746 /* testRappiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577E8F632167B7C300797746 /* testRappiTests.swift */; };
 		57964FB9216586E90062E8C4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57964FB8216586E90062E8C4 /* WebViewController.swift */; };
@@ -77,7 +76,6 @@
 		574925992162B61A00E84F79 /* ServicesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesNames.swift; sourceTree = "<group>"; };
 		5749259D2162B6A200E84F79 /* HttpMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethods.swift; sourceTree = "<group>"; };
 		5749259F2162B6E400E84F79 /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
-		574925A12162B75F00E84F79 /* ActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPresenter.swift; sourceTree = "<group>"; };
 		574925A42162B93300E84F79 /* DataTypeChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTypeChanger.swift; sourceTree = "<group>"; };
 		577E8F612167B7C300797746 /* testRappiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testRappiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		577E8F632167B7C300797746 /* testRappiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRappiTests.swift; sourceTree = "<group>"; };
@@ -195,7 +193,6 @@
 				ACC693862163DE7800B0F623 /* UIHelper */,
 				574925982162B5F200E84F79 /* Alerts */,
 				5749259C2162B67800E84F79 /* APIRestServices */,
-				574925A32162B77900E84F79 /* ActivityPresenter */,
 				AC99047B2162B9B500676C76 /* DataTypeChanger */,
 				ACD7CCA021654A0B00039825 /* CacheHelper */,
 			);
@@ -226,14 +223,6 @@
 				5749259B2162B65600E84F79 /* ServicesNames */,
 			);
 			path = APIRestServices;
-			sourceTree = "<group>";
-		};
-		574925A32162B77900E84F79 /* ActivityPresenter */ = {
-			isa = PBXGroup;
-			children = (
-				574925A12162B75F00E84F79 /* ActivityPresenter.swift */,
-			);
-			path = ActivityPresenter;
 			sourceTree = "<group>";
 		};
 		577E8F622167B7C300797746 /* testRappiTests */ = {
@@ -626,7 +615,6 @@
 				ACC6938E21641A5800B0F623 /* TopRatedViewController.swift in Sources */,
 				ACD7CCA52165692A00039825 /* CacheBase.swift in Sources */,
 				572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */,
-				574925A22162B75F00E84F79 /* ActivityPresenter.swift in Sources */,
 				5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */,
 				ACD7CC9F2165493C00039825 /* TVSeriesData.swift in Sources */,
 				ACC6939621641B7800B0F623 /* TopRatedTVSeriesViewController.swift in Sources */,
