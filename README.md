@@ -102,7 +102,27 @@ En helpers se encuantran varias clases, que como su nombre lo indica, nos ayudan
 - APIServices.swift "Metodos que preparan la URL para acceder al endpoint ya sea obtener el TopRatedMovies o PopularMovies y hace la llamada por medio de la clase anterior."
 Adicionalmente cuenta con un enum de identificadores de los endpoints que se estan accediendo, ya que en los Controladores que extiendan el protocolo puedan identificar la respuesta de cada edpoint al que se accedió.
 
-5) ActivityPresenter - NetworkHelper.swift: "Revisa si el dispositivo cuenta con Internet"
-6) DataTypeChanger - NetworkHelper.swift: "Revisa si el dispositivo cuenta con Internet"
-7) CacheHelper - NetworkHelper.swift: "Revisa si el dispositivo cuenta con Internet"
+6) DataTypeChanger - DataTypeChanger.swift: "Se encarga de generar los arreglos del tipo de los modelos, de las respuestas del API para poder trabajar con ellos"
+
+7) CacheHelper 
+- CacheBase.swift: "Cuenta con las variables de tipo NSCache que nos ayudan a almacenar las respuestas del servidor"
+- CacheGetter.swift: "Encargato de obtener los arreglos salvados en cache"
+- CacheSaver.swift: "Encargado de salvar los arreglos en cache"
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+4) Controllers
+
+Aqui las carpetas se agrupan por como esta el flujo de la aplicación, la cual describiré brevemente en este momento:
+Inicia con un TabBar controller que contiene 4 Tabs:
+    
+1) Popular - PopularViewController.swift: "Controlador anidado en un navigationController que cuenta con 3 elementos un SegmentedControl y 2 ContainersView el controlador se encarga de mostrar u ocultar alguno de los containers dependiendo de lo que seleccione en el segmentedControl"
+
+2) TopRated - TopRatedViewController.swift: "Controlador anidado en un navigationController que cuenta con 3 elementos un SegmentedControl y 2 ContainersView el controlador se encarga de mostrar u ocultar alguno de los containers dependiendo de lo que seleccione en el segmentedControl"
+
+3) Upcoming - UpcomingViewController.swift: "Controlador anidado en un navigationController cuenta con un collectionView el cual despliega en este caso las peliculas que se van a estrenar próximamente, se realizan configuraciónes en la navBar, de las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Upcoming Movies"
+
+4) Search - SearchViewController.swift: "Controlador anidado en un navigationController cuenta con un collectionView el cual despliega en este caso los elementos que se recuperan el endpoint de busqueda y se filtran a que solo se obtengan los elementos de tipo 'tv'o 'movie', se realizan configuraciónes en la navBar, de las celdas del collectionView, manejo del scroll y las respuestas del API para obtener los Resultados de  la busqueda"
+
 
