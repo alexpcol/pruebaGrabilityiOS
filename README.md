@@ -37,36 +37,22 @@ En esta se encuentran las clases para almacenar los objetos con los que se traba
 
 Los objetos de esta API contienen varios campos para dichos elementos (Movie, TVSeire) de los cuales solo obtengo algunos campos como se pueden ver en los ejemplos de las clases:
 
-class MovieData: BaseItem {
+    class MovieData: BaseItem {
 
-var title: String?
-var releaseDate: String?
+    var title: String?
+    var releaseDate: String?
 
-init(id: NSInteger?,
-title: String?,
-posterPath: String?,
-releaseDate: String?,
-overview: String?)
-{
-super.init(id: id, posterPath: posterPath, overview: overview)
-self.title = title
-self.releaseDate = releaseDate
-}
-}
-
-
-class MoviesData: NSObject {
-
-var movies: [MovieData]?
-
-override init() {}
-
-init(movies: [MovieData]?)
-{
-self.movies = movies
-}
-
-}
+    init(id: NSInteger?,
+        title: String?,
+        posterPath: String?,
+        releaseDate: String?,
+        overview: String?)
+        {
+            super.init(id: id, posterPath: posterPath, overview: overview)
+            self.title = title
+            self.releaseDate = releaseDate
+        }
+    }
 
 Los cuales se almacenan en las clases "TVSerieData" y "MovieData" respectivamente, heredando de una clase base que contiene los elementos en común el id, el posterPath y el overview.
 
@@ -80,23 +66,23 @@ Por último esta la clase  "SearchItem" donde se almecnan los objetos al momento
 
 Se utiliza para manejar y administrar los strings hardcodeados, que se requieren para acceder a los nodos de la aplicación o identificadores de controladores, por medio de enums y estan divididos por categorias:
 
-enum ServicesFieldsKeys: String{
-case totalPages = "total_pages"
-case results = "results"
-case errors = "errors"
-case statusMessage = "status_message"
-case mediaType = "media_type"
+    enum ServicesFieldsKeys: String{
+        case totalPages = "total_pages"
+        case results = "results"
+        case errors = "errors"
+        case statusMessage = "status_message"
+        case mediaType = "media_type"
 
-case title = "title"
-case name = "name"
-case posterPath = "poster_path"
-case firstAirDate = "first_air_date"
-case releadeDate = "release_date"
-case overview = "overview"
-case id = "id"
-case key = "key"
-case site = "site"
-}
+        case title = "title"
+        case name = "name"
+        case posterPath = "poster_path"
+        case firstAirDate = "first_air_date"
+        case releadeDate = "release_date"
+        case overview = "overview"
+        case id = "id"
+        case key = "key"
+        case site = "site"
+    }
 Este es un ejemplo de como estan organizados los campos de los objetos de los servicios
 
 ----------------------------------------------------------------------------------------------------------------------------------------
