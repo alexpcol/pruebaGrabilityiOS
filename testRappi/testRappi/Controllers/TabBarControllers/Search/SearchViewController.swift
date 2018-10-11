@@ -71,7 +71,8 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text{
             if !searchText.isEmpty{
-                self.searchItem(text: searchText, showActivity: true)
+                let modifiedText = searchText.replacingOccurrences(of: " ", with: "%20")
+                self.searchItem(text: modifiedText, showActivity: true)
             }
         }
     }
