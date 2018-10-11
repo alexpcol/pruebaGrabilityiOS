@@ -111,7 +111,6 @@ Adicionalmente cuenta con un enum de identificadores de los endpoints que se est
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-
 4) Controllers
 
 Aqui las carpetas se agrupan por como esta el flujo de la aplicación, la cual describiré brevemente en este momento:
@@ -121,8 +120,57 @@ Inicia con un TabBar controller que contiene 4 Tabs:
 
 2) TopRated - TopRatedViewController.swift: "Controlador anidado en un navigationController que cuenta con 3 elementos un SegmentedControl y 2 ContainersView el controlador se encarga de mostrar u ocultar alguno de los containers dependiendo de lo que seleccione en el segmentedControl"
 
-3) Upcoming - UpcomingViewController.swift: "Controlador anidado en un navigationController cuenta con un collectionView el cual despliega en este caso las peliculas que se van a estrenar próximamente, se realizan configuraciónes en la navBar, de las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Upcoming Movies"
+3) Upcoming - UpcomingViewController.swift: "Controlador anidado en un navigationController cuenta con un collectionView el cual despliega en este caso las peliculas que se van a estrenar próximamente, se realizan configuraciónes en la navBar, las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Upcoming Movies"
 
-4) Search - SearchViewController.swift: "Controlador anidado en un navigationController cuenta con un collectionView el cual despliega en este caso los elementos que se recuperan el endpoint de busqueda y se filtran a que solo se obtengan los elementos de tipo 'tv'o 'movie', se realizan configuraciónes en la navBar, de las celdas del collectionView, manejo del scroll y las respuestas del API para obtener los Resultados de  la busqueda"
+4) Search - SearchViewController.swift: "Controlador anidado en un navigationController cuenta con un collectionView el cual despliega en este caso los elementos que se recuperan el endpoint de busqueda y se filtran a que solo se obtengan los elementos de tipo 'tv'o 'movie', se realizan configuraciónes en la navBar, las celdas del collectionView, manejo del scroll y las respuestas del API para obtener los Resultados de la busqueda"
 
+Y por último se encuentra sa sección de detalle
+
+   Detail- DetailViewController.swift: "Controlador que se encarga de la vista del detalle ya sea de una película o de una serie de TV en este se muestran el poster el elemento, su título, la fecha en la que se estreno o la fecha en la que salió al aire (en el caso de ser una serie de tv) y un resumen del elemento; el controlador añade un boton de play en la navBar para que se pueda obtenga de la API los videos de elemento si es que cuenta con ellos y te dirige a un webView para mostrar el video de Youtube"
+
+   -WebViewController.swift: "Controlador que se encarga de hacer la petición a la pagina de youtube del trailer del elemento selecionado"
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+5) Views
+
+Cabe destacar que en los primeros 2 controladores PopularViewController.swift y TopRatedViewController.swift tienen 2 containerViews cada uno, los cuales se encuentran en esta carpeta de Views ya que son subViews que viven en ambos controladores respectivamente y se encuentran en la carpeta de SubViews--> ContainerViews
+
+POPULAR:
+- PopularMoviesViewController.swift: "Controlador que cuenta con un collectionView el cual despliega en este caso las peliculas más populares, se realizan configuraciónes en la navBar, las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Popular Movies"
+
+- PopularTVSeriesViewController.swift: "Controlador que cuenta con un collectionView el cual despliega en este caso las series de TV más populares, se realizan configuraciónes en la navBar, las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Popular TV Series"
+
+TOP RATED:
+
+- TopRatedMoviesViewController.swfit: "Controlador que cuenta con un collectionView el cual despliega en este caso las peliculas top rated, se realizan configuraciónes en la navBar, las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Top Rated Movies"
+
+- TopRatedTVSeriesViewController.swift: "Controlador que cuenta con un collectionView el cual despliega en este caso las series de TV Top Rated, se realizan configuraciónes en la navBar, las celdas del collectionView, manejo del scroll y las respuestas del API para obtener las Top Rated TV Series"
+
+Otra carpeta que se encuentra dento de SubViews es CellViews las cuales son las celdas que se utilizan en los collectionVies, para desplegar los items obtenidos del API, estas clases cuentan con su XIB File con sus respectivos elementos visuales
+
+FOOTER
+- LoaderFooterView.swift: "Controlador encarcado de la vista que se usa para mostrar la celda con un activityIndicator cuando se cargan más elementos en el collectionView, o sea la siguiente pagina de los resultados que se consultaron, cuenta con metodos de para animar este activityIndicator ya que para visualizarlo se tiene scrollear hacia arriba el collectionView unos ciertos puntos y esta celda se va a ir mostrando poco a poco, hasta soltarla, cuando esta se suelta se queda en pantalla hasta que se obtienen los nuevos elementos"
+
+MOVIETVSERIECELL
+
+- MovieCollectionViewCell.swift: "Controlador encargado de la celda en la que se presentan los elementos obtenidos"
+
+
+Un elemento custom que se creó fue el CustomImageView.swift que hereda de UIImageView pero cuenta con un método para descargar las imagenes de las URL's de PosterPath y una vez que se hayan descargado se almacenan en cache, para no volver a realizar la llamada para obtenerlas nuevamente cuando estas celdas se reciclen en el collectionView
+
+Por último se encuenta la carpeta donde están los Storyboards, el Main donde se encuentran las pantallas que se utilizan, y el LaunchScreen.
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+# Notas finales
+
+
+El proyecta cuenta con UnitTest File un poco sencillo, ya que la verdad es la primera vez que realizo este tipo de archivo, en el que testeo la descarga de imagenes mi clase customImageView
+
+
+Los iconos que se encuentran en la tabBar, los que no son los genéricos de Xcode, no se ven en la mejor calidad, ya que tuve que utilizar unos de la siguiente página https://icons8.com/icon/new-icons/all?1535574885923
+
+Y el icono de la App lo realice en Keynote 😅
 
