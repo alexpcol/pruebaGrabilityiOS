@@ -73,6 +73,7 @@ enum CacheKeys: String{
 
 enum messagesText: String{
     case noVideos = "No videos founded"
+    case noMoreResults = "There are no more results for this search"
 }
 
 enum messagesTitle: String{

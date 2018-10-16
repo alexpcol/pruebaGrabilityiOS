@@ -23,17 +23,6 @@ class APIServices: NSObject {
         super.init()
     }
     
-    //MARK: - Delegate Methods to VC
-    func onSucces(Result : String, name : ServicesNames)
-    {
-        delegate?.onSucces(Result: Result, name: name);
-    }
-    
-    func onError(Error : String, name : ServicesNames)
-    {
-        delegate?.onError(Error: Error, name: name);
-    }
-    
     //MARK: - APIMethods
     func getPopularMovies(language:String?, page: NSInteger, region: String?)
     {
@@ -206,7 +195,7 @@ class APIServices: NSObject {
     
     func getSearchItem(language:String?, page: NSInteger, region: String?, query:String)
     {
-        let urlRequest = URLS.apiURL.rawValue + URLPaths.searchItem.rawValue
+         let urlRequest = URLS.apiURL.rawValue + URLPaths.searchItem.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
         let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue

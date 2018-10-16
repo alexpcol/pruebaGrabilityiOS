@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
     private var totalOfPages = 0
     var isLoading:Bool = false
     var shouldClearArray: Bool = false
+    var shouldSearchAPI: Bool = true
     var searchController: UISearchController!
     @IBOutlet weak var itemsCollectionView: UICollectionView!
     @IBOutlet weak var searchPlaceHolderView: UIView!
@@ -69,12 +70,20 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate
 {
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text{
-            if !searchText.isEmpty{
-                let modifiedText = searchText.replacingOccurrences(of: " ", with: "%20")
-                self.searchItem(text: modifiedText, showActivity: true)
+        if shouldSearchAPI
+        {
+            if let searchText = searchController.searchBar.text{
+                if !searchText.isEmpty{
+                    let modifiedText = searchText.replacingOccurrences(of: " ", with: "%20")
+                    self.searchItem(text: modifiedText, showActivity: true)
+                }
             }
         }
+        else
+        {
+            shouldSearchAPI = true
+        }
+        
     }
 }
 
@@ -105,6 +114,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         if arrayOfItems[indexPath.row].mediaType == "movie"{ DetailViewController.isMovie = true }
         else { DetailViewController.isMovie = false }
         
+        shouldSearchAPI = false
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
 }
@@ -177,10 +187,19 @@ extension SearchViewController: UIScrollViewDelegate
                     currentPage += 1
                     if let searchText = searchController.searchBar.text{
                         if !searchText.isEmpty{
-                            self.getMoreSearchItems(page: currentPage, text: searchText)
+                            let modifiedText = searchText.replacingOccurrences(of: " ", with: "%20")
+                            self.getMoreSearchItems(page: currentPage, text: modifiedText)
                         }
                     }
                     
+                }
+                else{
+                    self.isLoading = false
+                    self.shouldSearchAPI = false
+                    DispatchQueue.main.async {
+                        AlertsPresenter.showOKAlert(title: messagesTitle.sorry.rawValue, andMessage: messagesText.noMoreResults.rawValue, inView: self)
+                        self.itemsCollectionView.reloadData()
+                    }
                 }
             }
         }
