@@ -18,9 +18,10 @@ class MovieData: BaseItem {
         title: String?,
          posterPath: String?,
          releaseDate: String?,
-         overview: String?)
+         overview: String?,
+         image: UIImage?)
     {
-        super.init(id: id, posterPath: posterPath, overview: overview)
+        super.init(id: id, posterPath: posterPath, image: image, overview: overview)
         self.title = title
         self.releaseDate = releaseDate
     }

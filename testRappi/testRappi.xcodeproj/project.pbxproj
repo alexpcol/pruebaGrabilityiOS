@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		147AFADD225E8E8800B4B32C /* AsyncFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147AFADC225E8E8800B4B32C /* AsyncFetcher.swift */; };
+		147AFADF225E8EA800B4B32C /* AsyncFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147AFADE225E8EA800B4B32C /* AsyncFetcherOperation.swift */; };
 		572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */; };
 		572ABBB721644AF800CAAC08 /* PopularTVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */; };
 		572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */; };
@@ -60,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		147AFADC225E8E8800B4B32C /* AsyncFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFetcher.swift; sourceTree = "<group>"; };
+		147AFADE225E8EA800B4B32C /* AsyncFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncFetcherOperation.swift; sourceTree = "<group>"; };
 		572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
 		572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTVSeriesViewController.swift; sourceTree = "<group>"; };
 		572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingViewController.swift; path = testRappi/Controllers/TabBarControllers/Upcoming/UpcomingViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -124,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		147AFADB225E8E5D00B4B32C /* AsyncDataFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				147AFADC225E8E8800B4B32C /* AsyncFetcher.swift */,
+				147AFADE225E8EA800B4B32C /* AsyncFetcherOperation.swift */,
+			);
+			path = AsyncDataFetcher;
+			sourceTree = "<group>";
+		};
 		572ABBB221644AAB00CAAC08 /* Popular */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +202,7 @@
 		574925942162B58700E84F79 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				147AFADB225E8E5D00B4B32C /* AsyncDataFetcher */,
 				ACD7CCA621656A9800039825 /* DeviceHelper */,
 				ACC693862163DE7800B0F623 /* UIHelper */,
 				574925982162B5F200E84F79 /* Alerts */,
@@ -592,6 +606,7 @@
 				ACD7CCA321654A2E00039825 /* CacheGetter.swift in Sources */,
 				ACD7CC9B216545DD00039825 /* CacheSaver.swift in Sources */,
 				AC9904802162CE2F00676C76 /* MovieData.swift in Sources */,
+				147AFADD225E8E8800B4B32C /* AsyncFetcher.swift in Sources */,
 				572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */,
 				ACD7CC922165341B00039825 /* LoaderFooterView.swift in Sources */,
 				574925972162B5D100E84F79 /* AlertsPresenter.swift in Sources */,
@@ -618,6 +633,7 @@
 				5749257A21626BE100E84F79 /* AppDelegate.swift in Sources */,
 				ACD7CC9F2165493C00039825 /* TVSeriesData.swift in Sources */,
 				ACC6939621641B7800B0F623 /* TopRatedTVSeriesViewController.swift in Sources */,
+				147AFADF225E8EA800B4B32C /* AsyncFetcherOperation.swift in Sources */,
 				ACC693842163CD8000B0F623 /* MovieCollectionViewCell.swift in Sources */,
 				572ABBB721644AF800CAAC08 /* PopularTVSeriesViewController.swift in Sources */,
 				ACFD8D702166918F0096D60B /* ImageCacheItem.swift in Sources */,

@@ -19,9 +19,10 @@ class SearchItem: BaseItem {
          title: String?,
          posterPath: String?,
          date: String?,
-         overview: String?)
+         overview: String?,
+         image: UIImage?)
     {
-        super.init(id: id, posterPath: posterPath, overview: overview)
+        super.init(id: id, posterPath: posterPath, image: image, overview: overview)
         
         self.mediaType = mediaType
         self.title = title

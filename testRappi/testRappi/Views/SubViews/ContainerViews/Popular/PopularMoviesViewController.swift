@@ -101,7 +101,10 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue, for: indexPath) as! MovieCollectionViewCell
         
         cell.titleLabel.text = filteredArrayOfMovies[indexPath.row].title
-        cell.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!)
+        DispatchQueue.main.async {
+            cell.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + self.filteredArrayOfMovies[indexPath.row].posterPath!)
+        }
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

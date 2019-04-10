@@ -11,12 +11,14 @@ import UIKit
 class BaseItem {
     var id: NSInteger?
     var posterPath: String?
+    var image: UIImage?
     var overview: String?
     
-    init(id: NSInteger?, posterPath: String?, overview: String?)
+    init(id: NSInteger?, posterPath: String?, image: UIImage? ,overview: String?)
     {
         self.id = id
         self.posterPath = posterPath
         self.overview = overview
+        self.image = image
     }
 }

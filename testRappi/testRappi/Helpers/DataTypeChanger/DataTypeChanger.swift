@@ -82,7 +82,7 @@ class DataTypeChanger: NSObject {
                     {
                         id = idInteger
                     }
-                    arraySearch.append(SearchItem.init(mediaType: mediaType, id: id, title: title, posterPath: posterPath, date: date, overview: overview))
+                    arraySearch.append(SearchItem.init(mediaType: mediaType, id: id, title: title, posterPath: posterPath, date: date, overview: overview, image: nil))
                 }
             }
             
@@ -126,7 +126,7 @@ class DataTypeChanger: NSObject {
             {
                 id = idInteger
             }
-            arrayMovies.append(MovieData.init(id: id,title: title, posterPath: posterPath, releaseDate: releaseDate, overview: overview))
+            arrayMovies.append(MovieData.init(id: id,title: title, posterPath: posterPath, releaseDate: releaseDate, overview: overview, image: nil))
         }
         
         return arrayMovies
@@ -164,7 +164,7 @@ class DataTypeChanger: NSObject {
             {
                 id = idInteger
             }
-            arrayTVSerie.append(TVSerieData.init(id: id,name: name, posterPath: posterPath, firstAirDate: firstAirDate, overview: overview))
+            arrayTVSerie.append(TVSerieData.init(id: id,name: name, posterPath: posterPath, firstAirDate: firstAirDate, overview: overview, image: nil))
         }
         
         return arrayTVSerie

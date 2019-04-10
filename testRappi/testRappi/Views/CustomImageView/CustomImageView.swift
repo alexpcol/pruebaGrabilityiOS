@@ -34,11 +34,15 @@ class CustomImageView: UIImageView {
         else
         {
             guard let url = URL(string: urlString) else{
-                if self.shouldShowDefault{ image = emptyImage}
+        if self.shouldShowDefault{ image = emptyImage}
                 return
             }
             downloadImage(withURL: url, completion: completion)
         }
+    }
+    
+    func setImageinCache(with key: String){
+        
     }
     
     func downloadImage(withURL url:URL, completion: (() -> ())? = nil)

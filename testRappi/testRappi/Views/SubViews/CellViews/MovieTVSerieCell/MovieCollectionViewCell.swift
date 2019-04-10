@@ -23,5 +23,13 @@ class MovieCollectionViewCell: UICollectionViewCell {
         UIHelper.roundCorners(for: self)
         UIHelper.roundCorners(for: containerView)
     }
+    
+    func configure(with data: MovieData){
+        titleLabel.text = data.title
+        DispatchQueue.main.async {
+            self.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + data.posterPath!)
+        }
+        
+    }
 
 }

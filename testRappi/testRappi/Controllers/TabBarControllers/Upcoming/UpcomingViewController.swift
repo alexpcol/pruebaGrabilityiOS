@@ -99,10 +99,17 @@ extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue, for: indexPath) as! MovieCollectionViewCell
         
-        cell.titleLabel.text = filteredArrayOfMovies[indexPath.row].title
-        cell.posterImageView.getImage(withURL: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[indexPath.row].posterPath!)
+        if indexPath.row == filteredArrayOfMovies.count - 1 {
+            if currentPage < totalOfPages
+            {
+                currentPage += 1
+                getUpcomingMovies(page: currentPage, showActivity: false)
+            }
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue, for: indexPath) as! MovieCollectionViewCell
+        let movie = filteredArrayOfMovies[indexPath.row]
+        cell.configure(with: movie)
         return cell
     }
     
@@ -119,6 +126,17 @@ extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewData
         self.navigationController?.pushViewController(DetailViewController, animated: true)
     }
 }
+
+//extension UpcomingViewController: UICollectionViewDataSourcePrefetching{
+//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+//        <#code#>
+//    }
+//    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+//        <#code#>
+//    }
+//
+//
+//}
 
 extension UpcomingViewController: UICollectionViewDelegateFlowLayout
 {
@@ -167,7 +185,7 @@ extension UpcomingViewController: UIScrollViewDelegate
         let pullRatio  = min(abs(reachedThePoint),1.0);
         self.footerView?.setTransform(inTransform: CGAffineTransform.identity, scaleFactor: CGFloat(pullRatio))
         if pullRatio >= 1 {
-            self.footerView?.animateFinal()
+            //self.footerView?.animateFinal()
         }
     }
     
@@ -179,17 +197,17 @@ extension UpcomingViewController: UIScrollViewDelegate
         let pullHeight  = abs(diffHeight - frameHeight);
         if pullHeight == 0.0
         {
-            if (self.footerView?.isAnimatingFinal)!
-            {
-                print("load more trigger")
-                self.isLoading = true
-                self.footerView?.startAnimate()
-                if currentPage < totalOfPages
-                {
-                    currentPage += 1
-                    getUpcomingMovies(page: currentPage, showActivity: false)
-                }
-            }
+//            if (self.footerView?.isAnimatingFinal)!
+//            {
+//                print("load more trigger")
+//                self.isLoading = true
+//                self.footerView?.startAnimate()
+//                if currentPage < totalOfPages
+//                {
+//                    currentPage += 1
+//                    getUpcomingMovies(page: currentPage, showActivity: false)
+//                }
+//            }
         }
     }
 }
