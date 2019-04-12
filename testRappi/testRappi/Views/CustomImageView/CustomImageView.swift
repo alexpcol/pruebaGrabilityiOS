@@ -19,26 +19,26 @@ class CustomImageView: UIImageView {
     func getImage(withURL urlString:String, completion: (() -> ())? = nil){
         image = nil
         self.urlStringItem = urlString
-        if let imageCache = CustomImageView.cache.object(forKey: urlString as NSString)
-        {
-            shouldShowDefault = false
-            DispatchQueue.main.async {
-                UIView.transition(with: self,
-                                  duration:0.45,
-                                  options: .transitionCrossDissolve,
-                                  animations: {self.image = imageCache.image },
-                                  completion: nil)
-            }
-            completion?()
-        }
-        else
-        {
+//        if let imageCache = CustomImageView.cache.object(forKey: urlString as NSString)
+//        {
+//            shouldShowDefault = false
+//            DispatchQueue.main.async {
+//                UIView.transition(with: self,
+//                                  duration:0.45,
+//                                  options: .transitionCrossDissolve,
+//                                  animations: {self.image = imageCache.image },
+//                                  completion: nil)
+//            }
+//            completion?()
+//        }
+//        else
+//        {
             guard let url = URL(string: urlString) else{
         if self.shouldShowDefault{ image = emptyImage}
                 return
             }
             downloadImage(withURL: url, completion: completion)
-        }
+//        }
     }
     
     func setImageinCache(with key: String){

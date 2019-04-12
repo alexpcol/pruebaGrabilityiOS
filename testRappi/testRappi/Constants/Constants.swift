@@ -17,7 +17,7 @@ enum APIKeys: String {
 enum URLS: String {
     case apiURL = "https://api.themoviedb.org/3"
     case imageBaseURL = "http://image.tmdb.org/t/p/original"
-    case secureImageBaseURL = "https://image.tmdb.org/t/p/w500"
+    case secureImageBaseURL = "https://image.tmdb.org/t/p/original"//w500
     case youtubeURL = "https://www.youtube.com/watch?v="
 }
 
