@@ -62,6 +62,7 @@ class Upcoming2ViewController: UIViewController {
     // MARK:- Configuration Methods
     func configure()
     {
+        moviesCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         if #available(iOS 10.0, *) {
             moviesCollectionView?.isPrefetchingEnabled = true
             moviesCollectionView?.prefetchDataSource = self
