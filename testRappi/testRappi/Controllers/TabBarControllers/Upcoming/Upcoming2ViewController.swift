@@ -1,14 +1,15 @@
 //
-//  UpcomingViewController.swift
+//  Upcoming2ViewController.swift
 //  testRappi
 //
-//  Created by chila on 10/2/18.
-//  Copyright © 2018 chila. All rights reserved.
+//  Created by Mauricio Conde on 4/15/19.
+//  Copyright © 2019 chila. All rights reserved.
 //
 
 import UIKit
+import Nuke
 
-class UpcomingViewController: UIViewController {
+class Upcoming2ViewController: UIViewController {
     
     // MARK: - Variables
     var footerView:LoaderFooterView?
@@ -18,9 +19,10 @@ class UpcomingViewController: UIViewController {
     private var totalOfPages = 0
     var isLoading:Bool = false
     var searchController: UISearchController!
-    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    let preheater = ImagePreheater()
     
-    // MARK: - Lifecycle Methods
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -32,10 +34,11 @@ class UpcomingViewController: UIViewController {
             getUpcomingMoviesCache()
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UIHelper.setLargeTitles(in: self)
     }
-    
     
     // MARK:- Requests Methods
     func getUpcomingMovies(page: NSInteger, showActivity: Bool)
@@ -59,6 +62,10 @@ class UpcomingViewController: UIViewController {
     // MARK:- Configuration Methods
     func configure()
     {
+        if #available(iOS 10.0, *) {
+            moviesCollectionView?.isPrefetchingEnabled = true
+            moviesCollectionView?.prefetchDataSource = self
+        }
         setUpCollectionsViews()
         setUpNavBar()
     }
@@ -76,11 +83,11 @@ class UpcomingViewController: UIViewController {
         moviesCollectionView.contentInsetAdjustmentBehavior = .automatic
         definesPresentationContext = true
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
-    
 }
 
-extension UpcomingViewController: UISearchResultsUpdating, UISearchBarDelegate
+extension Upcoming2ViewController: UISearchResultsUpdating, UISearchBarDelegate
 {
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text{
@@ -89,10 +96,9 @@ extension UpcomingViewController: UISearchResultsUpdating, UISearchBarDelegate
             moviesCollectionView.reloadData()
         }
     }
-    
 }
 
-extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewDataSource
+extension Upcoming2ViewController: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredArrayOfMovies.count
@@ -127,52 +133,24 @@ extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
-//extension UpcomingViewController: UICollectionViewDataSourcePrefetching{
-//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-//        <#code#>
-//    }
-//    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-//        <#code#>
-//    }
-//
-//
-//}
 
-extension UpcomingViewController: UICollectionViewDelegateFlowLayout
-{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if isLoading {
-            return CGSize.zero
-        }
-        return CGSize(width: collectionView.bounds.size.width, height: 55)
+
+extension Upcoming2ViewController: UICollectionViewDataSourcePrefetching{
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.map { return URL(string: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[$0.row].posterPath!)!}
+        preheater.startPreheating(with: urls)
+        print("prefetch")
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionFooter {
-            let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellsIdentifiers.refreshFooterView.rawValue, for: indexPath) as! LoaderFooterView
-            self.footerView = aFooterView
-            self.footerView?.backgroundColor = UIColor.clear
-            return aFooterView
-        } else {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellsIdentifiers.refreshFooterView.rawValue, for: indexPath)
-            return headerView
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.footerView?.prepareInitialAnimation()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        if elementKind == UICollectionView.elementKindSectionFooter {
-            self.footerView?.stopAnimate()
-        }
+    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+        let urls = indexPaths.map { return URL(string: URLS.secureImageBaseURL.rawValue + filteredArrayOfMovies[$0.row].posterPath!)! }
+        preheater.stopPreheating(with: urls)
+        print("cancel")
     }
 }
 
-extension UpcomingViewController: ResponseServicesProtocol
+extension Upcoming2ViewController: ResponseServicesProtocol
 {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
@@ -230,3 +208,4 @@ extension UpcomingViewController: ResponseServicesProtocol
         }
     }
 }
+
