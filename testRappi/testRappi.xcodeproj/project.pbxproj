@@ -11,10 +11,6 @@
 		146BAE212264CD000060F6F6 /* Upcoming2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BAE202264CD000060F6F6 /* Upcoming2ViewController.swift */; };
 		147AFADD225E8E8800B4B32C /* AsyncFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147AFADC225E8E8800B4B32C /* AsyncFetcher.swift */; };
 		147AFADF225E8EA800B4B32C /* AsyncFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147AFADE225E8EA800B4B32C /* AsyncFetcherOperation.swift */; };
-		478F1E28226539DD001D1734 /* testCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F1E27226539DD001D1734 /* testCollectionViewController.swift */; };
-		478F1E2B22653F03001D1734 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F1E2922653F03001D1734 /* CustomCollectionViewCell.swift */; };
-		478F1E2C22653F03001D1734 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 478F1E2A22653F03001D1734 /* CustomCollectionViewCell.xib */; };
-		478F1E2E2265454F001D1734 /* test2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F1E2D2265454F001D1734 /* test2ViewController.swift */; };
 		572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */; };
 		572ABBB721644AF800CAAC08 /* PopularTVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */; };
 		572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */; };
@@ -76,10 +72,6 @@
 		285D530818A336247E6754CB /* Pods-testRappi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testRappi.release.xcconfig"; path = "Target Support Files/Pods-testRappi/Pods-testRappi.release.xcconfig"; sourceTree = "<group>"; };
 		2A95A2F82AF49E133E286BD1 /* Pods-testRappi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testRappi.debug.xcconfig"; path = "Target Support Files/Pods-testRappi/Pods-testRappi.debug.xcconfig"; sourceTree = "<group>"; };
 		3614D0A880CAD278C9F75AB0 /* Pods-testRappiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testRappiTests.release.xcconfig"; path = "Target Support Files/Pods-testRappiTests/Pods-testRappiTests.release.xcconfig"; sourceTree = "<group>"; };
-		478F1E27226539DD001D1734 /* testCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCollectionViewController.swift; sourceTree = "<group>"; };
-		478F1E2922653F03001D1734 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
-		478F1E2A22653F03001D1734 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
-		478F1E2D2265454F001D1734 /* test2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2ViewController.swift; sourceTree = "<group>"; };
 		572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
 		572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTVSeriesViewController.swift; sourceTree = "<group>"; };
 		572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingViewController.swift; path = testRappi/Controllers/TabBarControllers/Upcoming/UpcomingViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -411,8 +403,6 @@
 			children = (
 				572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */,
 				146BAE202264CD000060F6F6 /* Upcoming2ViewController.swift */,
-				478F1E27226539DD001D1734 /* testCollectionViewController.swift */,
-				478F1E2D2265454F001D1734 /* test2ViewController.swift */,
 			);
 			path = Upcoming;
 			sourceTree = "<group>";
@@ -422,8 +412,6 @@
 			children = (
 				ACC693822163CD8000B0F623 /* MovieCollectionViewCell.swift */,
 				ACC693832163CD8000B0F623 /* MovieCollectionViewCell.xib */,
-				478F1E2922653F03001D1734 /* CustomCollectionViewCell.swift */,
-				478F1E2A22653F03001D1734 /* CustomCollectionViewCell.xib */,
 			);
 			path = MovieTVSerieCell;
 			sourceTree = "<group>";
@@ -633,7 +621,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5749258721626BE400E84F79 /* LaunchScreen.storyboard in Resources */,
-				478F1E2C22653F03001D1734 /* CustomCollectionViewCell.xib in Resources */,
 				5749258421626BE400E84F79 /* Assets.xcassets in Resources */,
 				5749257F21626BE100E84F79 /* Main.storyboard in Resources */,
 				ACC693852163CD8000B0F623 /* MovieCollectionViewCell.xib in Resources */,
@@ -748,7 +735,6 @@
 			files = (
 				ACD7CCA321654A2E00039825 /* CacheGetter.swift in Sources */,
 				ACD7CC9B216545DD00039825 /* CacheSaver.swift in Sources */,
-				478F1E28226539DD001D1734 /* testCollectionViewController.swift in Sources */,
 				AC9904802162CE2F00676C76 /* MovieData.swift in Sources */,
 				147AFADD225E8E8800B4B32C /* AsyncFetcher.swift in Sources */,
 				572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */,
@@ -762,12 +748,10 @@
 				574925A02162B6E400E84F79 /* APIServices.swift in Sources */,
 				5749259E2162B6A200E84F79 /* HttpMethods.swift in Sources */,
 				574925A52162B93300E84F79 /* DataTypeChanger.swift in Sources */,
-				478F1E2B22653F03001D1734 /* CustomCollectionViewCell.swift in Sources */,
 				5749259A2162B61A00E84F79 /* ServicesNames.swift in Sources */,
 				ACFD8D832166C9190096D60B /* SearchItem.swift in Sources */,
 				ACFD8D862166CADC0096D60B /* SearchViewController.swift in Sources */,
 				57964FB9216586E90062E8C4 /* WebViewController.swift in Sources */,
-				478F1E2E2265454F001D1734 /* test2ViewController.swift in Sources */,
 				ACC693882163DEAA00B0F623 /* UIHelper.swift in Sources */,
 				ACFD8D802166C2F30096D60B /* BaseItem.swift in Sources */,
 				ACD7CCA821656ABC00039825 /* NetworkHelper.swift in Sources */,
