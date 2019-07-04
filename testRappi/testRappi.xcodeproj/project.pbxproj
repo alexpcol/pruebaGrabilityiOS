@@ -11,6 +11,7 @@
 		146BAE212264CD000060F6F6 /* Upcoming2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BAE202264CD000060F6F6 /* Upcoming2ViewController.swift */; };
 		147AFADD225E8E8800B4B32C /* AsyncFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147AFADC225E8E8800B4B32C /* AsyncFetcher.swift */; };
 		147AFADF225E8EA800B4B32C /* AsyncFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147AFADE225E8EA800B4B32C /* AsyncFetcherOperation.swift */; };
+		47711B3622CD981B001520C4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47711B3522CD981B001520C4 /* WebKit.framework */; };
 		572ABBB521644AE800CAAC08 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */; };
 		572ABBB721644AF800CAAC08 /* PopularTVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */; };
 		572ABBB9216456B200CAAC08 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */; };
@@ -72,6 +73,7 @@
 		285D530818A336247E6754CB /* Pods-testRappi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testRappi.release.xcconfig"; path = "Target Support Files/Pods-testRappi/Pods-testRappi.release.xcconfig"; sourceTree = "<group>"; };
 		2A95A2F82AF49E133E286BD1 /* Pods-testRappi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testRappi.debug.xcconfig"; path = "Target Support Files/Pods-testRappi/Pods-testRappi.debug.xcconfig"; sourceTree = "<group>"; };
 		3614D0A880CAD278C9F75AB0 /* Pods-testRappiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testRappiTests.release.xcconfig"; path = "Target Support Files/Pods-testRappiTests/Pods-testRappiTests.release.xcconfig"; sourceTree = "<group>"; };
+		47711B3522CD981B001520C4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		572ABBB421644AE800CAAC08 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
 		572ABBB621644AF800CAAC08 /* PopularTVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularTVSeriesViewController.swift; sourceTree = "<group>"; };
 		572ABBB8216456B200CAAC08 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpcomingViewController.swift; path = testRappi/Controllers/TabBarControllers/Upcoming/UpcomingViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -125,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47711B3622CD981B001520C4 /* WebKit.framework in Frameworks */,
 				FA25C4007EE1F2665D5C4D1B /* Pods_testRappi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +146,7 @@
 		123A0111261BB80BE5E169E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47711B3522CD981B001520C4 /* WebKit.framework */,
 				9610629D20E837983CD30469 /* Pods_testRappi.framework */,
 				B6606F4C74E918BE7BB95990 /* Pods_testRappiTests.framework */,
 			);
