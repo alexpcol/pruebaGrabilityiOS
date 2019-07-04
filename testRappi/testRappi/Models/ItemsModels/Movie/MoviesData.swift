@@ -9,13 +9,11 @@
 import UIKit
 
 class MoviesData: NSObject {
-    
     var movies: [MovieData]?
     
     override init() {}
     
-    init(movies: [MovieData]?)
-    {
+    init(movies: [MovieData]?) {
         self.movies = movies
     }
     

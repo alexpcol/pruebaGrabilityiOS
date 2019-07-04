@@ -10,32 +10,27 @@ import UIKit
 
 class CacheSaver: CacheBase {
     
-    static func savePopularMovies(movies: [MovieData])
-    {
+    static func savePopularMovies(movies: [MovieData]) {
         let moviesData = MoviesData.init(movies: movies)
         print(CacheKeys.popularMovies.rawValue as NSString)
         cacheForMovies.setObject(moviesData, forKey: CacheKeys.popularMovies.rawValue as NSString)
     }
-    static func saveTopRatedMovies(movies: [MovieData])
-    {
+    static func saveTopRatedMovies(movies: [MovieData]) {
         let moviesData = MoviesData.init(movies: movies)
         cacheForMovies.setObject(moviesData, forKey: CacheKeys.topRatedMovies.rawValue as NSString)
     }
     
-    static func saveUpcomingMovies(movies: [MovieData])
-    {
+    static func saveUpcomingMovies(movies: [MovieData]) {
         let moviesData = MoviesData.init(movies: movies)
         cacheForMovies.setObject(moviesData, forKey: CacheKeys.upcomingMovies.rawValue as NSString)
     }
     
-    static func savePopularTVSeries(tvSeries: [TVSerieData])
-    {
+    static func savePopularTVSeries(tvSeries: [TVSerieData]) {
         let tvSeriesData = TVSeriesData.init(tvSeries: tvSeries)
         cacheForTVSeries.setObject(tvSeriesData, forKey: CacheKeys.popularTVSeries.rawValue as NSString)
     }
     
-    static func saveTopRatedTVSeries(tvSeries: [TVSerieData])
-    {
+    static func saveTopRatedTVSeries(tvSeries: [TVSerieData]) {
         let tvSeriesData = TVSeriesData.init(tvSeries: tvSeries)
         cacheForTVSeries.setObject(tvSeriesData, forKey: CacheKeys.topRatedTVSeries.rawValue as NSString)
     }

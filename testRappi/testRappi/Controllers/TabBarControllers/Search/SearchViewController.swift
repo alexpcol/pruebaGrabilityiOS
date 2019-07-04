@@ -30,33 +30,28 @@ class SearchViewController: UIViewController {
     }
     
     // MARK:- Requests Methods
-    func searchItem(text: String, showActivity: Bool)
-    {
+    func searchItem(text: String, showActivity: Bool) {
         shouldClearArray = true
         if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getSearchItem(language: nil, page: 1, region: nil, query: text)
     }
-    func getMoreSearchItems(page: NSInteger, text: String)
-    {
+    func getMoreSearchItems(page: NSInteger, text: String) {
         shouldClearArray = false
         let service = APIServices.init(delegate: self)
         service.getSearchItem(language: nil, page: page, region: nil, query: text)
     }
     
     // MARK:- Configuration Methods
-    func configure()
-    {
+    func configure() {
         setUpCollectionsViews()
         setUpNavBar()
     }
-    func setUpCollectionsViews()
-    {
+    func setUpCollectionsViews() {
         itemsCollectionView.register(UINib(nibName: NibNames.loaderFooterNib.rawValue, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CellsIdentifiers.refreshFooterView.rawValue)
         itemsCollectionView.register(UINib(nibName: NibNames.movieNib.rawValue, bundle: nil), forCellWithReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue)
     }
-    func setUpNavBar()
-    {
+    func setUpNavBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -67,11 +62,9 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate
-{
+extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        if shouldSearchAPI
-        {
+        if shouldSearchAPI {
             if let searchText = searchController.searchBar.text{
                 if !searchText.isEmpty{
                     let modifiedText = searchText.replacingOccurrences(of: " ", with: "%20")
@@ -79,16 +72,13 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate
                 }
             }
         }
-        else
-        {
+        else {
             shouldSearchAPI = true
         }
-        
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource
-{
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayOfItems.count
     }
@@ -105,7 +95,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.cellForItem(at: indexPath) as! MovieCollectionViewCell
         let DetailViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIdentifiers.detailVC.rawValue) as! DetailViewController
         
-        
         DetailViewController.titleString = arrayOfItems[indexPath.row].title
         DetailViewController.dateString = arrayOfItems[indexPath.row].date
         DetailViewController.overviewString = arrayOfItems[indexPath.row].overview
@@ -119,8 +108,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension SearchViewController: UICollectionViewDelegateFlowLayout
-{
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if isLoading {
             return CGSize.zero
@@ -152,8 +140,7 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout
         }
     }
 }
-extension SearchViewController: UIScrollViewDelegate
-{
+extension SearchViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pointToReach   = 150.0 ;
         let contentOffset = scrollView.contentOffset.y;
@@ -175,25 +162,21 @@ extension SearchViewController: UIScrollViewDelegate
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
         let pullHeight  = abs(diffHeight - frameHeight);
-        if pullHeight == 0.0
-        {
-            if (self.footerView?.isAnimatingFinal)!
-            {
+        if pullHeight == 0.0 {
+            if (self.footerView?.isAnimatingFinal)! {
                 print("load more trigger")
                 self.isLoading = true
                 self.footerView?.startAnimate()
-                if currentPage < totalOfPages
-                {
+                if currentPage < totalOfPages {
                     currentPage += 1
-                    if let searchText = searchController.searchBar.text{
-                        if !searchText.isEmpty{
+                    if let searchText = searchController.searchBar.text {
+                        if !searchText.isEmpty {
                             let modifiedText = searchText.replacingOccurrences(of: " ", with: "%20")
                             self.getMoreSearchItems(page: currentPage, text: modifiedText)
                         }
                     }
-                    
                 }
-                else{
+                else {
                     self.isLoading = false
                     self.shouldSearchAPI = false
                     DispatchQueue.main.async {
@@ -206,8 +189,7 @@ extension SearchViewController: UIScrollViewDelegate
     }
 }
 
-extension SearchViewController: ResponseServicesProtocol
-{
+extension SearchViewController: ResponseServicesProtocol {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         self.isLoading = false
@@ -215,17 +197,14 @@ extension SearchViewController: ResponseServicesProtocol
         if let pages = resultDic?[ServicesFieldsKeys.totalPages.rawValue] as? NSInteger{
             self.totalOfPages = pages
         }
-        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]]
-        {
+        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]] {
             let auxArrayOfSearch = DataTypeChanger.CreateArrayOfSearch(results: results)
             
-            if shouldClearArray
-            {
+            if shouldClearArray {
                 self.arrayOfItems.removeAll()
             }
             
-            for auxItem in auxArrayOfSearch
-            {
+            for auxItem in auxArrayOfSearch {
                 self.arrayOfItems.append(auxItem)
             }
             
@@ -234,8 +213,6 @@ extension SearchViewController: ResponseServicesProtocol
                 UIHelper.turnOnAlphaWithAnimation(for: self.itemsCollectionView)
             }
         }
-        
-        
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)
         }
@@ -246,18 +223,14 @@ extension SearchViewController: ResponseServicesProtocol
         self.isLoading = false
         var messagage = ""
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Error)
-        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String]
-        {
+        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String] {
             messagage = errors[0]
         }
-        else
-        {
-            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String
-            {
+        else {
+            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String {
                 messagage = statusMessagage
             }
-            else
-            {
+            else {
                 messagage = Error
             }
         }

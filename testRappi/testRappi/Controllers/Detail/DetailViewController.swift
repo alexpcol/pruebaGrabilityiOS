@@ -32,46 +32,39 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Request Methods
-    func getMovieDetail()
-    {
+    func getMovieDetail() {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
         service.getMovieDetail(id: id, language: nil, appendToResponse: "videos")
     }
     
-    func getTVSerieDetail()
-    {
+    func getTVSerieDetail() {
         UIHelper.showActivityIndicator(in: self.view)
         let service = APIServices.init(delegate: self)
         service.getTvSerieDetail(id: id, language: nil, appendToResponse: "videos")
     }
     // MARK: - Configure Methods
-    func configure()
-    {
+    func configure() {
         configureViews()
         addRightNavigationItem()
     }
     // MARK: - navigation items Methods
-    func addRightNavigationItem()
-    {
+    func addRightNavigationItem() {
         let playTrailerButton = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(playTrailer))
         self.navigationItem.rightBarButtonItem  = playTrailerButton
     }
-    @objc func playTrailer()
-    {
+    @objc func playTrailer() {
         if isMovie { getMovieDetail()}
         else {getTVSerieDetail()}
     }
     // MARK: - Changeview Methods
-    func pushNextView(video: VideoData)
-    {
+    func pushNextView(video: VideoData) {
         let WebViewController = self.storyboard?.instantiateViewController(withIdentifier: ViewControllerIdentifiers.webVC.rawValue) as! WebViewController
         WebViewController.videoKey = video.key
         self.navigationController?.pushViewController(WebViewController, animated: true)
     }
     // MARK: - ConfigureViews Methods
-    func configureViews()
-    {
+    func configureViews() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         navigationItem.largeTitleDisplayMode = .never
         posterBackgroundImageView.image = posterImage
@@ -84,25 +77,20 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController: ResponseServicesProtocol
-{
+extension DetailViewController: ResponseServicesProtocol {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
-        if let videos = resultDic?["videos"] as? [String : Any]
-        {
-            if let results = videos[ServicesFieldsKeys.results.rawValue] as? [[String :Any]]
-            {
+        if let videos = resultDic?["videos"] as? [String : Any] {
+            if let results = videos[ServicesFieldsKeys.results.rawValue] as? [[String :Any]] {
                 let auxArrayVideos = DataTypeChanger.CreateArrayOfVideos(results: results)
-                if !auxArrayVideos.isEmpty
-                {
+                if !auxArrayVideos.isEmpty {
                     let video = VideoData.init(id: auxArrayVideos[0].id, key: auxArrayVideos[0].key, site: auxArrayVideos[0].site)
                     DispatchQueue.main.async {
                         self.pushNextView(video: video)
                     }
                 }
-                else
-                {
+                else {
                     DispatchQueue.main.async {
                         AlertsPresenter.showOKAlert(title: messagesTitle.sorry.rawValue, andMessage: messagesText.noVideos.rawValue, inView: self)
                     }
@@ -119,18 +107,14 @@ extension DetailViewController: ResponseServicesProtocol
         print("Error")
         var messagage = ""
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Error)
-        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String]
-        {
+        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String] {
             messagage = errors[0]
         }
-        else
-        {
-            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String
-            {
+        else {
+            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String {
                 messagage = statusMessagage
             }
-            else
-            {
+            else {
                 messagage = Error
             }
         }
@@ -139,6 +123,4 @@ extension DetailViewController: ResponseServicesProtocol
             AlertsPresenter.showOKAlert(title: messagesTitle.error.rawValue, andMessage: messagage, inView: self)
         }
     }
-    
-    
 }

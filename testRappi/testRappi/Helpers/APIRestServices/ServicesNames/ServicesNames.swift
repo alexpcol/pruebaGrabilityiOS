@@ -9,8 +9,7 @@
 import Foundation
 
 
-enum ServicesNames
-{
+enum ServicesNames {
     case NO_INTERNET
     case GET_POPULAR_MOVIES
     case GET_POPULAR_TV_SERIES

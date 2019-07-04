@@ -21,20 +21,16 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         configureWeb()
     }
-    func configureWeb()
-    {
+    func configureWeb() {
         webView.load(URLRequest(url: getURLVideo()))
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress"
-        {
-            if webView.estimatedProgress == 1.0
-            {
+        if keyPath == "estimatedProgress" {
+            if webView.estimatedProgress == 1.0 {
                 navigationItem.title = webView.title
             }
-            else
-            {
+            else {
                 navigationItem.title = "Loading..."
             }
         }
@@ -42,8 +38,7 @@ class WebViewController: UIViewController {
     deinit {
         webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
     }
-    func getURLVideo() -> URL
-    {
+    func getURLVideo() -> URL {
         let url = URL(string: URLS.youtubeURL.rawValue + videoKey)
         return url!
     }

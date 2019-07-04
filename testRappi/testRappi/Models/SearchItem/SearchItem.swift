@@ -9,7 +9,6 @@
 import UIKit
 
 class SearchItem: BaseItem {
-    
     var mediaType: String?
     var date: String?
     var title: String? //This one will be used for movie and "name" for tvSerie
@@ -20,10 +19,8 @@ class SearchItem: BaseItem {
          posterPath: String?,
          date: String?,
          overview: String?,
-         image: UIImage?)
-    {
+         image: UIImage?) {
         super.init(id: id, posterPath: posterPath, image: image, overview: overview)
-        
         self.mediaType = mediaType
         self.title = title
         self.date = date

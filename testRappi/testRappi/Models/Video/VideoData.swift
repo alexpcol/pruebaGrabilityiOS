@@ -9,7 +9,6 @@
 import UIKit
 
 class VideoData: NSObject {
-    
     var id: String?
     var key: String?
     var site: String?
@@ -18,8 +17,7 @@ class VideoData: NSObject {
     
     init(id: String?,
          key: String?,
-         site: String?)
-    {
+         site: String?) {
         self.id = id
         self.key = key
         self.site = site

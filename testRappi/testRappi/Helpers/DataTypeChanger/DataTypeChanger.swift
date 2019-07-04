@@ -21,8 +21,7 @@ class DataTypeChanger: NSObject {
         return nil
     }
     
-    static func DictionaryToJSONData(jsonObject: AnyObject) throws -> String?
-    {
+    static func DictionaryToJSONData(jsonObject: AnyObject) throws -> String? {
         let data: NSData? = try? JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions.prettyPrinted) as NSData
         
         var jsonStr: String?
@@ -33,11 +32,9 @@ class DataTypeChanger: NSObject {
         return jsonStr
     }
     
-    static func CreateArrayOfSearch(results: [[String : Any]]) -> [SearchItem]
-    {
+    static func CreateArrayOfSearch(results: [[String : Any]]) -> [SearchItem] {
         var arraySearch: [SearchItem] = []
-        for result in results
-        {
+        for result in results {
             var id = 0
             var mediaType = ""
             var title = ""
@@ -45,123 +42,91 @@ class DataTypeChanger: NSObject {
             var date = ""
             var overview = ""
             
-            if let mediaTypeString = result[ServicesFieldsKeys.mediaType.rawValue] as? String
-            {
-                if mediaTypeString == "tv" || mediaTypeString == "movie"
-                {
+            if let mediaTypeString = result[ServicesFieldsKeys.mediaType.rawValue] as? String {
+                if mediaTypeString == "tv" || mediaTypeString == "movie" {
                     mediaType = mediaTypeString
-                    if let titleString = result[ServicesFieldsKeys.title.rawValue] as? String
-                    {
+                    if let titleString = result[ServicesFieldsKeys.title.rawValue] as? String {
                         title = titleString
                     }
-                    else if let nameString = result[ServicesFieldsKeys.name.rawValue] as? String
-                    {
+                    else if let nameString = result[ServicesFieldsKeys.name.rawValue] as? String {
                         title = nameString
                     }
-                    
-                    if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String
-                    {
+                    if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String {
                         posterPath = posterPathString
                     }
                     
-                    if let releaseDateString = result[ServicesFieldsKeys.releadeDate.rawValue] as? String
-                    {
+                    if let releaseDateString = result[ServicesFieldsKeys.releadeDate.rawValue] as? String {
                         date = releaseDateString
                     }
-                    else if let firstAirDateString = result[ServicesFieldsKeys.firstAirDate.rawValue] as? String
-                    {
+                    else if let firstAirDateString = result[ServicesFieldsKeys.firstAirDate.rawValue] as? String {
                         date = firstAirDateString
                     }
                     
-                    if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String
-                    {
+                    if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String {
                         overview = overviewString
                     }
                     
-                    if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger
-                    {
+                    if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger {
                         id = idInteger
                     }
                     arraySearch.append(SearchItem.init(mediaType: mediaType, id: id, title: title, posterPath: posterPath, date: date, overview: overview, image: nil))
                 }
             }
-            
-            
         }
-        
         return arraySearch
     }
     
-    
-    static func CreateArrayOfMovies(results: [[String : Any]]) -> [MovieData]
-    {
+    static func CreateArrayOfMovies(results: [[String : Any]]) -> [MovieData] {
         var arrayMovies: [MovieData] = []
-        for result in results
-        {
+        for result in results {
             var id = 0
             var title = ""
             var posterPath = ""
             var releaseDate = ""
             var overview = ""
             
-            if let titleString = result[ServicesFieldsKeys.title.rawValue] as? String
-            {
+            if let titleString = result[ServicesFieldsKeys.title.rawValue] as? String {
                 title = titleString
             }
-            if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String
-            {
+            if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String {
                 posterPath = posterPathString
             }
-            
-            if let releaseDateString = result[ServicesFieldsKeys.releadeDate.rawValue] as? String
-            {
+            if let releaseDateString = result[ServicesFieldsKeys.releadeDate.rawValue] as? String {
                 releaseDate = releaseDateString
             }
-            if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String
-            {
+            if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String {
                 overview = overviewString
             }
-            
-            if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger
-            {
+            if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger {
                 id = idInteger
             }
             arrayMovies.append(MovieData.init(id: id,title: title, posterPath: posterPath, releaseDate: releaseDate, overview: overview, image: nil))
         }
-        
         return arrayMovies
     }
     
-    static func CreateArrayOfTVSeries(results: [[String : Any]]) -> [TVSerieData]
-    {
+    static func CreateArrayOfTVSeries(results: [[String : Any]]) -> [TVSerieData] {
         var arrayTVSerie: [TVSerieData] = []
-        for result in results
-        {
+        for result in results {
             var id = 0
             var name = ""
             var posterPath = ""
             var firstAirDate = ""
             var overview = ""
             
-            if let nameString = result[ServicesFieldsKeys.name.rawValue] as? String
-            {
+            if let nameString = result[ServicesFieldsKeys.name.rawValue] as? String {
                 name = nameString
             }
-            if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String
-            {
+            if let posterPathString = result[ServicesFieldsKeys.posterPath.rawValue] as? String {
                 posterPath = posterPathString
             }
-            
-            if let firstAirDateString = result[ServicesFieldsKeys.firstAirDate.rawValue] as? String
-            {
+            if let firstAirDateString = result[ServicesFieldsKeys.firstAirDate.rawValue] as? String {
                 firstAirDate = firstAirDateString
             }
-            if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String
-            {
+            if let overviewString = result[ServicesFieldsKeys.overview.rawValue] as? String {
                 overview = overviewString
             }
-            if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger
-            {
+            if let idInteger = result[ServicesFieldsKeys.id.rawValue] as? NSInteger {
                 id = idInteger
             }
             arrayTVSerie.append(TVSerieData.init(id: id,name: name, posterPath: posterPath, firstAirDate: firstAirDate, overview: overview, image: nil))
@@ -170,33 +135,24 @@ class DataTypeChanger: NSObject {
         return arrayTVSerie
     }
     
-    static func CreateArrayOfVideos(results: [[String : Any]]) -> [VideoData]
-    {
+    static func CreateArrayOfVideos(results: [[String : Any]]) -> [VideoData] {
         var arrayVideos: [VideoData] = []
-        for result in results
-        {
+        for result in results {
             var id = ""
             var key = ""
             var site = ""
             
-            if let idString = result[ServicesFieldsKeys.id.rawValue] as? String
-            {
+            if let idString = result[ServicesFieldsKeys.id.rawValue] as? String {
                 id = idString
             }
-            if let keyString = result[ServicesFieldsKeys.key.rawValue] as? String
-            {
+            if let keyString = result[ServicesFieldsKeys.key.rawValue] as? String {
                 key = keyString
             }
-            
-            if let siteString = result[ServicesFieldsKeys.site.rawValue] as? String
-            {
+            if let siteString = result[ServicesFieldsKeys.site.rawValue] as? String {
                 site = siteString
             }
             arrayVideos.append(VideoData.init(id: id, key: key, site: site))
         }
-        
         return arrayVideos
     }
-    
-    
 }

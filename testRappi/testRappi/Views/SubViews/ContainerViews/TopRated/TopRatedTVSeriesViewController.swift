@@ -29,42 +29,35 @@ class TopRatedTVSeriesViewController: UIViewController {
         if NetworkHelper.hasInternet() {
             getTopRatedTVSeries(page: currentPage, showActivity: true)
         }
-        else
-        {
+        else {
             getTopRatedTVSeriesCache()
         }
     }
     // MARK: - Request methods
-    func getTopRatedTVSeries(page: NSInteger, showActivity: Bool)
-    {
+    func getTopRatedTVSeries(page: NSInteger, showActivity: Bool) {
         if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getTopRatedTVSeries(language: nil, page: page, region: nil)
     }
     
-    func getTopRatedTVSeriesCache()
-    {
+    func getTopRatedTVSeriesCache() {
         CacheGetter.getTopRatedTVSeries{ (tvSeriesData) in
-            if let tvSeries = tvSeriesData?.tvSeries
-            {
+            if let tvSeries = tvSeriesData?.tvSeries {
                 self.arrayOfTVSeries = tvSeries
                 self.tvSeriesCollectionView.reloadData()
             }
         }
     }
     // MARK: - Configurations methods
-    func configure()
-    {
+    func configure() {
         setUpCollectionsViews()
         setUpNavBar()
     }
-    func setUpCollectionsViews()
-    {
+    func setUpCollectionsViews() {
         tvSeriesCollectionView.register(UINib(nibName: NibNames.loaderFooterNib.rawValue, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CellsIdentifiers.refreshFooterView.rawValue)
         tvSeriesCollectionView.register(UINib(nibName: NibNames.movieNib.rawValue, bundle: nil), forCellWithReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue)
     }
-    func setUpNavBar()
-    {
+    func setUpNavBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -75,10 +68,9 @@ class TopRatedTVSeriesViewController: UIViewController {
     }
 }
 
-extension TopRatedTVSeriesViewController: UISearchResultsUpdating, UISearchBarDelegate
-{
+extension TopRatedTVSeriesViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text{
+        if let searchText = searchController.searchBar.text {
             filteredArrayOfTVSeries = searchText.isEmpty ? arrayOfTVSeries : arrayOfTVSeries.filter({($0.name?.localizedCaseInsensitiveContains(searchText))!})
             
             tvSeriesCollectionView.reloadData()
@@ -87,8 +79,7 @@ extension TopRatedTVSeriesViewController: UISearchResultsUpdating, UISearchBarDe
     
 }
 
-extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource
-{
+extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredArrayOfTVSeries.count
     }
@@ -115,8 +106,7 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegate, UICollection
     }
 }
 
-extension TopRatedTVSeriesViewController: UICollectionViewDelegateFlowLayout
-{
+extension TopRatedTVSeriesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if isLoading {
             return CGSize.zero
@@ -149,8 +139,7 @@ extension TopRatedTVSeriesViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
-extension TopRatedTVSeriesViewController: UIScrollViewDelegate
-{
+extension TopRatedTVSeriesViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pointToReach   = 150.0 ;
         let contentOffset = scrollView.contentOffset.y;
@@ -172,15 +161,12 @@ extension TopRatedTVSeriesViewController: UIScrollViewDelegate
         let diffHeight = contentHeight - contentOffset;
         let frameHeight = scrollView.bounds.size.height;
         let pullHeight  = abs(diffHeight - frameHeight);
-        if pullHeight == 0.0
-        {
-            if (self.footerView?.isAnimatingFinal)!
-            {
+        if pullHeight == 0.0 {
+            if (self.footerView?.isAnimatingFinal)! {
                 print("load more trigger")
                 self.isLoading = true
                 self.footerView?.startAnimate()
-                if currentPage < totalOfPages
-                {
+                if currentPage < totalOfPages {
                     currentPage += 1
                     getTopRatedTVSeries(page: currentPage, showActivity: false)
                 }
@@ -189,8 +175,7 @@ extension TopRatedTVSeriesViewController: UIScrollViewDelegate
     }
 }
 
-extension TopRatedTVSeriesViewController: ResponseServicesProtocol
-{
+extension TopRatedTVSeriesViewController: ResponseServicesProtocol {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         self.isLoading = false
@@ -198,12 +183,10 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         if let pages = resultDic?[ServicesFieldsKeys.totalPages.rawValue] as? NSInteger{
             self.totalOfPages = pages
         }
-        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]]
-        {
+        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]] {
             let auxArrayOfTVSeries = DataTypeChanger.CreateArrayOfTVSeries(results: results)
             
-            for auxItem in auxArrayOfTVSeries
-            {
+            for auxItem in auxArrayOfTVSeries {
                 self.arrayOfTVSeries.append(auxItem)
             }
             self.filteredArrayOfTVSeries = self.arrayOfTVSeries
@@ -212,8 +195,7 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
                 UIHelper.turnOnAlphaWithAnimation(for: self.tvSeriesCollectionView)
             }
         }
-        
-        
+
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)
         }
@@ -224,18 +206,14 @@ extension TopRatedTVSeriesViewController: ResponseServicesProtocol
         self.isLoading = false
         var messagage = ""
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Error)
-        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String]
-        {
+        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String] {
             messagage = errors[0]
         }
-        else
-        {
-            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String
-            {
+        else {
+            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String {
                 messagage = statusMessagage
             }
-            else
-            {
+            else {
                 messagage = Error
             }
         }

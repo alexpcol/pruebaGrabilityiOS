@@ -12,20 +12,17 @@ class APIServices: NSObject {
     
     weak var delegate : ResponseServicesProtocol?
     
-    override init()
-    {
+    override init() {
         super.init()
     }
     
-    init(delegate: ResponseServicesProtocol)
-    {
+    init(delegate: ResponseServicesProtocol) {
         self.delegate = delegate;
         super.init()
     }
     
     //MARK: - APIMethods
-    func getPopularMovies(language:String?, page: NSInteger, region: String?)
-    {
+    func getPopularMovies(language:String?, page: NSInteger, region: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.popularMovies.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
@@ -33,12 +30,10 @@ class APIServices: NSObject {
         var languageKey = ""
         var regionKey = ""
 
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
-        if let regionString = region
-        {
+        if let regionString = region {
             regionKey = QueryString.region.rawValue + regionString
         }
         
@@ -49,8 +44,7 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getPopularTVSeries(language:String?, page: NSInteger, region: String?)
-    {
+    func getPopularTVSeries(language:String?, page: NSInteger, region: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.popularTVSeries.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
@@ -58,12 +52,10 @@ class APIServices: NSObject {
         var languageKey = ""
         var regionKey = ""
         
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
-        if let regionString = region
-        {
+        if let regionString = region {
             regionKey = QueryString.region.rawValue + regionString
         }
         
@@ -74,8 +66,7 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getTopRatedMovies(language:String?, page: NSInteger, region: String?)
-    {
+    func getTopRatedMovies(language:String?, page: NSInteger, region: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.topRatedMovies.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
@@ -83,12 +74,10 @@ class APIServices: NSObject {
         var languageKey = ""
         var regionKey = ""
         
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
-        if let regionString = region
-        {
+        if let regionString = region {
             regionKey = QueryString.region.rawValue + regionString
         }
         
@@ -99,8 +88,7 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getTopRatedTVSeries(language:String?, page: NSInteger, region: String?)
-    {
+    func getTopRatedTVSeries(language:String?, page: NSInteger, region: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.topRatedTVSeries.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
@@ -108,12 +96,10 @@ class APIServices: NSObject {
         var languageKey = ""
         var regionKey = ""
         
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
-        if let regionString = region
-        {
+        if let regionString = region {
             regionKey = QueryString.region.rawValue + regionString
         }
         
@@ -124,8 +110,7 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getUpcomingMovies(language:String?, page: NSInteger, region: String?)
-    {
+    func getUpcomingMovies(language:String?, page: NSInteger, region: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.upcomingMovies.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
@@ -133,12 +118,10 @@ class APIServices: NSObject {
         var languageKey = ""
         var regionKey = ""
         
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
-        if let regionString = region
-        {
+        if let regionString = region {
             regionKey = QueryString.region.rawValue + regionString
         }
         
@@ -149,19 +132,16 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getMovieDetail(id: NSInteger, language:String?, appendToResponse: String?)
-    {
+    func getMovieDetail(id: NSInteger, language:String?, appendToResponse: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.movieDetail.rawValue + String(id)
         
         var appendToResponseKey = ""
         var languageKey = ""
         let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
-        if let appendToResponseString = appendToResponse
-        {
+        if let appendToResponseString = appendToResponse {
             appendToResponseKey = QueryString.appendToResponse.rawValue + appendToResponseString
         }
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
         
@@ -171,19 +151,16 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getTvSerieDetail(id: NSInteger, language:String?, appendToResponse: String?)
-    {
+    func getTvSerieDetail(id: NSInteger, language:String?, appendToResponse: String?) {
         let urlRequest = URLS.apiURL.rawValue + URLPaths.tvDetail.rawValue + String(id)
         
         var appendToResponseKey = ""
         var languageKey = ""
         let apiKey = QueryString.apiKey.rawValue + APIKeys.apiKeyV3.rawValue
-        if let appendToResponseString = appendToResponse
-        {
+        if let appendToResponseString = appendToResponse {
             appendToResponseKey = QueryString.appendToResponse.rawValue + appendToResponseString
         }
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
         
@@ -193,8 +170,7 @@ class APIServices: NSObject {
         serviceRequest.RequestGETWithAutorization(URLString: url)
     }
     
-    func getSearchItem(language:String?, page: NSInteger, region: String?, query:String)
-    {
+    func getSearchItem(language:String?, page: NSInteger, region: String?, query:String) {
          let urlRequest = URLS.apiURL.rawValue + URLPaths.searchItem.rawValue
         
         let pageKey = QueryString.page.rawValue + String(page)
@@ -203,12 +179,10 @@ class APIServices: NSObject {
         var languageKey = ""
         var regionKey = ""
         
-        if let languageString = language
-        {
+        if let languageString = language {
             languageKey = QueryString.language.rawValue + languageString
         }
-        if let regionString = region
-        {
+        if let regionString = region {
             regionKey = QueryString.region.rawValue + regionString
         }
         

@@ -20,7 +20,6 @@ class TopRatedViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
     // MARK: - Action methods
     @IBAction func segmentIndexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

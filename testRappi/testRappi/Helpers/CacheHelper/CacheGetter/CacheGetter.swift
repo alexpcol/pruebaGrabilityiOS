@@ -10,67 +10,50 @@ import UIKit
 
 class CacheGetter: CacheBase {
     
-    static func getPopularMovies(completion: @escaping (_ movies: MoviesData?)->())
-    {
+    static func getPopularMovies(completion: @escaping (_ movies: MoviesData?)->()) {
         print(CacheKeys.popularMovies.rawValue as NSString)
-        if let movies: MoviesData = cacheForMovies.object(forKey: CacheKeys.popularMovies.rawValue as NSString)
-        {
+        if let movies: MoviesData = cacheForMovies.object(forKey: CacheKeys.popularMovies.rawValue as NSString) {
             completion(movies)
         }
-        else
-        {
+        else {
             completion(nil)
         }
     }
     
-    static func getTopRatedMovies(completion: @escaping (_ movies: MoviesData?)->())
-    {
-        if let movies = cacheForMovies.object(forKey: CacheKeys.topRatedMovies.rawValue as NSString)
-        {
+    static func getTopRatedMovies(completion: @escaping (_ movies: MoviesData?)->()) {
+        if let movies = cacheForMovies.object(forKey: CacheKeys.topRatedMovies.rawValue as NSString) {
             completion(movies)
         }
-        else
-        {
+        else {
             completion(nil)
         }
     }
     
-    static func getUpcomingMovies(completion: @escaping (_ movies: MoviesData?)->())
-    {
-        if let movies = cacheForMovies.object(forKey: CacheKeys.upcomingMovies.rawValue as NSString)
-        {
+    static func getUpcomingMovies(completion: @escaping (_ movies: MoviesData?)->()) {
+        if let movies = cacheForMovies.object(forKey: CacheKeys.upcomingMovies.rawValue as NSString) {
             completion(movies)
         }
-        else
-        {
+        else {
             completion(nil)
         }
     }
     
     
-    static func getPopularTVSeries(completion: @escaping (_ tvSeries: TVSeriesData?)->())
-    {
-        if let tvSeries = cacheForTVSeries.object(forKey: CacheKeys.popularTVSeries.rawValue as NSString)
-        {
+    static func getPopularTVSeries(completion: @escaping (_ tvSeries: TVSeriesData?)->()) {
+        if let tvSeries = cacheForTVSeries.object(forKey: CacheKeys.popularTVSeries.rawValue as NSString) {
             completion(tvSeries)
         }
-        else
-        {
+        else {
             completion(nil)
         }
     }
     
-    static func getTopRatedTVSeries(completion: @escaping (_ tvSeries: TVSeriesData?)->())
-    {
-        if let tvSeries = cacheForTVSeries.object(forKey: CacheKeys.topRatedTVSeries.rawValue as NSString)
-        {
+    static func getTopRatedTVSeries(completion: @escaping (_ tvSeries: TVSeriesData?)->()) {
+        if let tvSeries = cacheForTVSeries.object(forKey: CacheKeys.topRatedTVSeries.rawValue as NSString) {
             completion(tvSeries)
         }
-        else
-        {
+        else {
             completion(nil)
         }
     }
-    
-
 }

@@ -14,8 +14,7 @@ class BaseItem {
     var image: UIImage?
     var overview: String?
     
-    init(id: NSInteger?, posterPath: String?, image: UIImage? ,overview: String?)
-    {
+    init(id: NSInteger?, posterPath: String?, image: UIImage? ,overview: String?) {
         self.id = id
         self.posterPath = posterPath
         self.overview = overview

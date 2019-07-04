@@ -19,30 +19,11 @@ class CustomImageView: UIImageView {
     func getImage(withURL urlString:String, completion: (() -> ())? = nil){
         image = nil
         self.urlStringItem = urlString
-//        if let imageCache = CustomImageView.cache.object(forKey: urlString as NSString)
-//        {
-//            shouldShowDefault = false
-//            DispatchQueue.main.async {
-//                UIView.transition(with: self,
-//                                  duration:0.45,
-//                                  options: .transitionCrossDissolve,
-//                                  animations: {self.image = imageCache.image },
-//                                  completion: nil)
-//            }
-//            completion?()
-//        }
-//        else
-//        {
             guard let url = URL(string: urlString) else{
         if self.shouldShowDefault{ image = emptyImage}
                 return
             }
             downloadImage(withURL: url, completion: completion)
-//        }
-    }
-    
-    func setImageinCache(with key: String){
-        
     }
     
     func downloadImage(withURL url:URL, completion: (() -> ())? = nil)
@@ -52,12 +33,10 @@ class CustomImageView: UIImageView {
                 return
             }
             DispatchQueue.main.async {
-                if let image = UIImage(data: data!)
-                {
+                if let image = UIImage(data: data!) {
                     let imageCache = ImageCacheItem(image: image)
                     CustomImageView.cache.setObject(imageCache, forKey: url.absoluteString as NSString)
-                    if url.absoluteString == self.urlStringItem
-                    {
+                    if url.absoluteString == self.urlStringItem {
                         self.shouldShowDefault = false
                         DispatchQueue.main.async {
                             UIView.transition(with: self,
@@ -74,5 +53,4 @@ class CustomImageView: UIImageView {
         }
         dataTask.resume()
     }
-
 }

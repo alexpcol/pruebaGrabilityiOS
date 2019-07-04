@@ -13,14 +13,12 @@ class MovieData: BaseItem {
     var title: String?
     var releaseDate: String?
     
-    
     init(id: NSInteger?,
         title: String?,
          posterPath: String?,
          releaseDate: String?,
          overview: String?,
-         image: UIImage?)
-    {
+         image: UIImage?) {
         super.init(id: id, posterPath: posterPath, image: image, overview: overview)
         self.title = title
         self.releaseDate = releaseDate

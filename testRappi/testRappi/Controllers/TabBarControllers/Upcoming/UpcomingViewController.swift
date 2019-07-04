@@ -27,8 +27,7 @@ class UpcomingViewController: UIViewController {
         if NetworkHelper.hasInternet() {
             getUpcomingMovies(page: currentPage, showActivity: true)
         }
-        else
-        {
+        else {
             getUpcomingMoviesCache()
         }
     }
@@ -38,18 +37,15 @@ class UpcomingViewController: UIViewController {
     
     
     // MARK:- Requests Methods
-    func getUpcomingMovies(page: NSInteger, showActivity: Bool)
-    {
+    func getUpcomingMovies(page: NSInteger, showActivity: Bool) {
         if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getUpcomingMovies(language: nil, page: page, region: nil)
     }
     
-    func getUpcomingMoviesCache()
-    {
+    func getUpcomingMoviesCache() {
         CacheGetter.getUpcomingMovies{ (moviesData) in
-            if let movies = moviesData?.movies
-            {
+            if let movies = moviesData?.movies {
                 self.arrayOfMovies = movies
                 self.moviesCollectionView.reloadData()
             }
@@ -57,18 +53,15 @@ class UpcomingViewController: UIViewController {
     }
     
     // MARK:- Configuration Methods
-    func configure()
-    {
+    func configure() {
         setUpCollectionsViews()
         setUpNavBar()
     }
-    func setUpCollectionsViews()
-    {
+    func setUpCollectionsViews() {
         moviesCollectionView.register(UINib(nibName: NibNames.loaderFooterNib.rawValue, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CellsIdentifiers.refreshFooterView.rawValue)
         moviesCollectionView.register(UINib(nibName: NibNames.movieNib.rawValue, bundle: nil), forCellWithReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue)
     }
-    func setUpNavBar()
-    {
+    func setUpNavBar() {
         UIHelper.setLargeTitles(in: self)
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -80,20 +73,16 @@ class UpcomingViewController: UIViewController {
     
 }
 
-extension UpcomingViewController: UISearchResultsUpdating, UISearchBarDelegate
-{
+extension UpcomingViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text{
+        if let searchText = searchController.searchBar.text {
             filteredArrayOfMovies = searchText.isEmpty ? arrayOfMovies : arrayOfMovies.filter({($0.title?.localizedCaseInsensitiveContains(searchText))!})
-            
             moviesCollectionView.reloadData()
         }
     }
-    
 }
 
-extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewDataSource
-{
+extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredArrayOfMovies.count
     }
@@ -101,8 +90,7 @@ extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.row == filteredArrayOfMovies.count - 1 {
-            if currentPage < totalOfPages
-            {
+            if currentPage < totalOfPages {
                 currentPage += 1
                 getUpcomingMovies(page: currentPage, showActivity: false)
             }
@@ -127,19 +115,7 @@ extension UpcomingViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
-//extension UpcomingViewController: UICollectionViewDataSourcePrefetching{
-//    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-//        <#code#>
-//    }
-//    func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-//        <#code#>
-//    }
-//
-//
-//}
-
-extension UpcomingViewController: UICollectionViewDelegateFlowLayout
-{
+extension UpcomingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if isLoading {
             return CGSize.zero
@@ -172,21 +148,18 @@ extension UpcomingViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
-extension UpcomingViewController: ResponseServicesProtocol
-{
+extension UpcomingViewController: ResponseServicesProtocol {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         self.isLoading = false
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Result)
-        if let pages = resultDic?[ServicesFieldsKeys.totalPages.rawValue] as? NSInteger{
+        if let pages = resultDic?[ServicesFieldsKeys.totalPages.rawValue] as? NSInteger {
             self.totalOfPages = pages
         }
-        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]]
-        {
+        if let results = resultDic?[ServicesFieldsKeys.results.rawValue] as? [[String : Any]] {
             let auxArrayOfMovies = DataTypeChanger.CreateArrayOfMovies(results: results)
             
-            for auxItem in auxArrayOfMovies
-            {
+            for auxItem in auxArrayOfMovies {
                 self.arrayOfMovies.append(auxItem)
             }
             
@@ -197,8 +170,6 @@ extension UpcomingViewController: ResponseServicesProtocol
                 UIHelper.turnOnAlphaWithAnimation(for: self.moviesCollectionView)
             }
         }
-        
-        
         DispatchQueue.main.async {
             UIHelper.dismissActivityIndicator(in: self.view)
         }
@@ -209,18 +180,14 @@ extension UpcomingViewController: ResponseServicesProtocol
         self.isLoading = false
         var messagage = ""
         let resultDic = DataTypeChanger.JSONDataToDiccionary(text: Error)
-        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String]
-        {
+        if let errors: [String] = resultDic?[ServicesFieldsKeys.errors.rawValue] as? [String] {
             messagage = errors[0]
         }
-        else
-        {
-            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String
-            {
+        else {
+            if let statusMessagage: String = resultDic?[ServicesFieldsKeys.statusMessage.rawValue] as? String {
                 messagage = statusMessagage
             }
-            else
-            {
+            else {
                 messagage = Error
             }
         }

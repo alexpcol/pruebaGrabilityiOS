@@ -12,8 +12,7 @@ import SystemConfiguration
 
 
 //MARK:- Protocol to catch the answer
-protocol ResponseServicesProtocol: class
-{
+protocol ResponseServicesProtocol: class {
     func onSucces(Result : String, name : ServicesNames)
     
     func onError(Error : String, name : ServicesNames)
@@ -29,55 +28,42 @@ class HttpMethods: NSObject {
     var seconds : Int?
     
     //MARK:- Inits
-    override init()
-    {
+    override init() {
         super.init()
     }
     
-    init(delegate: ResponseServicesProtocol, service : ServicesNames)
-    {
+    init(delegate: ResponseServicesProtocol, service : ServicesNames) {
         self.delegate = delegate;
         self.currentService = service
         super.init()
     }
     
-    func notInternetAlert()
-    {
+    func notInternetAlert() {
         self.delegate?.onError(Error: ErrorMessages.noInternet.rawValue, name : .NO_INTERNET)
         return
     }
-    
-    
-    
     //MARK:- Timer Methods
     /*
      Just if we need to tell the user that the Internet is bad
      */
-    func requestTimer()
-    {
+    func requestTimer() {
         requestDone = false
         timer = Timer.scheduledTimer(timeInterval: TimeInterval(1.0), target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
         timer?.fire()
     }
     
-    @objc func countDown()
-    {
-        if timer == nil
-        {
+    @objc func countDown() {
+        if timer == nil {
             return
         }
-        
-        if seconds == nil
-        {
+        if seconds == nil {
             seconds = -1
         }
         
         seconds = seconds! + 1
         print("Request time: " + String(describing: seconds))
         
-        
-        if requestDone == true
-        {
+        if requestDone == true {
             timer?.invalidate()
             timer = nil
             seconds = nil
@@ -85,15 +71,12 @@ class HttpMethods: NSObject {
     }
     
     //MARK:- GET Method
-    func RequestGET(URLString : String)
-    {
+    func RequestGET(URLString : String) {
         print("\n")
         print("Request(GET) " + URLString);
         var Request = URLRequest(url: URL(string: URLString)!)
         Request.httpMethod = "GET"
-        if NetworkHelper.hasInternet()
-        {
-            //requestTimer()
+        if NetworkHelper.hasInternet() {
             ExecuteTask(Request: Request)
         }
         else {
@@ -102,8 +85,7 @@ class HttpMethods: NSObject {
     }
     
     //MARK:- GET Method with Auth
-    func RequestGETWithAutorization(URLString : String)
-    {
+    func RequestGETWithAutorization(URLString : String) {
         print("\n")
         print("Request(GET) " + URLString);
         
@@ -111,8 +93,7 @@ class HttpMethods: NSObject {
         Request.httpMethod = "GET"
         
         let token : String? = APIKeys.apiTokenV4.rawValue
-        if token == nil
-        {
+        if token == nil {
             return
         }
         
@@ -123,8 +104,7 @@ class HttpMethods: NSObject {
         
         Request.httpBody = postString?.data(using: .utf8)
         
-        if NetworkHelper.hasInternet()
-        {
+        if NetworkHelper.hasInternet() {
             requestTimer()
             ExecuteTask(Request: Request)
         }
@@ -144,16 +124,14 @@ extension HttpMethods
     func ExecuteTask(Request : URLRequest)
     {
         let task = URLSession.shared.dataTask(with: Request) { data, response, error in
-            guard let data = data, error == nil else
-            {
+            guard let data = data, error == nil else {
                 self.requestDone = true
                 print("FATAL Error")
                 self.delegate?.onError(Error: ErrorMessages.sorryErrorSystem.rawValue, name : self.currentService!)
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 404
-            {
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 404 {
                 self.requestDone = true
                 print("OnSuccess with error")
                 let responseString = String(data: data, encoding: .utf8)
@@ -163,8 +141,7 @@ extension HttpMethods
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 400
-            {
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 400 {
                 self.requestDone = true
                 print("OnSuccess with error")
                 let responseString = String(data: data, encoding: .utf8)
@@ -174,13 +151,11 @@ extension HttpMethods
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200
-            {
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 self.requestDone = true
                 print("Something went terribly wrong")
                 var responseJSON = ""
-                if let responseString = String(data: data, encoding: .utf8)
-                {
+                if let responseString = String(data: data, encoding: .utf8) {
                     responseJSON = responseString
                 }
                 print("Result:\n \(String(describing: responseJSON))")
@@ -188,20 +163,16 @@ extension HttpMethods
                 self.delegate?.onError(Error: responseJSON, name : self.currentService!)
                 return
             }
-            else
-            {
+            else {
                 //OnSuccess
                 self.requestDone = true
                 print("200: OK")
                 let responseString = String(data: data, encoding: .utf8)
                 print("Result:\n \(String(describing: responseString!))")
                 self.delegate?.onSucces(Result: String(describing: responseString!), name : self.currentService!)
-                
             }
         }
-        
         task.resume()
     }
-    
 }
 

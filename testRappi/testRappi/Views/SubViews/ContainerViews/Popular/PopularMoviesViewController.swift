@@ -28,26 +28,22 @@ class PopularMoviesViewController: UIViewController {
         if NetworkHelper.hasInternet() {
             getPopularMovies(page: currentPage, showActivity: true)
         }
-        else
-        {
+        else {
             getPopularMoviesCache()
         }
         
     }
     
     // MARK:- Requests Methods
-    func getPopularMovies(page: NSInteger, showActivity: Bool)
-    {
+    func getPopularMovies(page: NSInteger, showActivity: Bool) {
         if showActivity{ UIHelper.showActivityIndicator(in: self.view) }
         let service = APIServices.init(delegate: self)
         service.getPopularMovies(language: nil, page: page, region: nil)
     }
     
-    func getPopularMoviesCache()
-    {
+    func getPopularMoviesCache() {
         CacheGetter.getPopularMovies { (moviesData) in
-            if let movies = moviesData?.movies
-            {
+            if let movies = moviesData?.movies {
                 self.arrayOfMovies = movies
                 self.moviesCollectionView.reloadData()
             }
@@ -55,18 +51,15 @@ class PopularMoviesViewController: UIViewController {
     }
     
     // MARK:- Configuration Methods
-    func configure()
-    {
+    func configure() {
         setUpCollectionsViews()
         setUpNavBar()
     }
-    func setUpCollectionsViews()
-    {
+    func setUpCollectionsViews() {
         moviesCollectionView.register(UINib(nibName: NibNames.loaderFooterNib.rawValue, bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: CellsIdentifiers.refreshFooterView.rawValue)
         moviesCollectionView.register(UINib(nibName: NibNames.movieNib.rawValue, bundle: nil), forCellWithReuseIdentifier: CellsIdentifiers.movieCollectionViewCell.rawValue)
     }
-    func setUpNavBar()
-    {
+    func setUpNavBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -78,21 +71,18 @@ class PopularMoviesViewController: UIViewController {
 
 }
 
-extension PopularMoviesViewController: UISearchResultsUpdating, UISearchBarDelegate
-{
+extension PopularMoviesViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text{
+        if let searchText = searchController.searchBar.text {
             filteredArrayOfMovies = searchText.isEmpty ? arrayOfMovies : arrayOfMovies.filter({($0.title?.localizedCaseInsensitiveContains(searchText))!})
             
             moviesCollectionView.reloadData()
         }
     }
-    
 }
 
 
-extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource
-{
+extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filteredArrayOfMovies.count
     }
@@ -124,8 +114,7 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
     }
 }
 
-extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout
-{
+extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         if isLoading {
             return CGSize.zero
@@ -158,8 +147,7 @@ extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
-extension PopularMoviesViewController: UIScrollViewDelegate
-{
+extension PopularMoviesViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pointToReach   = 150.0 ;
         let contentOffset = scrollView.contentOffset.y;
@@ -197,8 +185,7 @@ extension PopularMoviesViewController: UIScrollViewDelegate
     }
 }
 
-extension PopularMoviesViewController: ResponseServicesProtocol
-{
+extension PopularMoviesViewController: ResponseServicesProtocol {
     func onSucces(Result: String, name: ServicesNames) {
         print("success")
         self.isLoading = false

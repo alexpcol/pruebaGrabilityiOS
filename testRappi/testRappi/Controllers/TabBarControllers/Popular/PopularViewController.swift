@@ -33,7 +33,4 @@ class PopularViewController: UIViewController {
             break
         }
     }
-    
-    
-    
 }

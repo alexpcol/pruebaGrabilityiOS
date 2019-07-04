@@ -12,7 +12,7 @@ import SystemConfiguration
 
 class NetworkHelper: NSObject {
     
-    static func hasInternet()->Bool{
+    static func hasInternet()->Bool {
         var zeroAddress = sockaddr_in()
         zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         zeroAddress.sin_family = sa_family_t(AF_INET)
